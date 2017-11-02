@@ -16,6 +16,29 @@ void main() {
 	}
 	else { //caso escolha player
 
+		int opcao;
+
+		system("cls");
+
+		printf("MENU JOGADOR\n\n1- Fazer login\n2- Criar uma nova conta\n3- Entrar como convidado\n\n");
+		printf("Escolha uma opcao: ");
+		scanf("%i", &opcao);
+
+		if (opcao == 1) // Fazer login
+		{
+			system("cls");
+			FazerLogin();
+		}
+
+		else if (opcao == 2) // Criar conta
+		{
+
+		}
+		else if (opcao == 3) // Entrar como Convidado
+		{
+
+		}
+
 	}
 	system("pause");
 }
