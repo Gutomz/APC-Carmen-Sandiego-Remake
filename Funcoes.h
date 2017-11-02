@@ -10,3 +10,6 @@ int AdmSucesso();
 void AdmCriacao();
 int AdmVerif();
 void criptografa(char senha[]);
+
+
+void FazerLogin();
