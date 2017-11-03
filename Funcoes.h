@@ -13,36 +13,46 @@ struct typeChar
 {
 	char charName[20]; // nome do personagem
 	char sexo; // 1.feminino - 2.masculino
-	char hobby; // 1.futebol - 2.samba - 3.praia - 4.nataÃ§Ã£o - 5.luta
-	char cabelo; // 1.preto - 2.loiro - 3.ruivo - 4.castanho - 5.grisÃ¡lio
-	char caracteristica; // 1.anel - 2.pulseira - 3.colar - 4.bonÃ© - 5.tatuagem
-	char veiculo; // 1.carro - 2.moto - 3.helicÃ³ptero - 4.bicicleta - 5.jatinho
+	char hobby; // 1.futebol - 2.samba - 3.praia - 4.natação - 5.luta
+	char cabelo; // 1.preto - 2.loiro - 3.ruivo - 4.castanho - 5.grisálio
+	char caracteristica; // 1.anel - 2.pulseira - 3.colar - 4.boné - 5.tatuagem
+	char veiculo; // 1.carro - 2.moto - 3.helicóptero - 4.bicicleta - 5.jatinho
 };
 
 struct typeCase {
 	char caseTitle[30]; // Titulo do caso
-	char extension[5] = { '.','t','x','t' }; //ExtensÃ£o para o arquivo
-	char fileName[30]; // Titulo do caso + a extensÃ£o
-	char history[1000]; // HistÃ³ria inicial do caso
-	char thiefPath[20]; //Caminho que o ladrÃ£o percorre no jogo
+	char extension[5] = { '.','t','x','t' }; //Extensão para o arquivo
+	char fileName[30]; // Titulo do caso + a extensão
+	char history[1000]; // História inicial do caso
+	char thiefPath[20]; //Caminho que o ladrão percorre no jogo
 	typeChar thief;
 };
 //---------------------------------------Structs----------------------------------//
 
 //-------------------------------------------------------------------------------------------------------------------------------//
 
-//---------------------------------FunÃ§Ãµes do Principal---------------------------//
+//----------------------------------------Enums-----------------------------------//
+enum States_enum
+{
+	RS = 1, MS, GO, ES, MT, SC, MG, SP, PR, RJ
+};
+//----------------------------------------Enums-----------------------------------//
+
+//-------------------------------------------------------------------------------------------------------------------------------//
+
+//---------------------------------Funções do Principal---------------------------//
 int BemVindo();
 int AdmSucesso();
 void AdmCriacao();
 int AdmVerif();
 void criptografa(char senha[]);
-//---------------------------------FunÃ§Ãµes do Principal---------------------------//
+//---------------------------------Funções do Principal---------------------------//
 
 //-------------------------------------------------------------------------------------------------------------------------------//
 
-//---------------------------------FunÃ§Ãµes do CriarCaso---------------------------//
+//---------------------------------Funções do CriarCaso---------------------------//
 void CaseCreation();
 void ThiefCreation(typeCase whichCase);
-//---------------------------------FunÃ§Ãµes do Principal---------------------------//
+void ThiefPathCreation(typeCase whitchCase);
+//---------------------------------Funções do Principal---------------------------//
 
