@@ -8,6 +8,7 @@
 
 //-------------------------------------------------------------------------------------------------------------------------------//
 
+
 //---------------------------------------Structs----------------------------------//
 struct typeChar
 {
@@ -24,12 +25,17 @@ struct typeCase {
 	char extension[5] = { '.','t','x','t' }; //Extensão para o arquivo
 	char fileName[30]; // Titulo do caso + a extensão
 	char history[1000]; // História inicial do caso
+	int howManyPlaces;	// Quantidade de lugares que o ladrão vai passar
 	char thiefPath[20]; //Caminho que o ladrão percorre no jogo
+	int hideout;		//1. Praça - 2. Hotel - 3. Banco
+	char tips[15][500][3]; //[linha][coluna][profundidade] --> Cada profundidade é uma dica de um lugar(Hotel, Praça...) no estado
 	typeChar thief;
 };
 //---------------------------------------Structs----------------------------------//
 
+
 //-------------------------------------------------------------------------------------------------------------------------------//
+
 
 //----------------------------------------Enums-----------------------------------//
 enum States_enum
@@ -38,7 +44,9 @@ enum States_enum
 };
 //----------------------------------------Enums-----------------------------------//
 
+
 //-------------------------------------------------------------------------------------------------------------------------------//
+
 
 //---------------------------------Funções do Principal---------------------------//
 int BemVindo();
@@ -48,11 +56,14 @@ int AdmVerif();
 void criptografa(char senha[]);
 //---------------------------------Funções do Principal---------------------------//
 
+
 //-------------------------------------------------------------------------------------------------------------------------------//
+
 
 //---------------------------------Funções do CriarCaso---------------------------//
 void CaseCreation();
 void ThiefCreation(typeCase whichCase);
 void ThiefPathCreation(typeCase whitchCase);
+void TipsCreation(char path[], int howManyPlaces);
 //---------------------------------Funções do Principal---------------------------//
 

@@ -1,0 +1,5 @@
+Título do caso*
+História entre aspas simples*
+Nome do Ladrão-sexo-hobby-cabelo-característica-automovel*
+quantidade de lugares*
+lugarInicial-outros-lugares-separados-por-'-'*
