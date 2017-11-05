@@ -2,6 +2,7 @@
 
 void main() {
 	int OpcaoEntrada, crieConta, resultado;
+	char NomeJogador[50];
 
 	OpcaoEntrada = BemVindo();
 
@@ -28,14 +29,23 @@ void main() {
 		{
 			system("cls");
 			FazerLogin();
+
 		}
 
 		else if (opcao == 2) // Criar conta
 		{
-
+			system("cls");
+			CriarContaJogador();
 		}
 		else if (opcao == 3) // Entrar como Convidado
 		{
+			system("cls");
+
+			printf("--- CONVIDADO ---\n\n");
+			printf("Informe um apelido: ");
+			scanf("%s", NomeJogador);
+
+			printf("\nSeja bem-vindo(a) %s :]\n", &NomeJogador);
 
 		}
 
