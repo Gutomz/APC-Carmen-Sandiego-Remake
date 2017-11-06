@@ -1,12 +1,12 @@
-TÌtulo do caso*
-Nome do Ladr„o-sexo-hobby-cabelo-caracterÌstica-automovel*
+T√≠tulo do caso*
+Nome do Ladr√£o-sexo-hobby-cabelo-caracter√≠stica-automovel*
 quantidade de lugares*
 lugarInicial-outros-lugares-separados-por-'-'*
 esconderijo*
+Hist√≥ria*
 quantidade de dicas = 3 x quantidade de lugares*
 dica 1*
 .*
 .*
 .*
 dica n*
-HistÛria entre aspas simples*
