@@ -1,6 +1,12 @@
 Título do caso*
-História entre aspas simples*
 Nome do Ladrão-sexo-hobby-cabelo-característica-automovel*
 quantidade de lugares*
 lugarInicial-outros-lugares-separados-por-'-'*
 esconderijo*
+História*
+quantidade de dicas = 3 x quantidade de lugares*
+dica 1*
+.*
+.*
+.*
+dica n*
