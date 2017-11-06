@@ -135,7 +135,7 @@ void ThiefCreation(typeCase whichCase) {
 	do {
 		system("cls");
 		printf("Criando o ladrão\n");
-		printf("Sexo:\n1- Feminino\n2- Masculino\nEscolha: ");
+		printf("Sexo:\n1- Feminino\n2- Masculino\nResposta: ");
 		scanf("%c", &whichCase.thief.sexo);
 		if (whichCase.thief.sexo == '1' || whichCase.thief.sexo == '2') {
 			flag = 1;
@@ -147,7 +147,7 @@ void ThiefCreation(typeCase whichCase) {
 	do {
 		system("cls");
 		printf("Criando o ladrão\n");
-		printf("Hobby:\n1- Futebol\n2- Samba\n3- Praia\n4- Natação\n5- Luta\nEscolha: ");
+		printf("Hobby:\n1- Futebol\n2- Samba\n3- Praia\n4- Natação\n5- Luta\nResposta: ");
 		scanf("%c", &whichCase.thief.hobby);
 		if (whichCase.thief.hobby >= '1' && whichCase.thief.hobby <= '5') {
 			flag = 1;
@@ -159,7 +159,7 @@ void ThiefCreation(typeCase whichCase) {
 	do {
 		system("cls");
 		printf("Criando o ladrão\n");
-		printf("Cabelo:\n1- Preto\n2- Loiro\n3- Ruivo\n4- Castanho\n5- Grisálho\nEscolha: ");
+		printf("Cabelo:\n1- Preto\n2- Loiro\n3- Ruivo\n4- Castanho\n5- Grisálho\nResposta: ");
 		scanf("%c", &whichCase.thief.cabelo);
 		if (whichCase.thief.cabelo >= '1' && whichCase.thief.cabelo <= '5') {
 			flag = 1;
@@ -172,7 +172,7 @@ void ThiefCreation(typeCase whichCase) {
 	do {
 		system("cls");
 		printf("Criando o ladrão\n");
-		printf("Caracteristica:\n1- Anel\n2- Pulseira\n3- Colar\n4- Boné\n5- Tatuagem\nEscolha: ");
+		printf("Caracteristica:\n1- Anel\n2- Pulseira\n3- Colar\n4- Boné\n5- Tatuagem\nResposta: ");
 		scanf("%c", &whichCase.thief.caracteristica);
 		if (whichCase.thief.caracteristica >= '1' && whichCase.thief.caracteristica <= '5') {
 			flag = 1;
@@ -184,7 +184,7 @@ void ThiefCreation(typeCase whichCase) {
 	do {
 		system("cls");
 		printf("Criando o ladrão\n");
-		printf("Veiculo:\n1- Carro\n2- Moto\n3- Helicóptero\n4- Bicicleta\n5- Jatinho\nEscolha: ");
+		printf("Veiculo:\n1- Carro\n2- Moto\n3- Helicóptero\n4- Bicicleta\n5- Jatinho\nResposta: ");
 		scanf("%c", &whichCase.thief.veiculo);
 		if (whichCase.thief.veiculo >= '1' && whichCase.thief.veiculo <= '5') {
 			flag = 1;
@@ -370,7 +370,7 @@ void ThiefCreation(typeCase whichCase) {
 						break;
 				}
 				printf("  7- Confirmar Modificações.\n");
-				printf("Escolha: ");
+				printf("Resposta: ");
 				scanf("%c", &escolha[0]);
 				if (escolha[0] >= '1' && escolha[0] <= '7') {
 					switch (escolha[0]) {
@@ -402,7 +402,7 @@ void ThiefCreation(typeCase whichCase) {
 										printf("Sexo: Masculino\n");
 										break;
 								}
-								printf("Novo Sexo:\n1- Feminino\n2- Masculino\nEscolha: ");
+								printf("Novo Sexo:\n1- Feminino\n2- Masculino\nResposta: ");
 								scanf("%c", &whichCase.thief.sexo);
 								if (whichCase.thief.sexo == '1' || whichCase.thief.sexo == '2') {
 									flag = 1;
@@ -432,7 +432,7 @@ void ThiefCreation(typeCase whichCase) {
 										printf("Hobby: Luta\n");
 										break;
 								}
-								printf("Novo Hobby:\n1- Futebol\n2- Samba\n3- Praia\n4- Natação\n5- Luta\nEscolha: ");
+								printf("Novo Hobby:\n1- Futebol\n2- Samba\n3- Praia\n4- Natação\n5- Luta\nResposta: ");
 								scanf("%c", &whichCase.thief.hobby);
 								if (whichCase.thief.hobby >= '1' && whichCase.thief.hobby <= '5') {
 									flag = 1;
@@ -462,7 +462,7 @@ void ThiefCreation(typeCase whichCase) {
 										printf("Cabelo: Grisálho\n");
 										break;
 								}
-								printf("Novo Cabelo:\n1- Preto\n2- Loiro\n3- Ruivo\n4- Castanho\n5- Grisálho\nEscolha: ");
+								printf("Novo Cabelo:\n1- Preto\n2- Loiro\n3- Ruivo\n4- Castanho\n5- Grisálho\nResposta: ");
 								scanf("%c", &whichCase.thief.cabelo);
 								if (whichCase.thief.cabelo >= '1' && whichCase.thief.cabelo <= '5') {
 									flag = 1;
@@ -492,7 +492,7 @@ void ThiefCreation(typeCase whichCase) {
 										printf("Característica: Tatuagem\n");
 										break;
 								}
-								printf("Nova Caracteristica:\n1- Anel\n2- Pulseira\n3- Colar\n4- Boné\n5- Tatuagem\nEscolha: ");
+								printf("Nova Caracteristica:\n1- Anel\n2- Pulseira\n3- Colar\n4- Boné\n5- Tatuagem\nResposta: ");
 								scanf("%c", &whichCase.thief.caracteristica);
 								if (whichCase.thief.caracteristica >= '1' && whichCase.thief.caracteristica <= '5') {
 									flag = 1;
@@ -522,7 +522,7 @@ void ThiefCreation(typeCase whichCase) {
 										printf("Veículo: Jatinho\n");
 										break;
 								}
-								printf("Novo Veiculo:\n1- Carro\n2- Moto\n3- Helicóptero\n4- Bicicleta\n5- Jatinho\nEscolha: ");
+								printf("Novo Veiculo:\n1- Carro\n2- Moto\n3- Helicóptero\n4- Bicicleta\n5- Jatinho\nResposta: ");
 								scanf("%c", &whichCase.thief.veiculo);
 								if (whichCase.thief.veiculo >= '1' && whichCase.thief.veiculo <= '5') {
 									flag = 1;
@@ -556,7 +556,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 	do {
 		system("cls");
 		printf("Criando caminho percorrido pelo ladrão\n");
-		printf("Escolha quantos lugares o ladrão irá passar (2 - %i)\n", maxPlaces);
+		printf("Escolha quantos lugares o ladrão irá passar (2 - %i)\nResposta: ", maxPlaces);
 		scanf("%i", &whitchCase.howManyPlaces);
 		if (whitchCase.howManyPlaces >= 2 && whitchCase.howManyPlaces <= maxPlaces) {
 			flag = 1;
@@ -577,7 +577,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 		printf("  8- São Paulo\n");
 		printf("  9- Paraná\n");
 		printf(" 10- Rio de Janeiro\n");
-		printf("Escolha: ");
+		printf("Resposta: ");
 		scanf("%i", &escolhaNum);
 		if (escolhaNum >= 1 && escolhaNum <= 10) {
 			flag = 1;
@@ -598,7 +598,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 					printf("  1- Goiás\n");
 					printf("  2- Mato Grosso do Sul\n");
 					printf("  3- Espírito Santo\n");
-					printf("Escolha: ");
+					printf("Resposta: ");
 					scanf("%i", &escolhaNum);
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
@@ -626,7 +626,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 					printf("  1- Rio Grande do Sul\n");
 					printf("  2- Mato Grosso\n");
 					printf("  3- Santa Catarina\n");
-					printf("Escolha: ");
+					printf("Resposta: ");
 					scanf("%i", &escolhaNum);
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
@@ -654,7 +654,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 					printf("  1- Rio Grande do Sul\n");
 					printf("  2- Minas Gerais\n");
 					printf("  3- São Paulo\n");
-					printf("Escolha: ");
+					printf("Resposta: ");
 					scanf("%i", &escolhaNum);
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
@@ -682,7 +682,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 					printf("  1- Rio Grande do Sul\n");
 					printf("  2- Paraná\n");
 					printf("  3- Rio de Janeiro\n");
-					printf("Escolha: ");
+					printf("Resposta: ");
 					scanf("%i", &escolhaNum);
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
@@ -710,7 +710,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 					printf("  1- Mato Grosso do Sul\n");
 					printf("  2- São Paulo\n");
 					printf("  3- Minas Gerais\n");
-					printf("Escolha: ");
+					printf("Resposta: ");
 					scanf("%i", &escolhaNum);
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
@@ -738,7 +738,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 					printf("  1- Mato Grosso do Sul\n");
 					printf("  2- Paraná\n");
 					printf("  3- Minas Gerais\n");
-					printf("Escolha: ");
+					printf("Resposta: ");
 					scanf("%i", &escolhaNum);
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
@@ -766,7 +766,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 					printf("  1- Goiás\n");
 					printf("  2- Mato Grosso\n");
 					printf("  3- Santa Catarina\n");
-					printf("Escolha: ");
+					printf("Resposta: ");
 					scanf("%i", &escolhaNum);
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
@@ -794,7 +794,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 					printf("  1- Goiás\n");
 					printf("  2- Mato Grosso\n");
 					printf("  3- Rio de Janeiro\n");
-					printf("Escolha: ");
+					printf("Resposta: ");
 					scanf("%i", &escolhaNum);
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
@@ -822,7 +822,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 					printf("  1- Espírito Santo\n");
 					printf("  2- Santa Catarina\n");
 					printf("  3- Rio de Janeiro\n");
-					printf("Escolha: ");
+					printf("Resposta: ");
 					scanf("%i", &escolhaNum);
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
@@ -850,7 +850,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 					printf("  1- Espírito Santo\n");
 					printf("  2- São Paulo\n");
 					printf("  3- Paraná\n");
-					printf("Escolha: ");
+					printf("Resposta: ");
 					scanf("%i", &escolhaNum);
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
@@ -954,282 +954,307 @@ void ThiefPathCreation(typeCase whitchCase) {
 								break;
 						}
 					}
-					printf("Escolha: ");
+					printf("Resposta: ");
 					scanf("%i", &escolhaNum);
 					if (escolhaNum >= 1 && escolhaNum <= whitchCase.howManyPlaces) {
 						for (count = escolhaNum - 1; count < whitchCase.howManyPlaces; count++) {
 							system("cls");
-							switch (whitchCase.thiefPath[count - 1]) {
-								case RS:
-									flag = 0;
-									do {
-										system("cls");
-										printf("Escolha anterior: Rio Grande do Sul\n");
-										printf("Escolha o %i° lugar:\n", count + 1);
-										printf("  1- Goiás\n");
-										printf("  2- Mato Grosso do Sul\n");
-										printf("  3- Espírito Santo\n");
-										printf("Escolha: ");
-										scanf("%i", &escolhaNum);
-										if (escolhaNum >= 1 && escolhaNum <= 3) {
-											switch (escolhaNum) {
-												case 1:
-													whitchCase.thiefPath[count] = 3;
-													break;
-												case 2:
-													whitchCase.thiefPath[count] = 2;
-													break;
-												case 3:
-													whitchCase.thiefPath[count] = 4;
-													break;
+							if (count == 0) {
+								flag = 0;
+								do {
+									system("cls");
+									printf("Criando caminho percorrido pelo ladrão\n");
+									printf("Escolha o local inicial do caso:\n");
+									printf("  1- Rio Grande do Sul\n");
+									printf("  2- Mato Grosso do Sul\n");
+									printf("  3- Goiás\n");
+									printf("  4- Espírito Santo\n");
+									printf("  5- Mato Grosso\n");
+									printf("  6- Santa Catarina\n");
+									printf("  7- Minas Gerais\n");
+									printf("  8- São Paulo\n");
+									printf("  9- Paraná\n");
+									printf(" 10- Rio de Janeiro\n");
+									printf("Resposta: ");
+									scanf("%i", &escolhaNum);
+									if (escolhaNum >= 1 && escolhaNum <= 10) {
+										flag = 1;
+										whitchCase.thiefPath[count] = escolhaNum;
+									}
+								} while (flag == 0);
+							} else {
+								switch (whitchCase.thiefPath[count - 1]) {
+									case RS:
+										flag = 0;
+										do {
+											system("cls");
+											printf("Escolha anterior: Rio Grande do Sul\n");
+											printf("Escolha o %i° lugar:\n", count + 1);
+											printf("  1- Goiás\n");
+											printf("  2- Mato Grosso do Sul\n");
+											printf("  3- Espírito Santo\n");
+											printf("Resposta: ");
+											scanf("%i", &escolhaNum);
+											if (escolhaNum >= 1 && escolhaNum <= 3) {
+												switch (escolhaNum) {
+													case 1:
+														whitchCase.thiefPath[count] = 3;
+														break;
+													case 2:
+														whitchCase.thiefPath[count] = 2;
+														break;
+													case 3:
+														whitchCase.thiefPath[count] = 4;
+														break;
+												}
+												flag = 1;
 											}
-											flag = 1;
-										}
-									} while (flag == 0);
-									break;
-								case MS:
-									flag = 0;
-									do {
-										system("cls");
-										printf("Escolha anterior: Mato Grosso do Sul\n");
-										printf("Escolha o %i° lugar:\n", count + 1);
-										printf("  1- Rio Grande do Sul\n");
-										printf("  2- Mato Grosso\n");
-										printf("  3- Santa Catarina\n");
-										printf("Escolha: ");
-										scanf("%i", &escolhaNum);
-										if (escolhaNum >= 1 && escolhaNum <= 3) {
-											switch (escolhaNum) {
-												case 1:
-													whitchCase.thiefPath[count] = 1;
-													break;
-												case 2:
-													whitchCase.thiefPath[count] = 5;
-													break;
-												case 3:
-													whitchCase.thiefPath[count] = 6;
-													break;
+										} while (flag == 0);
+										break;
+									case MS:
+										flag = 0;
+										do {
+											system("cls");
+											printf("Escolha anterior: Mato Grosso do Sul\n");
+											printf("Escolha o %i° lugar:\n", count + 1);
+											printf("  1- Rio Grande do Sul\n");
+											printf("  2- Mato Grosso\n");
+											printf("  3- Santa Catarina\n");
+											printf("Resposta: ");
+											scanf("%i", &escolhaNum);
+											if (escolhaNum >= 1 && escolhaNum <= 3) {
+												switch (escolhaNum) {
+													case 1:
+														whitchCase.thiefPath[count] = 1;
+														break;
+													case 2:
+														whitchCase.thiefPath[count] = 5;
+														break;
+													case 3:
+														whitchCase.thiefPath[count] = 6;
+														break;
+												}
+												flag = 1;
 											}
-											flag = 1;
-										}
-									} while (flag == 0);
-									break;
-								case GO:
-									flag = 0;
-									do {
-										system("cls");
-										printf("Escolha anterior: Goiás\n");
-										printf("Escolha o %i° lugar:\n", count + 1);
-										printf("  1- Rio Grande do Sul\n");
-										printf("  2- Minas Gerais\n");
-										printf("  3- São Paulo\n");
-										printf("Escolha: ");
-										scanf("%i", &escolhaNum);
-										if (escolhaNum >= 1 && escolhaNum <= 3) {
-											switch (escolhaNum) {
-												case 1:
-													whitchCase.thiefPath[count] = 1;
-													break;
-												case 2:
-													whitchCase.thiefPath[count] = 7;
-													break;
-												case 3:
-													whitchCase.thiefPath[count] = 8;
-													break;
+										} while (flag == 0);
+										break;
+									case GO:
+										flag = 0;
+										do {
+											system("cls");
+											printf("Escolha anterior: Goiás\n");
+											printf("Escolha o %i° lugar:\n", count + 1);
+											printf("  1- Rio Grande do Sul\n");
+											printf("  2- Minas Gerais\n");
+											printf("  3- São Paulo\n");
+											printf("Resposta: ");
+											scanf("%i", &escolhaNum);
+											if (escolhaNum >= 1 && escolhaNum <= 3) {
+												switch (escolhaNum) {
+													case 1:
+														whitchCase.thiefPath[count] = 1;
+														break;
+													case 2:
+														whitchCase.thiefPath[count] = 7;
+														break;
+													case 3:
+														whitchCase.thiefPath[count] = 8;
+														break;
+												}
+												flag = 1;
 											}
-											flag = 1;
-										}
-									} while (flag == 0);
-									break;
-								case ES:
-									flag = 0;
-									do {
-										system("cls");
-										printf("Escolha anterior: Espírito Santo\n");
-										printf("Escolha o %i° lugar:\n", count + 1);
-										printf("  1- Rio Grande do Sul\n");
-										printf("  2- Paraná\n");
-										printf("  3- Rio de Janeiro\n");
-										printf("Escolha: ");
-										scanf("%i", &escolhaNum);
-										if (escolhaNum >= 1 && escolhaNum <= 3) {
-											switch (escolhaNum) {
-												case 1:
-													whitchCase.thiefPath[count] = 1;
-													break;
-												case 2:
-													whitchCase.thiefPath[count] = 9;
-													break;
-												case 3:
-													whitchCase.thiefPath[count] = 10;
-													break;
+										} while (flag == 0);
+										break;
+									case ES:
+										flag = 0;
+										do {
+											system("cls");
+											printf("Escolha anterior: Espírito Santo\n");
+											printf("Escolha o %i° lugar:\n", count + 1);
+											printf("  1- Rio Grande do Sul\n");
+											printf("  2- Paraná\n");
+											printf("  3- Rio de Janeiro\n");
+											printf("Resposta: ");
+											scanf("%i", &escolhaNum);
+											if (escolhaNum >= 1 && escolhaNum <= 3) {
+												switch (escolhaNum) {
+													case 1:
+														whitchCase.thiefPath[count] = 1;
+														break;
+													case 2:
+														whitchCase.thiefPath[count] = 9;
+														break;
+													case 3:
+														whitchCase.thiefPath[count] = 10;
+														break;
+												}
+												flag = 1;
 											}
-											flag = 1;
-										}
-									} while (flag == 0);
-									break;
-								case MT:
-									flag = 0;
-									do {
-										system("cls");
-										printf("Escolha anterior: Mato Grosso\n");
-										printf("Escolha o %i° lugar:\n", count + 1);
-										printf("  1- Mato Grosso do Sul\n");
-										printf("  2- São Paulo\n");
-										printf("  3- Minas Gerais\n");
-										printf("Escolha: ");
-										scanf("%i", &escolhaNum);
-										if (escolhaNum >= 1 && escolhaNum <= 3) {
-											switch (escolhaNum) {
-												case 1:
-													whitchCase.thiefPath[count] = 2;
-													break;
-												case 2:
-													whitchCase.thiefPath[count] = 8;
-													break;
-												case 3:
-													whitchCase.thiefPath[count] = 7;
-													break;
+										} while (flag == 0);
+										break;
+									case MT:
+										flag = 0;
+										do {
+											system("cls");
+											printf("Escolha anterior: Mato Grosso\n");
+											printf("Escolha o %i° lugar:\n", count + 1);
+											printf("  1- Mato Grosso do Sul\n");
+											printf("  2- São Paulo\n");
+											printf("  3- Minas Gerais\n");
+											printf("Resposta: ");
+											scanf("%i", &escolhaNum);
+											if (escolhaNum >= 1 && escolhaNum <= 3) {
+												switch (escolhaNum) {
+													case 1:
+														whitchCase.thiefPath[count] = 2;
+														break;
+													case 2:
+														whitchCase.thiefPath[count] = 8;
+														break;
+													case 3:
+														whitchCase.thiefPath[count] = 7;
+														break;
+												}
+												flag = 1;
 											}
-											flag = 1;
-										}
-									} while (flag == 0);
-									break;
-								case SC:
-									flag = 0;
-									do {
-										system("cls");
-										printf("Escolha anterior: Santa Catarina\n");
-										printf("Escolha o %i° lugar:\n", count + 1);
-										printf("  1- Mato Grosso do Sul\n");
-										printf("  2- Paraná\n");
-										printf("  3- Minas Gerais\n");
-										printf("Escolha: ");
-										scanf("%i", &escolhaNum);
-										if (escolhaNum >= 1 && escolhaNum <= 3) {
-											switch (escolhaNum) {
-												case 1:
-													whitchCase.thiefPath[count] = 2;
-													break;
-												case 2:
-													whitchCase.thiefPath[count] = 9;
-													break;
-												case 3:
-													whitchCase.thiefPath[count] = 7;
-													break;
+										} while (flag == 0);
+										break;
+									case SC:
+										flag = 0;
+										do {
+											system("cls");
+											printf("Escolha anterior: Santa Catarina\n");
+											printf("Escolha o %i° lugar:\n", count + 1);
+											printf("  1- Mato Grosso do Sul\n");
+											printf("  2- Paraná\n");
+											printf("  3- Minas Gerais\n");
+											printf("Resposta: ");
+											scanf("%i", &escolhaNum);
+											if (escolhaNum >= 1 && escolhaNum <= 3) {
+												switch (escolhaNum) {
+													case 1:
+														whitchCase.thiefPath[count] = 2;
+														break;
+													case 2:
+														whitchCase.thiefPath[count] = 9;
+														break;
+													case 3:
+														whitchCase.thiefPath[count] = 7;
+														break;
+												}
+												flag = 1;
 											}
-											flag = 1;
-										}
-									} while (flag == 0);
-									break;
-								case MG:
-									flag = 0;
-									do {
-										system("cls");
-										printf("Escolha anterior: Minas Gerais\n");
-										printf("Escolha o %i° lugar:\n", count + 1);
-										printf("  1- Goiás\n");
-										printf("  2- Mato Grosso\n");
-										printf("  3- Santa Catarina\n");
-										printf("Escolha: ");
-										scanf("%i", &escolhaNum);
-										if (escolhaNum >= 1 && escolhaNum <= 3) {
-											switch (escolhaNum) {
-												case 1:
-													whitchCase.thiefPath[count] = 3;
-													break;
-												case 2:
-													whitchCase.thiefPath[count] = 5;
-													break;
-												case 3:
-													whitchCase.thiefPath[count] = 6;
-													break;
+										} while (flag == 0);
+										break;
+									case MG:
+										flag = 0;
+										do {
+											system("cls");
+											printf("Escolha anterior: Minas Gerais\n");
+											printf("Escolha o %i° lugar:\n", count + 1);
+											printf("  1- Goiás\n");
+											printf("  2- Mato Grosso\n");
+											printf("  3- Santa Catarina\n");
+											printf("Resposta: ");
+											scanf("%i", &escolhaNum);
+											if (escolhaNum >= 1 && escolhaNum <= 3) {
+												switch (escolhaNum) {
+													case 1:
+														whitchCase.thiefPath[count] = 3;
+														break;
+													case 2:
+														whitchCase.thiefPath[count] = 5;
+														break;
+													case 3:
+														whitchCase.thiefPath[count] = 6;
+														break;
+												}
+												flag = 1;
 											}
-											flag = 1;
-										}
-									} while (flag == 0);
-									break;
-								case SP:
-									flag = 0;
-									do {
-										system("cls");
-										printf("Escolha anterior: São Paulo\n");
-										printf("Escolha o %i° lugar:\n", count + 1);
-										printf("  1- Goiás\n");
-										printf("  2- Mato Grosso\n");
-										printf("  3- Rio de Janeiro\n");
-										printf("Escolha: ");
-										scanf("%i", &escolhaNum);
-										if (escolhaNum >= 1 && escolhaNum <= 3) {
-											switch (escolhaNum) {
-												case 1:
-													whitchCase.thiefPath[count] = 3;
-													break;
-												case 2:
-													whitchCase.thiefPath[count] = 5;
-													break;
-												case 3:
-													whitchCase.thiefPath[count] = 10;
-													break;
+										} while (flag == 0);
+										break;
+									case SP:
+										flag = 0;
+										do {
+											system("cls");
+											printf("Escolha anterior: São Paulo\n");
+											printf("Escolha o %i° lugar:\n", count + 1);
+											printf("  1- Goiás\n");
+											printf("  2- Mato Grosso\n");
+											printf("  3- Rio de Janeiro\n");
+											printf("Resposta: ");
+											scanf("%i", &escolhaNum);
+											if (escolhaNum >= 1 && escolhaNum <= 3) {
+												switch (escolhaNum) {
+													case 1:
+														whitchCase.thiefPath[count] = 3;
+														break;
+													case 2:
+														whitchCase.thiefPath[count] = 5;
+														break;
+													case 3:
+														whitchCase.thiefPath[count] = 10;
+														break;
+												}
+												flag = 1;
 											}
-											flag = 1;
-										}
-									} while (flag == 0);
-									break;
-								case PR:
-									flag = 0;
-									do {
-										system("cls");
-										printf("Escolha anterior: Paraná\n");
-										printf("Escolha o %i° lugar:\n", count + 1);
-										printf("  1- Espírito Santo\n");
-										printf("  2- Santa Catarina\n");
-										printf("  3- Rio de Janeiro\n");
-										printf("Escolha: ");
-										scanf("%i", &escolhaNum);
-										if (escolhaNum >= 1 && escolhaNum <= 3) {
-											switch (escolhaNum) {
-												case 1:
-													whitchCase.thiefPath[count] = 4;
-													break;
-												case 2:
-													whitchCase.thiefPath[count] = 6;
-													break;
-												case 3:
-													whitchCase.thiefPath[count] = 10;
-													break;
+										} while (flag == 0);
+										break;
+									case PR:
+										flag = 0;
+										do {
+											system("cls");
+											printf("Escolha anterior: Paraná\n");
+											printf("Escolha o %i° lugar:\n", count + 1);
+											printf("  1- Espírito Santo\n");
+											printf("  2- Santa Catarina\n");
+											printf("  3- Rio de Janeiro\n");
+											printf("Resposta: ");
+											scanf("%i", &escolhaNum);
+											if (escolhaNum >= 1 && escolhaNum <= 3) {
+												switch (escolhaNum) {
+													case 1:
+														whitchCase.thiefPath[count] = 4;
+														break;
+													case 2:
+														whitchCase.thiefPath[count] = 6;
+														break;
+													case 3:
+														whitchCase.thiefPath[count] = 10;
+														break;
+												}
+												flag = 1;
 											}
-											flag = 1;
-										}
-									} while (flag == 0);
-									break;
-								case RJ:
-									flag = 0;
-									do {
-										system("cls");
-										printf("Escolha anterior: Rio de Janeiro\n");
-										printf("Escolha o %i° lugar:\n", count + 1);
-										printf("  1- Espírito Santo\n");
-										printf("  2- São Paulo\n");
-										printf("  3- Paraná\n");
-										printf("Escolha: ");
-										scanf("%i", &escolhaNum);
-										if (escolhaNum >= 1 && escolhaNum <= 3) {
-											switch (escolhaNum) {
-												case 1:
-													whitchCase.thiefPath[count] = 4;
-													break;
-												case 2:
-													whitchCase.thiefPath[count] = 8;
-													break;
-												case 3:
-													whitchCase.thiefPath[count] = 9;
-													break;
+										} while (flag == 0);
+										break;
+									case RJ:
+										flag = 0;
+										do {
+											system("cls");
+											printf("Escolha anterior: Rio de Janeiro\n");
+											printf("Escolha o %i° lugar:\n", count + 1);
+											printf("  1- Espírito Santo\n");
+											printf("  2- São Paulo\n");
+											printf("  3- Paraná\n");
+											printf("Resposta: ");
+											scanf("%i", &escolhaNum);
+											if (escolhaNum >= 1 && escolhaNum <= 3) {
+												switch (escolhaNum) {
+													case 1:
+														whitchCase.thiefPath[count] = 4;
+														break;
+													case 2:
+														whitchCase.thiefPath[count] = 8;
+														break;
+													case 3:
+														whitchCase.thiefPath[count] = 9;
+														break;
+												}
+												flag = 1;
 											}
-											flag = 1;
-										}
-									} while (flag == 0);
-									break;
+										} while (flag == 0);
+										break;
+								}
 							}
 						}
 					}
@@ -1294,7 +1319,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 			printf("  1- Praça\n");
 			printf("  2- Hotel\n");
 			printf("  3- Banco\n");
-			printf("Escolha: ");
+			printf("Resposta: ");
 			scanf("%i", &escolhaNum);
 			if (escolhaNum >= 1 && escolhaNum <= 3) {
 				flag = 1;
