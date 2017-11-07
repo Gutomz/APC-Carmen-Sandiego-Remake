@@ -7,33 +7,34 @@ void CaseCreation() {
 	typeCase caseToCreate;
 	int flag = 0, i, modificationFlag = 0;
 	char escolha[10];
-	
+	//------------------------------------------------Receber Título do Caso---------------------------------------------------//
 	do {
 		do {
 			system("cls");
 			printf("Criando o Caso\n");
-			printf("Título do Caso: ");															// Receber o titulo do caso
-			scanf("%[^\n]", &caseToCreate.caseTitle);
-			if ((caseToCreate.caseTitle[0] >= 65 && caseToCreate.caseTitle[0] <= 90) ||
-				(caseToCreate.caseTitle[0] >= 97 && caseToCreate.caseTitle[0] <= 122)) {
-				flag = 1;
+			printf("Título do Caso: ");															
+			scanf("%[^\n]", &caseToCreate.caseTitle);										// Receber o titulo do caso
+			if ((caseToCreate.caseTitle[0] >= 65 && caseToCreate.caseTitle[0] <= 90) ||		// Verifica de está dentro do padrões
+				(caseToCreate.caseTitle[0] >= 97 && caseToCreate.caseTitle[0] <= 122)) {	// Padrões: (Comçar com Letra)
+				flag = 1;	//se estiver modifica a flag do loop e continua o código
 			} else {
-				system("cls");
+				system("cls"); //senão limpa a tela pede denovo o título
 				getchar();
 			}
 		} while (flag == 0); //Esse loop é para caso o nome do arquivo seja invalido (Ex: 0ARQ, 'po)99,  opQ)
 
-		strcpy(caseToCreate.fileName, caseToCreate.caseTitle);
-		strcat(caseToCreate.fileName, caseToCreate.extension);
-		newCase = fopen(caseToCreate.fileName, "r");
+		strcpy(caseToCreate.fileName, caseToCreate.caseTitle);		//adicionar o nome na variavel do nome do arquivo
+		strcat(caseToCreate.fileName, caseToCreate.extension);		//adicionar a extensão no nome do arquivo
+
+		newCase = fopen(caseToCreate.fileName, "r");				//abrir o arquivo em forma de leitura
 		flag = 0;
-		if (newCase == NULL) {
+		if (newCase == NULL) {			// Verifica se o arquivo existe
 			flag = 1;
-			newCase = fopen(caseToCreate.fileName, "w");
-			fprintf(newCase, "%s*\n", caseToCreate.caseTitle);										//Colocar no arquivo o titulo do caso
+			newCase = fopen(caseToCreate.fileName, "w");		//Se não existir cria um arquivo
+			fprintf(newCase, "%s*\n", caseToCreate.caseTitle);
 		} else {
-			printf("\nCaso existente! Tente outro Nome.\nAguarde...");
-			Sleep(2350);
+			printf("\nCaso existente! Tente outro Nome.\nAguarde...");	//senão avisa que o arquivo existe e pede outro nome
+			Sleep(2000);
 			getchar();
 		}
 	} while (flag == 0); //Esse loop é para caso o nome do caso ja tenha sido usado!
@@ -41,77 +42,16 @@ void CaseCreation() {
 	printf("\nTítulo criado com Sucesso!\nAguarde...");
 	Sleep(1500);
 
-	flag = 0;
-	do {
-		system("cls");
-		printf("Criando o Caso\n");
-		printf("Introduza uma história inicial que será apresentada ao jogador:\n");		//Receber uma historia inicial
-		getchar();
-		scanf("%[^\n]", &caseToCreate.history);
-		if ((caseToCreate.history[0] >= 65 && caseToCreate.history[0] <= 90) ||
-			(caseToCreate.history[0] >= 97 && caseToCreate.history[0] <= 122)) {
-			flag = 1;
-		} else {
-			system("cls");
-		}
-	} while (flag == 0);
-	printf("\nAguarde...");
-	Sleep(1500);
-
-	do {
-		getchar();
-		system("cls");
-		printf("História Criada:\n\n  %s\n", caseToCreate.history);
-		printf("\nGostaria de reescrever? (Sim/Não)\nResposta: ");
-		flag = 0;
-		do {
-			scanf("%s", &escolha);
-			if (escolha[0] != 'N' && escolha[0] != 'S' && escolha[0] != 'n' && escolha[0] != 's') {
-				for (i = 0; i < 110; i++) {//tela 120
-					printf("\b \b");
-				}
-			} else {
-				flag = 1;
-			}
-		} while (flag == 0);
-		switch (escolha[0]) {
-			case 's':
-			case'S':
-				flag = 0;
-				do {
-					system("cls");
-					printf("Criando o Caso\n");
-					printf("Introduza uma história inicial que será apresentada ao jogador:\n");		//Receber uma historia inicial
-					getchar();
-					scanf("%[^\n]", &caseToCreate.history);
-					if ((caseToCreate.history[0] >= 65 && caseToCreate.history[0] <= 90) ||
-						(caseToCreate.history[0] >= 97 && caseToCreate.history[0] <= 122)) {
-						flag = 1;
-					} else {
-						system("cls");
-					}
-				} while (flag == 0);
-				printf("\nAguarde...");
-				Sleep(1500);
-				break;
-			case 'n':
-			case 'N':
-				modificationFlag = 1;
-				break;
-		}
-	} while (modificationFlag == 0);
-
-	fprintf(newCase,"%s*\n", caseToCreate.history);											//Colocar a história em um arquivo
-
-	printf("\nHistória criada com Sucesso!\nAguarde...");
-	Sleep(1500);																		//Esperar resposta do usuario
-
-	ThiefCreation(caseToCreate);
+	//------------------------------------------------Criar o Ladrão---------------------------------------------------//
+	ThiefCreation(caseToCreate);						//Função para criar o ladrão
 	printf("\nLadrão criado com Sucesso!\nAguarde...");
 	Sleep(1500);
 	system("cls");
 
-	ThiefPathCreation(caseToCreate);
+	//------------------------------------------------Criar Caminho Percorrido---------------------------------------------------//
+	ThiefPathCreation(caseToCreate);				//Função para criar o caminho percorrido pelo ladrão
+
+	
 
 	fclose(newCase);
 }
@@ -127,9 +67,9 @@ void ThiefCreation(typeCase whichCase) {
 		scanf("%[^\n]", whichCase.thief.charName);												//Adicionar nome do ladrao
 		if ((whichCase.thief.charName[0] >= 65 && whichCase.thief.charName[0] <= 90) ||
 			(whichCase.thief.charName[0] >= 97 && whichCase.thief.charName[0] <= 122)) {
-			flag = 1;
+			flag = 1;	//Se nome for válido sai do loop
 		}
-	} while (flag == 0);
+	} while (flag == 0);	//Loop de verificação do nome
 
 	flag = 0;
 	do {
@@ -141,7 +81,7 @@ void ThiefCreation(typeCase whichCase) {
 			flag = 1;
 			whichCase.thief.sexo -= 48;
 		}
-	} while (flag == 0);
+	} while (flag == 0);	//Loop de verificação do sexo
 
 	flag = 0;
 	do {
@@ -153,7 +93,7 @@ void ThiefCreation(typeCase whichCase) {
 			flag = 1;
 			whichCase.thief.hobby -= 48;
 		}
-	} while (flag == 0);
+	} while (flag == 0);	//Loop de verificação do hobby
 
 	flag = 0;
 	do {
@@ -165,7 +105,7 @@ void ThiefCreation(typeCase whichCase) {
 			flag = 1;
 			whichCase.thief.cabelo -= 48;
 		}
-	} while (flag == 0);
+	} while (flag == 0);	 //Loop de verificação do cabelo
 
 
 	flag = 0;
@@ -178,7 +118,7 @@ void ThiefCreation(typeCase whichCase) {
 			flag = 1;
 			whichCase.thief.caracteristica -= 48;
 		}
-	} while (flag == 0);
+	} while (flag == 0);	  //Loop de verificação da característica
 
 	flag = 0;
 	do {
@@ -190,10 +130,10 @@ void ThiefCreation(typeCase whichCase) {
 			flag = 1;
 			whichCase.thief.veiculo -= 48;
 		}
-	} while (flag == 0);
+	} while (flag == 0);	  //Loop de verificação do veículo
 
 	system("cls");
-	printf("Detalhes do Ladrão:\n\n");
+	printf("Detalhes do Ladrão:\n\n");								//Mostrar as escolhas feitas para cada detalhe
 	printf("Nome:               %s\n", whichCase.thief.charName);
 	switch (whichCase.thief.sexo) {
 		case 1:
@@ -273,7 +213,7 @@ void ThiefCreation(typeCase whichCase) {
 	}
 
 	flag = 0;
-	printf("\nGostaria de alterar alguma informação? (Sim/Não)\n");
+	printf("\nGostaria de alterar alguma informação? (Sim/Não)\n");		//Modificação de algum detalhe
 	printf("Resposta: ");
 	do {
 		scanf("%s", &escolha);
@@ -284,11 +224,11 @@ void ThiefCreation(typeCase whichCase) {
 		} else {
 			flag = 1;
 		}
-	} while (flag == 0);
+	} while (flag == 0);	  //Loop de verificação de resposta válida
 	
-	switch (escolha[0]) {
-		case 's':
-		case 'S':
+	switch (escolha[0]) {		 //Switch da resposta
+		case 's':	
+		case 'S':	//Caso a resposta seja sim mostrar opções de mudança
 			do {
 				system("cls");
 				printf("Escolha uma informação para ser alterada:\n");
@@ -372,7 +312,7 @@ void ThiefCreation(typeCase whichCase) {
 				printf("  7- Confirmar Modificações.\n");
 				printf("Resposta: ");
 				scanf("%c", &escolha[0]);
-				if (escolha[0] >= '1' && escolha[0] <= '7') {
+				if (escolha[0] >= '1' && escolha[0] <= '7') {	//Switch da escolha do que mudar
 					switch (escolha[0]) {
 						case '1':
 							flag = 0;
@@ -534,12 +474,13 @@ void ThiefCreation(typeCase whichCase) {
 							modificationFlag = 1;
 							break;
 					}
+
 				}
-			}while (modificationFlag == 0);
+			} while (modificationFlag == 0);	//Loop enquanto o usuário quiser modificar algo
 			printf("\nDados Alterados com Sucesso!\nAguarde...");
 			Sleep(1500);
 		case 'n':
-		case 'N':
+		case 'N':	//caso a resposta seja não salvar informações no arquivo
 			fprintf(newCase, "%s-%i-%i-%i-%i-%i*", whichCase.thief.charName, whichCase.thief.sexo,
 					whichCase.thief.hobby, whichCase.thief.cabelo, whichCase.thief.caracteristica, whichCase.thief.veiculo);
 			break;
@@ -552,7 +493,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 	int maxPlaces = 10, modificationFlag = 0;
 	char escolha[5];
 
-	flag = 0;
+	flag = 0;				//Escolher a quantidade de lugares que o ladão irá passar
 	do {
 		system("cls");
 		printf("Criando caminho percorrido pelo ladrão\n");
@@ -562,7 +503,8 @@ void ThiefPathCreation(typeCase whitchCase) {
 			flag = 1;
 		}
 	} while (flag == 0);
-	flag = 0;
+
+	flag = 0;				//Mostrar os possíveis lugares para iniciar o caso
 	do {
 		system("cls");
 		printf("Criando caminho percorrido pelo ladrão\n");
@@ -870,7 +812,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 				} while (flag == 0);
 				break;
 		}
-	} while (count < whitchCase.howManyPlaces);
+	} while (count < whitchCase.howManyPlaces); //Loop das escolhas dos lugares
 	do {
 		system("cls");
 		printf("Ordem dos lugares escolhidos:\n");
@@ -1265,8 +1207,9 @@ void ThiefPathCreation(typeCase whitchCase) {
 					break;
 			}
 		}
-	} while (modificationFlag == 0);
-	fprintf(newCase, "\n%i*\n", whitchCase.howManyPlaces);
+	} while (modificationFlag == 0);	  //Loop de modificação
+
+	fprintf(newCase, "\n%i*\n", whitchCase.howManyPlaces);				//colocar no arquivo os dados recolhidos
 	for (count = 0; count < whitchCase.howManyPlaces; count++) {
 		if (count == whitchCase.howManyPlaces - 1) {
 			fprintf(newCase, "%i*\n", whitchCase.thiefPath[count]);
@@ -1278,7 +1221,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 	printf("\nCaminho criado com sucesso!\nAguarde...");
 	Sleep(1500);
 
-	modificationFlag = 0;
+	modificationFlag = 0;	//Selecionar em que lugar vai estar o esconderijo no ultimo estado selecionado
 	do {
 		flag = 0;
 		do {
@@ -1481,19 +1424,97 @@ void ThiefPathCreation(typeCase whitchCase) {
 			}
 		} while (flag == 0);
 
-	} while (modificationFlag == 0);
+	} while (modificationFlag == 0);	  //Loop de modificação do lugar selecionado
 	fprintf(newCase, "%i*\n", whitchCase.hideout);
 
 	printf("\nEsconderijo criado com sucesso!\nAguarde...");
 	Sleep(1500);
 	system("cls");
 
-	TipsCreation(whitchCase.thiefPath, whitchCase.howManyPlaces);
+	//Ir para Receber a hitória do caso e as dicas em cada lugar
+	TipsCreation(whitchCase.thiefPath, whitchCase.howManyPlaces, whitchCase);
 }
 
-void TipsCreation(char path[], int howManyPlaces) {
+void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
+
+	int flag = 0, i, modificationFlag = 0;
+	char escolha[10];
+
+	//------------------------------------------------Receber História---------------------------------------------------//
+	flag = 0;
+	do {
+		system("cls");
+		printf("Criando o Caso\n");
+		printf("Introduza uma história inicial que será apresentada ao jogador:\n");
+		getchar();
+		scanf("%[^\n]", &caseToCreate.history);		//Recebe a história
+		if ((caseToCreate.history[0] >= 65 && caseToCreate.history[0] <= 90) ||			//verifica se começa com uma letra
+			(caseToCreate.history[0] >= 97 && caseToCreate.history[0] <= 122)) {
+			flag = 1;			//Se sim continua o código
+		} else {
+			system("cls");		//senão pede uma história novamente
+		}
+	} while (flag == 0);		//Loop para recer uma história inicial
+	printf("\nAguarde...");
+	Sleep(1500);
+
+	do {
+		getchar();
+		system("cls");
+		printf("História Criada:\n\n  %s\n", caseToCreate.history);
+		printf("\nGostaria de reescrever? (Sim/Não)\nResposta: ");
+		flag = 0;
+		do {
+			scanf("%s", &escolha);	//Recebe resposta
+			if (escolha[0] != 'N' && escolha[0] != 'S' && escolha[0] != 'n' && escolha[0] != 's') {	//verifica se é sim ou nao
+				for (i = 0; i < 110; i++) {//tela 120
+					printf("\b \b");		//Se não for nenhuma das opções volta o ponteiro e pergunta novamente
+				}
+			} else {
+				flag = 1;			//se for s ou n continua
+			}
+		} while (flag == 0);		//Loop de resposta válida
+
+		switch (escolha[0]) {		//Switch da escolha do usuario
+			case 's':
+			case'S':		//se a escolha foi sim então pede para o usuario introduzir uma história nova
+				flag = 0;
+				do {
+					system("cls");
+					printf("Criando o Caso\n");
+					printf("Introduza uma história inicial que será apresentada ao jogador:\n");		//Receber uma historia inicial
+					getchar();
+					scanf("%[^\n]", &caseToCreate.history); //Recebe a história
+					if ((caseToCreate.history[0] >= 65 && caseToCreate.history[0] <= 90) ||
+						(caseToCreate.history[0] >= 97 && caseToCreate.history[0] <= 122)) {
+						flag = 1;	//se estiver dentro dos padrões continua
+					} else {
+						system("cls");	//se não pede novamente
+					}
+				} while (flag == 0);		//Loop de verificação da história
+				printf("\nAguarde...");
+				Sleep(1500);
+				//Depois que sair do switch vai perguntar se quer modificar a história
+				break;
+			case 'n':	//se a escolha for não então continua o código
+			case 'N':
+				modificationFlag = 1;
+				break;
+		}
+	} while (modificationFlag == 0);	//Loop de modificação da história criada
+
+	fprintf(newCase, "%s*\n", caseToCreate.history);											//Colocar a história em um arquivo
+
+	printf("\nHistória criada com Sucesso!\nAguarde...");
+	Sleep(1500);																		//Esperar resposta do usuario
 
 
+	//-----------------------------------------------Receber Dicas ----------------------------------------------------//
 	printf("Ciando Dicas\n");
+
+
+
+
+	
 
 }

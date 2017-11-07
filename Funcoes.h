@@ -64,6 +64,6 @@ void criptografa(char senha[]);
 void CaseCreation();
 void ThiefCreation(typeCase whichCase);
 void ThiefPathCreation(typeCase whitchCase);
-void TipsCreation(char path[], int howManyPlaces);
+void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate);
 //---------------------------------Funções do Principal---------------------------//
 
