@@ -2,8 +2,10 @@
 
 void LeituraJogador(char NomeCaso[]) {
 	FILE * arquivo;
+
 	typeCase dadosCaso;
-	typeChar dadosLadrao;
+	/*typeChar dadosLadrao;*/
+
 	char nomeMocinho;
 	char tituloCaso, historiaCaso, dicasCaso;
 	char nomeLadrao, sexoLadrao, hobbyLadrao, cabeloLadrao, caracLadrao, veiculoLadrao;
@@ -40,70 +42,70 @@ void LeituraJogador(char NomeCaso[]) {
 	do {
 		nomeLadrao = fgetc(arquivo);
 		if (nomeLadrao != '-') {
-			dadosLadrao.charName[i] = nomeLadrao; //nome do ladrao
+			dadosCaso.thief.charName[i] = nomeLadrao; //nome do ladrao
 			i++;
 		} else {
-			dadosLadrao.charName[i] = '\0';
+			dadosCaso.thief.charName[i] = '\0';
 			contEspacos = 1;
 		}
 	} while (contEspacos == 0);
-	printf("%s", dadosLadrao.charName);
+	printf("%s", dadosCaso.thief.charName);
 	//----------------------------------------------------------
 	printf("\n");
 	contEspacos = 0;
 	do {
 		sexoLadrao = fgetc(arquivo);
 		if (sexoLadrao != '-') {
-			dadosLadrao.sexo = sexoLadrao; //sexo do ladrao
+			dadosCaso.thief.sexo = sexoLadrao; //sexo do ladrao
 
 		} else {
 
 			contEspacos = 1;
 		}
 	} while (contEspacos == 0);
-	printf("%c", dadosLadrao.sexo);
+	printf("%c", dadosCaso.thief.sexo);
 	//------------------------------------------------------
 	printf("\n");
 	contEspacos = 0;
 	do {
 		hobbyLadrao = fgetc(arquivo);
 		if (hobbyLadrao != '-') {
-			dadosLadrao.hobby = hobbyLadrao; //hobby do ladrao
+			dadosCaso.thief.hobby = hobbyLadrao; //hobby do ladrao
 
 		} else {
 
 			contEspacos = 1;
 		}
 	} while (contEspacos == 0);
-	printf("%c", dadosLadrao.hobby);
+	printf("%c", dadosCaso.thief.hobby);
 	//------------------------------------------------------
 	printf("\n");
 	contEspacos = 0;
 	do {
 		cabeloLadrao = fgetc(arquivo);
 		if (cabeloLadrao != '-') {
-			dadosLadrao.cabelo = cabeloLadrao; //cabelo do ladrao
+			dadosCaso.thief.cabelo = cabeloLadrao; //cabelo do ladrao
 
 		} else {
 
 			contEspacos = 1;
 		}
 	} while (contEspacos == 0);
-	printf("%c", dadosLadrao.cabelo);
+	printf("%c", dadosCaso.thief.cabelo);
 	//-----------------------------------------------------------------
 	printf("\n");
 	contEspacos = 0;
 	do {
 		caracLadrao = fgetc(arquivo);
 		if (caracLadrao != '-') {
-			dadosLadrao.caracteristica = caracLadrao; //caracteristica do ladrao
+			dadosCaso.thief.caracteristica = caracLadrao; //caracteristica do ladrao
 
 		} else {
 
 			contEspacos = 1;
 		}
 	} while (contEspacos == 0);
-	printf("%c", dadosLadrao.caracteristica);
+	printf("%c", dadosCaso.thief.caracteristica);
 	//-------------------------------------------------
 
 
@@ -114,14 +116,14 @@ void LeituraJogador(char NomeCaso[]) {
 	do {
 		veiculoLadrao = fgetc(arquivo);
 		if (veiculoLadrao != '*') {
-			dadosLadrao.veiculo = veiculoLadrao; //automovel do ladrao
+			dadosCaso.thief.veiculo = veiculoLadrao; //automovel do ladrao
 
 		} else {
 
 			contEspacos = 1;
 		}
 	} while (contEspacos == 0);
-	printf("%c", dadosLadrao.veiculo);
+	printf("%c", dadosCaso.thief.veiculo);
 	//-------------------------------------------------------------
 	//------------------------------------------------
 	char aster;

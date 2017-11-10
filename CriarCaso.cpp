@@ -7,6 +7,7 @@ void CaseCreation() {
 	typeCase caseToCreate;
 	int flag = 0, i, modificationFlag = 0;
 	char escolha[10];
+
 	//------------------------------------------------Receber Título do Caso---------------------------------------------------//
 	do {
 		do {
@@ -52,7 +53,7 @@ void CaseCreation() {
 	ThiefPathCreation(caseToCreate);				//Função para criar o caminho percorrido pelo ladrão
 
 	
-
+	
 	fclose(newCase);
 }
 
@@ -545,13 +546,13 @@ void ThiefPathCreation(typeCase whitchCase) {
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
 							case 1:
-								whitchCase.thiefPath[count] = 3;
-								break;
-							case 2:
 								whitchCase.thiefPath[count] = 2;
 								break;
+							case 2:
+								whitchCase.thiefPath[count] = 1;
+								break;
 							case 3:
-								whitchCase.thiefPath[count] = 4;
+								whitchCase.thiefPath[count] = 3;
 								break;
 						}
 						flag = 1;
@@ -573,13 +574,13 @@ void ThiefPathCreation(typeCase whitchCase) {
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
 							case 1:
-								whitchCase.thiefPath[count] = 1;
+								whitchCase.thiefPath[count] = 0;
 								break;
 							case 2:
-								whitchCase.thiefPath[count] = 5;
+								whitchCase.thiefPath[count] = 4;
 								break;
 							case 3:
-								whitchCase.thiefPath[count] = 6;
+								whitchCase.thiefPath[count] = 5;
 								break;
 						}
 						flag = 1;
@@ -601,13 +602,13 @@ void ThiefPathCreation(typeCase whitchCase) {
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
 							case 1:
-								whitchCase.thiefPath[count] = 1;
+								whitchCase.thiefPath[count] = 0;
 								break;
 							case 2:
-								whitchCase.thiefPath[count] = 7;
+								whitchCase.thiefPath[count] = 6;
 								break;
 							case 3:
-								whitchCase.thiefPath[count] = 8;
+								whitchCase.thiefPath[count] = 7;
 								break;
 						}
 						flag = 1;
@@ -629,13 +630,13 @@ void ThiefPathCreation(typeCase whitchCase) {
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
 							case 1:
-								whitchCase.thiefPath[count] = 1;
+								whitchCase.thiefPath[count] = 0;
 								break;
 							case 2:
-								whitchCase.thiefPath[count] = 9;
+								whitchCase.thiefPath[count] = 8;
 								break;
 							case 3:
-								whitchCase.thiefPath[count] = 10;
+								whitchCase.thiefPath[count] = 9;
 								break;
 						}
 						flag = 1;
@@ -657,13 +658,13 @@ void ThiefPathCreation(typeCase whitchCase) {
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
 							case 1:
-								whitchCase.thiefPath[count] = 2;
+								whitchCase.thiefPath[count] = 1;
 								break;
 							case 2:
-								whitchCase.thiefPath[count] = 8;
+								whitchCase.thiefPath[count] = 7;
 								break;
 							case 3:
-								whitchCase.thiefPath[count] = 7;
+								whitchCase.thiefPath[count] = 6;
 								break;
 						}
 						flag = 1;
@@ -685,13 +686,13 @@ void ThiefPathCreation(typeCase whitchCase) {
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
 							case 1:
-								whitchCase.thiefPath[count] = 2;
+								whitchCase.thiefPath[count] = 1;
 								break;
 							case 2:
-								whitchCase.thiefPath[count] = 9;
+								whitchCase.thiefPath[count] = 8;
 								break;
 							case 3:
-								whitchCase.thiefPath[count] = 7;
+								whitchCase.thiefPath[count] = 6;
 								break;
 						}
 						flag = 1;
@@ -713,13 +714,13 @@ void ThiefPathCreation(typeCase whitchCase) {
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
 							case 1:
-								whitchCase.thiefPath[count] = 3;
+								whitchCase.thiefPath[count] = 2;
 								break;
 							case 2:
-								whitchCase.thiefPath[count] = 5;
+								whitchCase.thiefPath[count] = 4;
 								break;
 							case 3:
-								whitchCase.thiefPath[count] = 6;
+								whitchCase.thiefPath[count] = 5;
 								break;
 						}
 						flag = 1;
@@ -741,13 +742,13 @@ void ThiefPathCreation(typeCase whitchCase) {
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
 							case 1:
-								whitchCase.thiefPath[count] = 3;
+								whitchCase.thiefPath[count] = 2;
 								break;
 							case 2:
-								whitchCase.thiefPath[count] = 5;
+								whitchCase.thiefPath[count] = 4;
 								break;
 							case 3:
-								whitchCase.thiefPath[count] = 9;
+								whitchCase.thiefPath[count] = 8;
 								break;
 						}
 						flag = 1;
@@ -769,13 +770,13 @@ void ThiefPathCreation(typeCase whitchCase) {
 					if (escolhaNum >= 1 && escolhaNum <= 3) {
 						switch (escolhaNum) {
 							case 1:
-								whitchCase.thiefPath[count] = 4;
+								whitchCase.thiefPath[count] = 3;
 								break;
 							case 2:
-								whitchCase.thiefPath[count] = 6;
+								whitchCase.thiefPath[count] = 5;
 								break;
 							case 3:
-								whitchCase.thiefPath[count] = 10;
+								whitchCase.thiefPath[count] = 9;
 								break;
 						}
 						flag = 1;
@@ -813,10 +814,12 @@ void ThiefPathCreation(typeCase whitchCase) {
 				break;
 		}
 	} while (count < whitchCase.howManyPlaces); //Loop das escolhas dos lugares
+
 	do {
 		system("cls");
 		printf("Ordem dos lugares escolhidos:\n");
 		for (count = 0; count < whitchCase.howManyPlaces; count++) {
+			if (count < 9){
 			switch (whitchCase.thiefPath[count]) {
 				case RS:
 					printf("  %i- Rio Grande do Sul\n", count + 1);
@@ -848,6 +851,41 @@ void ThiefPathCreation(typeCase whitchCase) {
 				case RJ:
 					printf("  %i- Rio de Janeiro\n", count + 1);
 					break;
+				}
+			}
+			else {
+				switch (whitchCase.thiefPath[count]) {
+					case RS:
+						printf(" %i- Rio Grande do Sul\n", count + 1);
+						break;
+					case MS:
+						printf(" %i- Mato Grosso do Sul\n", count + 1);
+						break;
+					case GO:
+						printf(" %i- Goiás\n", count + 1);
+						break;
+					case ES:
+						printf(" %i- Espírito Santo\n", count + 1);
+						break;
+					case MT:
+						printf(" %i- Mato Grosso\n", count + 1);
+						break;
+					case SC:
+						printf(" %i- Santa Catarina\n", count + 1);
+						break;
+					case MG:
+						printf(" %i- Minas Gerais\n", count + 1);
+						break;
+					case SP:
+						printf(" %i- São Paulo\n", count + 1);
+						break;
+					case PR:
+						printf(" %i- Paraná\n", count + 1);
+						break;
+					case RJ:
+						printf(" %i- Rio de Janeiro\n", count + 1);
+						break;
+				}
 			}
 		}
 		printf("\nGostaria de alterar alguma informação? (Sim/Não)\nResposta: ");
@@ -863,37 +901,73 @@ void ThiefPathCreation(typeCase whitchCase) {
 					system("cls");
 					printf("Escolha a informação a ser alterada:\n");
 					for (count = 0; count < whitchCase.howManyPlaces; count++) {
-						switch (whitchCase.thiefPath[count]) {
-							case RS:
-								printf("  %i- Rio Grande do Sul\n", count + 1);
-								break;
-							case MS:
-								printf("  %i- Mato Grosso do Sul\n", count + 1);
-								break;
-							case GO:
-								printf("  %i- Goiás\n", count + 1);
-								break;
-							case ES:
-								printf("  %i- Espírito Santo\n", count + 1);
-								break;
-							case MT:
-								printf("  %i- Mato Grosso\n", count + 1);
-								break;
-							case SC:
-								printf("  %i- Santa Catarina\n", count + 1);
-								break;
-							case MG:
-								printf("  %i- Minas Gerais\n", count + 1);
-								break;
-							case SP:
-								printf("  %i- São Paulo\n", count + 1);
-								break;
-							case PR:
-								printf("  %i- Paraná\n", count + 1);
-								break;
-							case RJ:
-								printf("  %i- Rio de Janeiro\n", count + 1);
-								break;
+						if (count < 9) {
+							switch (whitchCase.thiefPath[count]) {
+								case RS:
+									printf("  %i- Rio Grande do Sul\n", count + 1);
+									break;
+								case MS:
+									printf("  %i- Mato Grosso do Sul\n", count + 1);
+									break;
+								case GO:
+									printf("  %i- Goiás\n", count + 1);
+									break;
+								case ES:
+									printf("  %i- Espírito Santo\n", count + 1);
+									break;
+								case MT:
+									printf("  %i- Mato Grosso\n", count + 1);
+									break;
+								case SC:
+									printf("  %i- Santa Catarina\n", count + 1);
+									break;
+								case MG:
+									printf("  %i- Minas Gerais\n", count + 1);
+									break;
+								case SP:
+									printf("  %i- São Paulo\n", count + 1);
+									break;
+								case PR:
+									printf("  %i- Paraná\n", count + 1);
+									break;
+								case RJ:
+									printf("  %i- Rio de Janeiro\n", count + 1);
+									break;
+							}
+						}
+						else {
+							switch (whitchCase.thiefPath[count]) {
+								case RS:
+									printf(" %i- Rio Grande do Sul\n", count + 1);
+									break;
+								case MS:
+									printf(" %i- Mato Grosso do Sul\n", count + 1);
+									break;
+								case GO:
+									printf(" %i- Goiás\n", count + 1);
+									break;
+								case ES:
+									printf(" %i- Espírito Santo\n", count + 1);
+									break;
+								case MT:
+									printf(" %i- Mato Grosso\n", count + 1);
+									break;
+								case SC:
+									printf(" %i- Santa Catarina\n", count + 1);
+									break;
+								case MG:
+									printf(" %i- Minas Gerais\n", count + 1);
+									break;
+								case SP:
+									printf(" %i- São Paulo\n", count + 1);
+									break;
+								case PR:
+									printf(" %i- Paraná\n", count + 1);
+									break;
+								case RJ:
+									printf(" %i- Rio de Janeiro\n", count + 1);
+									break;
+							}
 						}
 					}
 					printf("Resposta: ");

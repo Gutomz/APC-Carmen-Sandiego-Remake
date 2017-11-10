@@ -9,7 +9,7 @@ int BemVindo() { //escolha do modo de jogo
 		printf("------------------------------------------------------------\n");
 		printf("|                     ONDE TÁ A CARMINHA?                  |\n");
 		printf("------------------------------------------------------------\n");
-		printf(" Escolha uma das opcoes abaixo:\n\n");
+		printf(" Escolha uma das opções abaixo:\n\n");
 		printf("  1- Administrador\n  2- Jogador\n  3- Sair\n");
 		printf("------------------------------------------------------------\n");
 		printf(" Resposta: ");
