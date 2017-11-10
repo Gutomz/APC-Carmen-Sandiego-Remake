@@ -158,7 +158,12 @@ int CriarContaJogador(char NomeJogador[])
 			strcat(login, ".txt");
 			contaJogador = fopen(login, "w");
 
-			fprintf(contaJogador, "%s-", senha);
+			fprintf(contaJogador, "%s-\n\n", senha);
+
+			fprintf(contaJogador, "1\n");
+			fprintf(contaJogador, "0\n\n");
+
+			fprintf(contaJogador, "0");
 
 			fclose(contaJogador);
 			fclose(arquivo);
