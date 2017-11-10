@@ -4,6 +4,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <locale.h>
+#include <time.h>
 
 int BemVindo();
 int AdmSucesso();
@@ -11,5 +12,6 @@ void AdmCriacao();
 int AdmVerif();
 void criptografa(char senha[]);
 
-
-void FazerLogin();
+void FazerLogin(char NomeJogador[]);
+void CriarContaJogador();
+void Verifica_Conta(char NomeJogador[], char NomeCaso[]);
