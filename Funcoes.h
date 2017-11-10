@@ -52,13 +52,13 @@ enum States_enum
 
 //---------------------------------Funções do Principal---------------------------//
 int BemVindo();
-int AdmSucesso();
-void AdmCriacao();
+int AdmSucesso(char nomeADM[], char senhaADM[]);
+void AdmCriacao(char nomeADM[], char senhaADM[]);
 int AdmVerif();
 void criptografa(char senha[]);
 
-void FazerLogin(char NomeJogador[]);
-void CriarContaJogador();
+int FazerLogin(char NomeJogador[]);
+int CriarContaJogador(char NomeJogador[]);
 void Verifica_Conta(char NomeJogador[], char NomeCaso[]);
 
 //---------------------------------Funções do Principal---------------------------//
@@ -74,3 +74,6 @@ void ThiefPathCreation(typeCase whitchCase);
 void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate);
 //---------------------------------Funções do Principal---------------------------//
 
+void LeituraJogador(char nomeCaso[]);
+
+void AdmMenu(char nomeADM[], char senhaADM[]);

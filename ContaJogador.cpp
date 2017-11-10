@@ -2,25 +2,27 @@
 
 FILE *arquivo, *contaJogador, *nome;	//Variavel para o arquivo do caso novo
 
-void FazerLogin(char NomeJogador[])
+int FazerLogin(char NomeJogador[])
 {
-	char login[50], senha[50], caracter, loginCompara[50], senhaCompara[50],lixo;
+	char login[50], senha[50], caracter, loginCompara[50], senhaCompara[50], lixo, TentarNovamente = 'n';
 	int i = 0, j = 0;
-	int LoginSucesso = 0, TentarNovamente=1;
+	int LoginSucesso = 0;
 
 	do {
 		arquivo = fopen("Contas_jogador.txt", "r");
 
-		TentarNovamente = 2;
+		TentarNovamente = 'n';
 		LoginSucesso = 0;
 
 		system("cls");
-		printf("--- LOGIN ---\n\n");
+		printf("------------------------------------------------------------\n");
+		printf("|                       FAZER LOGIN                        |\n");
+		printf("------------------------------------------------------------\n");;
 
-		printf("Login: ");
+		printf(" Login: ");
 		scanf("%s", &login);
 
-		printf("Senha: ");
+		printf(" Senha: ");
 		scanf("%s", &senha);
 
 		while (!feof(arquivo))//while (fgetc(arquivo) != '*')
@@ -60,20 +62,29 @@ void FazerLogin(char NomeJogador[])
 			lixo = fgetc(arquivo);
 		}
 		if (LoginSucesso == 1) {
-			system("cls");
-			printf("\nLogin relizado com sucesso!! ");
-			printf("Seja bem-vindo(a) %s :]\n", NomeJogador);
+			printf("\n Seja bem-vindo(a) %s :]\n", NomeJogador);
+			Sleep(1500);
+			fclose(arquivo);
+
+			return 1;
 
 		} else {
-			system("cls");
-			printf("\nLogin ou senha invalidos!!\n");
-			printf("\nDeseja tentar novamente?\n1-Sim\n2-Nao\n\n");
-			printf("Escolha: ");
-			scanf("%i", &TentarNovamente);
-		}
+			printf("\n Login e/ou senha inválido(s)!");
+			Sleep(1500);
+			printf("\n\nDeseja tentar novamente? (Sim/Não)\n");
+			printf("Resposta: ");
 
-		fclose(arquivo);
-	} while (TentarNovamente == 1);
+			getchar();
+			scanf("%c", &TentarNovamente);
+			fclose(arquivo);
+
+			if (TentarNovamente == 'n' || TentarNovamente == 'N') 
+			{
+				return 0;
+			}
+
+		}
+	} while (TentarNovamente == 's' || TentarNovamente == 'S');
 
 
 
@@ -115,39 +126,69 @@ int Verifica_Login_Disponivel(char login[])
 	return 1;
 } //Função local
 
-void CriarContaJogador()
+int CriarContaJogador(char NomeJogador[])
 {
-	char login[50], senha[50], NomeJogador[50];
+	char login[50], senha[50], TentarNovamente;
 	int i = 0, j = 0;
 	int LoginSucesso = 0;
 
-	arquivo = fopen("Contas_jogador.txt", "a+");
-
-	printf("--- CADASTRO ---\n\n");
-
-	printf("Login: ");
-	scanf("%s", &login);
-
-	printf("Senha: ");
-	scanf("%s", &senha);
-
-	if ((Verifica_Login_Disponivel(login)) == 1)
+	do 
 	{
-		fprintf(arquivo, "\n%s-", login);
 
-		strcpy(NomeJogador, login);
-		strcat(login, ".txt");
-		contaJogador = fopen(login, "w");
+		TentarNovamente = 'n';
+		LoginSucesso = 0;
 
-		fprintf(contaJogador, "%s-", senha);
+		arquivo = fopen("Contas_jogador.txt", "a+");
 
-		fclose(contaJogador);
-		fclose(arquivo);
-	}
-	else
-	{
-		printf("\nLogin indisponivel !!\n");
-	}
+		system("cls");
+		printf("------------------------------------------------------------\n");
+		printf("|                   CRIAR CONTA JOGADOR                     |\n");
+		printf("------------------------------------------------------------\n");;
+
+		printf(" Login: ");
+		scanf("%s", &login);
+
+		printf(" Senha: ");
+		scanf("%s", &senha);
+
+		if ((Verifica_Login_Disponivel(login)) == 1) {
+			fprintf(arquivo, "\n%s-", login);
+
+			strcpy(NomeJogador, login);
+			strcat(login, ".txt");
+			contaJogador = fopen(login, "w");
+
+			fprintf(contaJogador, "%s-", senha);
+
+			fclose(contaJogador);
+			fclose(arquivo);
+
+			return 1;
+
+		} 
+		else 
+		{
+			printf("\n Login indisponivel!\n");
+			Sleep(1500);
+
+			printf("\n Deseja tentar novamente? (Sim/Não)\n");
+			printf(" Resposta: ");
+
+			getchar();
+			scanf("%c", &TentarNovamente);
+
+			fclose(contaJogador);
+			fclose(arquivo);
+
+			if (TentarNovamente == 'n' || TentarNovamente == 'N') 
+			{
+				return 0;
+			}
+		}
+
+	} while (TentarNovamente == 's' || TentarNovamente == 'S');
+	
+	system("pause");
 }
 
 void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
@@ -229,6 +270,7 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 	} while (linha != caso_escolhido);
 
 	printf("\n\nNOME DO CASO ESCOLHIDO: %s\n", NomeCaso);
+	system("pause");
 
 	//-------------- fim ESCOLHENDO CASO --------------
 }

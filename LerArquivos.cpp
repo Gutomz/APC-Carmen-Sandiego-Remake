@@ -1,6 +1,6 @@
 #include "Funcoes.h"
 
-void LeituraJogador() {
+void LeituraJogador(char NomeCaso[]) {
 	FILE * arquivo;
 	typeCase dadosCaso;
 	typeChar dadosLadrao;
@@ -11,7 +11,9 @@ void LeituraJogador() {
 	int lugaresLadrao, esconderijoLadrao;
 	char lixo;
 	int auxiliar_titulo = 0, flagTitulo = 0, auxiliar_historia = 0, flagHistoria = 0, i = 0, contEspacos = 0, j;
-	arquivo = fopen("caso1.txt", "r");
+
+	strcat(NomeCaso, ".txt");
+	arquivo = fopen(NomeCaso, "r");
 	if (!arquivo) {
 		printf("Erro na abertura do arquivo.\n");
 	}
@@ -219,5 +221,5 @@ void LeituraJogador() {
 
 	}
 	fclose(arquivo);
-
+	system("pause");
 }
