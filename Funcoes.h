@@ -28,7 +28,7 @@ struct typeCase {
 	int howManyPlaces;	// Quantidade de lugares que o ladrão vai passar
 	char thiefPath[20]; //Caminho que o ladrão percorre no jogo
 	int hideout;		//1. Praça - 2. Hotel - 3. Banco
-	char tips[15][500][3]; //[linha][coluna][profundidade] --> Cada profundidade é uma dica de um lugar(Hotel, Praça...) no estado
+	char tips[3][15][500]; //[profundidade][linha][coluna] --> Cada profundidade é uma dica de um lugar(Hotel, Praça...) no estado
 	typeChar thief;
 };
 //---------------------------------------Structs----------------------------------//
@@ -40,7 +40,7 @@ struct typeCase {
 //----------------------------------------Enums-----------------------------------//
 enum States_enum
 {
-	RS = 1, MS, GO, ES, MT, SC, MG, SP, PR, RJ
+	RS = 0, MS, GO, ES, MT, SC, MG, SP, PR, RJ
 };
 //----------------------------------------Enums-----------------------------------//
 
@@ -64,6 +64,6 @@ void criptografa(char senha[]);
 void CaseCreation();
 void ThiefCreation(typeCase whichCase);
 void ThiefPathCreation(typeCase whitchCase);
-void TipsCreation(char path[], int howManyPlaces);
+void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate);
 //---------------------------------Funções do Principal---------------------------//
 
