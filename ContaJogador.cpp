@@ -72,9 +72,9 @@ int FazerLogin(char NomeJogador[])
 			return 1;
 
 		} else {
-			printf("\n Login e/ou senha inv·lido(s)!");
+			printf("\n Login e/ou senha inv√°lido(s)!");
 			Sleep(1500);
-			printf("\n\nDeseja tentar novamente? (Sim/N„o)\n");
+			printf("\n\nDeseja tentar novamente? (Sim/N√£o)\n");
 			printf("Resposta: ");
 
 			getchar();
@@ -98,10 +98,9 @@ int Verifica_Login_Disponivel(char login[])
 	char caracter, loginCompara[50], lixo;
 	int i = 0, j = 0;
 
-	int sucessoCriacao = 0;
 	contaJogador = fopen("Contas_jogador.txt", "r");
 
-	while (sucessoCriacao == 0)//while (fgetc(arquivo) != '*')
+	while (!feof(contaJogador)//while (fgetc(arquivo) != '*')
 	{
 			i = 0;
 			do
@@ -122,12 +121,10 @@ int Verifica_Login_Disponivel(char login[])
 				return 0;
 			}
 		lixo = fgetc(contaJogador);
-		if (feof(contaJogador)) {
-			fclose(contaJogador);
-			return 1;
-		}
 	}
-} //FunÁ„o local
+	fclose(contaJogador);
+	return 1;
+} //Fun√ß√£o local
 
 int CriarContaJogador(char NomeJogador[])
 {
@@ -179,7 +176,7 @@ int CriarContaJogador(char NomeJogador[])
 			printf("\n Login indisponivel!\n");
 			Sleep(1500);
 
-			printf("\n Deseja tentar novamente? (Sim/N„o)\n");
+			printf("\n Deseja tentar novamente? (Sim/N√£o)\n");
 			printf(" Resposta: ");
 
 			getchar();
@@ -210,7 +207,7 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 
 	arquivo = fopen(NomeConta, "r");
 
-	while (!feof(arquivo)) { // Verificando informaÁıes da conta
+	while (!feof(arquivo)) { // Verificando informa√ß√µes da conta
 
 		if (linha == 1) // Senha(lixo)
 		{
@@ -218,7 +215,7 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 		}
 
 
-		else if (linha == 2) // NÌvel
+		else if (linha == 2) // N√≠vel
 		{
 			fscanf(arquivo, "%i", &NivelJogador);
 		}
@@ -244,7 +241,7 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 	printf("\n- Voce esta atualmente no nivel %i\n",NivelJogador);
 	fclose(arquivo);
 
-	//-------------- inicio ABRINDO ARQUIVO DO NÕVEL CORRESPONDENTE --------------
+	//-------------- inicio ABRINDO ARQUIVO DO N√çVEL CORRESPONDENTE --------------
 	if (NivelJogador == 1) 
 	{
 		arquivo = fopen("CasosFacil.txt", "r");
@@ -255,7 +252,7 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 	else if (NivelJogador == 3) {
 		arquivo = fopen("CasosDificil.txt", "r");
 	}
-	//-------------- fim ABRINDO ARQUIVO DO NÕVEL CORRESPONDENTE --------------
+	//-------------- fim ABRINDO ARQUIVO DO N√çVEL CORRESPONDENTE --------------
 
 	//-------------- inicio ESCOLHENDO CASO --------------
 	linha = 0;
