@@ -25,7 +25,7 @@ int FazerLogin(char NomeJogador[])
 		printf(" Senha: ");
 		scanf("%s", &senha);
 
-		while (!feof(arquivo))//while (fgetc(arquivo) != '*')
+		while (!feof(arquivo) && LoginSucesso == 0)//while (fgetc(arquivo) != '*')
 		{
 			//if ((!feof(arquivo)) && (LoginSucesso != 1))
 			//{
@@ -37,7 +37,7 @@ int FazerLogin(char NomeJogador[])
 					loginCompara[i] = caracter;
 					i++;
 				}
-			} while (caracter != '-');
+			} while (caracter != '-' && !feof(arquivo));
 
 			loginCompara[i - 1] = '\0';
 
@@ -60,6 +60,9 @@ int FazerLogin(char NomeJogador[])
 			}
 			//}
 			lixo = fgetc(arquivo);
+			/*if (feof(arquivo)) {
+				break;
+			}*/
 		}
 		if (LoginSucesso == 1) {
 			printf("\n Seja bem-vindo(a) %s :]\n", NomeJogador);
@@ -69,9 +72,9 @@ int FazerLogin(char NomeJogador[])
 			return 1;
 
 		} else {
-			printf("\n Login e/ou senha inv·lido(s)!");
+			printf("\n Login e/ou senha inv√°lido(s)!");
 			Sleep(1500);
-			printf("\n\nDeseja tentar novamente? (Sim/N„o)\n");
+			printf("\n\nDeseja tentar novamente? (Sim/N√£o)\n");
 			printf("Resposta: ");
 
 			getchar();
@@ -97,20 +100,18 @@ int Verifica_Login_Disponivel(char login[])
 
 	contaJogador = fopen("Contas_jogador.txt", "r");
 
-	while (!feof(contaJogador))//while (fgetc(arquivo) != '*')
+	while (!feof(contaJogador)//while (fgetc(arquivo) != '*')
 	{
-		if (!feof(contaJogador))
-		{
 			i = 0;
 			do
 			{
-				caracter = fgetc(contaJogador);
-				if (caracter != '\n')
-				{
-					loginCompara[i] = caracter;
-					i++;
-				}
-			} while (caracter != '-');
+					caracter = fgetc(contaJogador);
+					if (caracter != '\n') {
+						loginCompara[i] = caracter;
+						i++;
+					}
+				
+			} while (caracter != '-' && !feof(contaJogador));
 
 			loginCompara[i - 1] = '\0';
 
@@ -119,12 +120,11 @@ int Verifica_Login_Disponivel(char login[])
 				fclose(contaJogador);
 				return 0;
 			}
-		}
 		lixo = fgetc(contaJogador);
 	}
 	fclose(contaJogador);
 	return 1;
-} //FunÁ„o local
+} //Fun√ß√£o local
 
 int CriarContaJogador(char NomeJogador[])
 {
@@ -176,7 +176,7 @@ int CriarContaJogador(char NomeJogador[])
 			printf("\n Login indisponivel!\n");
 			Sleep(1500);
 
-			printf("\n Deseja tentar novamente? (Sim/N„o)\n");
+			printf("\n Deseja tentar novamente? (Sim/N√£o)\n");
 			printf(" Resposta: ");
 
 			getchar();
@@ -207,7 +207,7 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 
 	arquivo = fopen(NomeConta, "r");
 
-	while (!feof(arquivo)) { // Verificando informaÁıes da conta
+	while (!feof(arquivo)) { // Verificando informa√ß√µes da conta
 
 		if (linha == 1) // Senha(lixo)
 		{
@@ -215,7 +215,7 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 		}
 
 
-		else if (linha == 2) // NÌvel
+		else if (linha == 2) // N√≠vel
 		{
 			fscanf(arquivo, "%i", &NivelJogador);
 		}
@@ -241,7 +241,7 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 	printf("\n- Voce esta atualmente no nivel %i\n",NivelJogador);
 	fclose(arquivo);
 
-	//-------------- inicio ABRINDO ARQUIVO DO NÕVEL CORRESPONDENTE --------------
+	//-------------- inicio ABRINDO ARQUIVO DO N√çVEL CORRESPONDENTE --------------
 	if (NivelJogador == 1) 
 	{
 		arquivo = fopen("CasosFacil.txt", "r");
@@ -252,7 +252,7 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 	else if (NivelJogador == 3) {
 		arquivo = fopen("CasosDificil.txt", "r");
 	}
-	//-------------- fim ABRINDO ARQUIVO DO NÕVEL CORRESPONDENTE --------------
+	//-------------- fim ABRINDO ARQUIVO DO N√çVEL CORRESPONDENTE --------------
 
 	//-------------- inicio ESCOLHENDO CASO --------------
 	linha = 0;

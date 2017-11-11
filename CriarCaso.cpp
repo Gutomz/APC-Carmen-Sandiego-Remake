@@ -748,7 +748,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 								whitchCase.thiefPath[count] = 4;
 								break;
 							case 3:
-								whitchCase.thiefPath[count] = 8;
+								whitchCase.thiefPath[count] = 9;
 								break;
 						}
 						flag = 1;
