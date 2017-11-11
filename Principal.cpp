@@ -23,7 +23,7 @@ void main() {
 			{
 				AdmMenu(NomeADM, SenhaADM);
 			}
-		} else { //caso escolha player
+		} else if (OpcaoEntrada == 2) { //caso escolha player
 
 			do {
 				system("cls");
@@ -77,7 +77,9 @@ void main() {
 
 
 		}
+		else {
+			returnFlag = 1;
+			system("cls");
+		}
 	} while (returnFlag == 0);
-
-	system("pause");
 }

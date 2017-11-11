@@ -25,7 +25,7 @@ int FazerLogin(char NomeJogador[])
 		printf(" Senha: ");
 		scanf("%s", &senha);
 
-		while (!feof(arquivo))//while (fgetc(arquivo) != '*')
+		while (!feof(arquivo) && LoginSucesso == 0)//while (fgetc(arquivo) != '*')
 		{
 			//if ((!feof(arquivo)) && (LoginSucesso != 1))
 			//{
@@ -37,7 +37,7 @@ int FazerLogin(char NomeJogador[])
 					loginCompara[i] = caracter;
 					i++;
 				}
-			} while (caracter != '-');
+			} while (caracter != '-' && !feof(arquivo));
 
 			loginCompara[i - 1] = '\0';
 
@@ -60,6 +60,9 @@ int FazerLogin(char NomeJogador[])
 			}
 			//}
 			lixo = fgetc(arquivo);
+			/*if (feof(arquivo)) {
+				break;
+			}*/
 		}
 		if (LoginSucesso == 1) {
 			printf("\n Seja bem-vindo(a) %s :]\n", NomeJogador);
@@ -95,22 +98,21 @@ int Verifica_Login_Disponivel(char login[])
 	char caracter, loginCompara[50], lixo;
 	int i = 0, j = 0;
 
+	int sucessoCriacao = 0;
 	contaJogador = fopen("Contas_jogador.txt", "r");
 
-	while (!feof(contaJogador))//while (fgetc(arquivo) != '*')
+	while (sucessoCriacao == 0)//while (fgetc(arquivo) != '*')
 	{
-		if (!feof(contaJogador))
-		{
 			i = 0;
 			do
 			{
-				caracter = fgetc(contaJogador);
-				if (caracter != '\n')
-				{
-					loginCompara[i] = caracter;
-					i++;
-				}
-			} while (caracter != '-');
+					caracter = fgetc(contaJogador);
+					if (caracter != '\n') {
+						loginCompara[i] = caracter;
+						i++;
+					}
+				
+			} while (caracter != '-' && !feof(contaJogador));
 
 			loginCompara[i - 1] = '\0';
 
@@ -119,11 +121,12 @@ int Verifica_Login_Disponivel(char login[])
 				fclose(contaJogador);
 				return 0;
 			}
-		}
 		lixo = fgetc(contaJogador);
+		if (feof(contaJogador)) {
+			fclose(contaJogador);
+			return 1;
+		}
 	}
-	fclose(contaJogador);
-	return 1;
 } //Função local
 
 int CriarContaJogador(char NomeJogador[])
@@ -158,7 +161,12 @@ int CriarContaJogador(char NomeJogador[])
 			strcat(login, ".txt");
 			contaJogador = fopen(login, "w");
 
-			fprintf(contaJogador, "%s-", senha);
+			fprintf(contaJogador, "%s-\n\n", senha);
+
+			fprintf(contaJogador, "1\n");
+			fprintf(contaJogador, "0\n\n");
+
+			fprintf(contaJogador, "0");
 
 			fclose(contaJogador);
 			fclose(arquivo);
