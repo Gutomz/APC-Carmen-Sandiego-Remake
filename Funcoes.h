@@ -74,6 +74,10 @@ void ThiefPathCreation(typeCase whitchCase);
 void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate);
 //---------------------------------Funções do Principal---------------------------//
 
+//---------------------------------Funções do Game--------------------------------//
+void MainGame(typeCase myCase);
+//---------------------------------Funções do Game--------------------------------//
+
 void LeituraJogador(char nomeCaso[]);
 
 void AdmMenu(char nomeADM[], char senhaADM[]);

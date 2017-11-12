@@ -5,7 +5,7 @@ FILE *newCase;	//Variavel para o arquivo do caso novo
 void CaseCreation() {
 
 	typeCase caseToCreate;
-	int flag = 0, i, modificationFlag = 0;
+	int flag = 0, i, modificationFlag = 0, difficulty = 1;
 	char escolha[10];
 
 	//------------------------------------------------Receber Título do Caso---------------------------------------------------//
@@ -52,9 +52,12 @@ void CaseCreation() {
 	//------------------------------------------------Criar Caminho Percorrido---------------------------------------------------//
 	ThiefPathCreation(caseToCreate);				//Função para criar o caminho percorrido pelo ladrão
 
-	
-	
+	system("cls");
+	printf("Caso criado com sucesso!\nAguarde...");
+	Sleep(1500);
 	fclose(newCase);
+
+	ModificarArqCasos(caseToCreate.caseTitle, difficulty);
 }
 
 void ThiefCreation(typeCase whichCase) {
@@ -1981,6 +1984,27 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 			fprintf(newCase, "%s*\n", caseToCreate.tips[j][i]);
 		}
 		
+	}
+}
+
+void ModificarArqCasos(char caseName[], int difficulty) {
+	FILE *caseFile;
+	char arquivoCopy[50][100];
+	int nCasosCadastrados, i, j;
+
+	if (difficulty == 1) {
+		caseFile = fopen("CasosFacil.txt", "r");
+	} else if (difficulty == 2) {
+		caseFile = fopen("CasosMedio.txt", "r");
+	} else if (difficulty == 3) {
+		caseFile = fopen("CasosDificil.txt", "r");
+	}
+
+	arquivoCopy[0][0] = fgetc(caseFile);
+	nCasosCadastrados = arquivoCopy[0][0] - 48;
+
+	for (i = 0; i < nCasosCadastrados; i++) {
+
 	}
 }
 
