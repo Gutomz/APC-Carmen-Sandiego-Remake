@@ -5,7 +5,6 @@ void LeituraJogador(char NomeCaso[]) {
 
 	typeCase dadosCaso;
 
-	char nomeMocinho;
 	char tituloCaso, historiaCaso, dicasCaso;
 	char nomeLadrao, sexoLadrao, hobbyLadrao, cabeloLadrao, caracLadrao, veiculoLadrao;
 	char caminhoLadrao;
