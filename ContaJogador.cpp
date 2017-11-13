@@ -198,10 +198,8 @@ int CriarContaJogador(char NomeJogador[])
 
 void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 	char caracter, lixo, NomeConta[50], lixo_vetor[50];
-	int i = 0, linha = 1, NivelJogador, teste, Experiencia, Flag_checkpoint, quantidade_casos, caso_escolhido;
-	time_t t;
-
-	srand(time(&t));
+	int i = 0, linha = 1, NivelJogador, Experiencia, Flag_checkpoint;
+	
 	strcpy(NomeConta, NomeJogador);
 	strcat(NomeConta, ".txt");
 
@@ -241,15 +239,21 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 	printf("\n- Voce esta atualmente no nivel %i\n",NivelJogador);
 	fclose(arquivo);
 
+	EscolherCaso(NomeCaso, NivelJogador);
+}
+
+void EscolherCaso(char NomeCaso[],int NivelJogador) {
+	int i = 0, linha = 1, quantidade_casos, caso_escolhido;
+	char caracter, lixo;
+	time_t t;
+
+	srand(time(&t));
 	//-------------- inicio ABRINDO ARQUIVO DO NÍVEL CORRESPONDENTE --------------
-	if (NivelJogador == 1) 
-	{
+	if (NivelJogador == 1) {
 		arquivo = fopen("CasosFacil.txt", "r");
-	}
-	else if (NivelJogador == 2) {
+	} else if (NivelJogador == 2) {
 		arquivo = fopen("CasosMedio.txt", "r");
-	}
-	else if (NivelJogador == 3) {
+	} else if (NivelJogador == 3) {
 		arquivo = fopen("CasosDificil.txt", "r");
 	}
 	//-------------- fim ABRINDO ARQUIVO DO NÍVEL CORRESPONDENTE --------------
@@ -259,7 +263,7 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 	fscanf(arquivo, "%i", &quantidade_casos);
 	caso_escolhido = 1 + (rand() % quantidade_casos);
 
-	do{
+	do {
 		i = 0;
 		do {
 			caracter = fgetc(arquivo);
