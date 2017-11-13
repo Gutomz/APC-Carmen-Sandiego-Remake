@@ -1,12 +1,12 @@
 #include "Funcoes.h"
 
 FILE *newCase;	//Variavel para o arquivo do caso novo
+FILE *caseFile;
 
 void CaseCreation() {
 
 	typeCase caseToCreate;
-	int flag = 0, i, modificationFlag = 0;
-	char escolha[10];
+	int flag = 0, modificationFlag = 0, difficulty = 1;
 
 	//------------------------------------------------Receber Título do Caso---------------------------------------------------//
 	do {
@@ -52,9 +52,12 @@ void CaseCreation() {
 	//------------------------------------------------Criar Caminho Percorrido---------------------------------------------------//
 	ThiefPathCreation(caseToCreate);				//Função para criar o caminho percorrido pelo ladrão
 
-	
-	
+	system("cls");
+	printf("Caso criado com sucesso!\nAguarde...");
+	Sleep(1500);
 	fclose(newCase);
+
+	ModificarArqCasos(caseToCreate.caseTitle, difficulty);
 }
 
 void ThiefCreation(typeCase whichCase) {
@@ -748,7 +751,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 								whitchCase.thiefPath[count] = 4;
 								break;
 							case 3:
-								whitchCase.thiefPath[count] = 8;
+								whitchCase.thiefPath[count] = 9;
 								break;
 						}
 						flag = 1;
@@ -1982,5 +1985,55 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 		}
 		
 	}
+}
+
+void ModificarArqCasos(char caseName[], int difficulty) {
+	char arquivoCopy[50][100], character;
+	int nCasosCadastrados, i, j;
+
+
+
+	if (difficulty == 1) {
+		caseFile = fopen("CasosFacil.txt", "r");
+	} else if (difficulty == 2) {
+		caseFile = fopen("CasosMedio.txt", "r");
+	} else if (difficulty == 3) {
+		caseFile = fopen("CasosDificil.txt", "r");
+	}
+
+	arquivoCopy[0][0] = fgetc(caseFile);
+	nCasosCadastrados = arquivoCopy[0][0] - 48;
+
+	for (i = 1; i <= nCasosCadastrados; i++) {
+		j = 0;
+		do {
+			character = fgetc(caseFile);
+			if (character != '\n') {
+				arquivoCopy[i][j] = character;
+				j++;
+			}
+		} while (character != '-');
+		arquivoCopy[i][j] = '\0';
+	}
+
+	strcpy(arquivoCopy[i], caseName);
+	strcat(arquivoCopy[i], "-\0");
+	arquivoCopy[0][0] += 1;
+	fclose(caseFile);
+
+	if (difficulty == 1) {
+		caseFile = fopen("CasosFacil.txt", "w");
+	} else if (difficulty == 2) {
+		caseFile = fopen("CasosMedio.txt", "w");
+	} else if (difficulty == 3) {
+		caseFile = fopen("CasosDificil.txt", "w");
+	}
+
+	fprintf(caseFile, "%i\n", arquivoCopy[0][0]-48);
+	for (i = 1; i <= nCasosCadastrados + 1; i++) {
+		fprintf(caseFile, "%s\n", arquivoCopy[i]);
+	}
+
+	fclose(caseFile);
 }
 

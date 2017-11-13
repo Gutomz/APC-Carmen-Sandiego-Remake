@@ -4,9 +4,7 @@ void LeituraJogador(char NomeCaso[]) {
 	FILE * arquivo;
 
 	typeCase dadosCaso;
-	/*typeChar dadosLadrao;*/
 
-	char nomeMocinho;
 	char tituloCaso, historiaCaso, dicasCaso;
 	char nomeLadrao, sexoLadrao, hobbyLadrao, cabeloLadrao, caracLadrao, veiculoLadrao;
 	char caminhoLadrao;
@@ -20,21 +18,16 @@ void LeituraJogador(char NomeCaso[]) {
 		printf("Erro na abertura do arquivo.\n");
 	}
 	//------------------------------------------------------------------------------------------
-	printf("Ola, o nome do seu caso eh:  ");
 	do {
 		tituloCaso = fgetc(arquivo);
 		if (tituloCaso != '*') {
 			dadosCaso.caseTitle[auxiliar_titulo] = tituloCaso; // recebendo o titulo do caso
 			auxiliar_titulo++;
-
 		} else {
 			dadosCaso.caseTitle[auxiliar_titulo] = '\0'; //senao coloca \0
 			flagTitulo = 1;
 		}
-
-
 	} while (flagTitulo == 0);
-	printf("%s", dadosCaso.caseTitle);
 
 	//-----------------------------------------------------------------------------------------
 	i = 0;
@@ -42,16 +35,17 @@ void LeituraJogador(char NomeCaso[]) {
 	do {
 		nomeLadrao = fgetc(arquivo);
 		if (nomeLadrao != '-') {
-			dadosCaso.thief.charName[i] = nomeLadrao; //nome do ladrao
-			i++;
+			if (nomeLadrao != '\n') {
+				dadosCaso.thief.charName[i] = nomeLadrao; //nome do ladrao
+				i++;
+			}
 		} else {
 			dadosCaso.thief.charName[i] = '\0';
 			contEspacos = 1;
 		}
 	} while (contEspacos == 0);
-	printf("%s", dadosCaso.thief.charName);
 	//----------------------------------------------------------
-	printf("\n");
+
 	contEspacos = 0;
 	do {
 		sexoLadrao = fgetc(arquivo);
@@ -63,9 +57,7 @@ void LeituraJogador(char NomeCaso[]) {
 			contEspacos = 1;
 		}
 	} while (contEspacos == 0);
-	printf("%c", dadosCaso.thief.sexo);
 	//------------------------------------------------------
-	printf("\n");
 	contEspacos = 0;
 	do {
 		hobbyLadrao = fgetc(arquivo);
@@ -77,9 +69,7 @@ void LeituraJogador(char NomeCaso[]) {
 			contEspacos = 1;
 		}
 	} while (contEspacos == 0);
-	printf("%c", dadosCaso.thief.hobby);
 	//------------------------------------------------------
-	printf("\n");
 	contEspacos = 0;
 	do {
 		cabeloLadrao = fgetc(arquivo);
@@ -91,9 +81,7 @@ void LeituraJogador(char NomeCaso[]) {
 			contEspacos = 1;
 		}
 	} while (contEspacos == 0);
-	printf("%c", dadosCaso.thief.cabelo);
 	//-----------------------------------------------------------------
-	printf("\n");
 	contEspacos = 0;
 	do {
 		caracLadrao = fgetc(arquivo);
@@ -105,12 +93,10 @@ void LeituraJogador(char NomeCaso[]) {
 			contEspacos = 1;
 		}
 	} while (contEspacos == 0);
-	printf("%c", dadosCaso.thief.caracteristica);
 	//-------------------------------------------------
 
 
 	//------------------------------------------------------------------
-	printf("\n");
 	contEspacos = 0;
 	i = 0;
 	do {
@@ -123,11 +109,9 @@ void LeituraJogador(char NomeCaso[]) {
 			contEspacos = 1;
 		}
 	} while (contEspacos == 0);
-	printf("%c", dadosCaso.thief.veiculo);
 	//-------------------------------------------------------------
 	//------------------------------------------------
 	char aster;
-	printf("\n");
 	contEspacos = 0;
 	do {
 		fscanf(arquivo, "%i %c", &lugaresLadrao, &aster);
@@ -141,38 +125,29 @@ void LeituraJogador(char NomeCaso[]) {
 		}
 
 	} while (contEspacos == 0);
-	printf("%i\n", dadosCaso.howManyPlaces);
 	//--------------------------------------------------
 	lixo = fgetc(arquivo);
 	//------------------------------------------------
 	for (i = 0; i < lugaresLadrao; i++) {
-		j = 0;
-
-		contEspacos = 0;
-		do {
-			caminhoLadrao = fgetc(arquivo);
-			if (caminhoLadrao == '*') {
-				contEspacos = 1;
-			}
-			if (caminhoLadrao != '-' && caminhoLadrao != '*') {
-				dadosCaso.thiefPath[j] = caminhoLadrao; //caminho ladrao
-				printf("%c", dadosCaso.thiefPath[j]);
-				j++;
+		caminhoLadrao = fgetc(arquivo);
+		if (caminhoLadrao != '*') {
+			if (caminhoLadrao != '-') {
+				dadosCaso.thiefPath[i] = caminhoLadrao; //caminho ladrao
 			} else {
-				dadosCaso.thiefPath[j] = '\0';
-				contEspacos = 1;
-				printf("%c", dadosCaso.thiefPath[j]);
+				i--;
 			}
-		} while (contEspacos == 0);
-
+		}
+		else {
+			break;
+		}
 	}
 	//-----------------------------------------------------
-	printf("\n");
+	fgetc(arquivo);
 	contEspacos = 0;
 	do {
 		fscanf(arquivo, "%i %c", &esconderijoLadrao, &aster);
 
-		if (lugaresLadrao != '*') {
+		if (esconderijoLadrao != '*') {
 			dadosCaso.hideout = esconderijoLadrao; //esconderijo
 
 		}
@@ -181,27 +156,26 @@ void LeituraJogador(char NomeCaso[]) {
 		}
 
 	} while (contEspacos == 0);
-	printf("%i", dadosCaso.hideout);
 	//-------------------------------------------------------
 
 	do {
 		historiaCaso = fgetc(arquivo);
 		if (historiaCaso != '*') {
-			dadosCaso.history[auxiliar_historia] = historiaCaso; //recebendo historia do caso
-			auxiliar_historia++;
+			if (historiaCaso != '\n') {
+				dadosCaso.history[auxiliar_historia] = historiaCaso; //recebendo historia do caso
+				auxiliar_historia++;
+			}
 		} else {
 			dadosCaso.history[auxiliar_historia] = '\0';
 			flagHistoria = 1;
 		}
 	} while (flagHistoria == 0);
-	printf("%s\n", dadosCaso.history);
 	//----------------------------------------------------------------------------------------
 
 
 	//------------------------------------------------
 	int k = 0;
 	for (i = 0; i < (dadosCaso.howManyPlaces - 1); i++) {
-
 		for (j = 0; j < 3; j++) {
 			k = 0;
 			lixo = fgetc(arquivo);
@@ -217,11 +191,38 @@ void LeituraJogador(char NomeCaso[]) {
 					contEspacos = 1;
 				}
 			} while (contEspacos == 0);
-			printf("%s\n", dadosCaso.tips[j][i]);
-
 		}
 
 	}
 	fclose(arquivo);
+
+	system("cls");
+	printf("Nome do Caso: %s\n", dadosCaso.caseTitle);
+	printf("O nome do Ladrão: %s\n", dadosCaso.thief.charName);
+	printf("Sexo: %c\n", dadosCaso.thief.sexo);
+	printf("Hobby: %c\n", dadosCaso.thief.hobby);
+	printf("Cabelo: %c\n", dadosCaso.thief.cabelo);
+	printf("Característica: %c\n", dadosCaso.thief.caracteristica);
+	printf("Veículo: %c\n", dadosCaso.thief.veiculo);
+	printf("Quantidade de lugares: %i\n", dadosCaso.howManyPlaces);
+	printf("Lugares: ");
+	for (i = 0; i < dadosCaso.howManyPlaces; i++) {
+		if (i != dadosCaso.howManyPlaces - 1) {
+			printf("%c-", dadosCaso.thiefPath[i]);
+		} else {
+			printf("%c\n", dadosCaso.thiefPath[i]);
+		}
+	}
+	printf("História: \"%s\"\n", dadosCaso.history);
+	for (i = 0; i < dadosCaso.howManyPlaces - 1; i++) {
+		for (j = 0; j < 3; j++) {
+			printf("Dica %i.%i: \"%s\"\n", i+1, j+1, dadosCaso.tips[j][i]);
+		}
+	}
+	
+
 	system("pause");
+
+	//------------------------------------------------Início do Jogo-----------------------------------------------------//
+	MainGame(dadosCaso);
 }
