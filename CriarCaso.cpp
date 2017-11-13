@@ -1,12 +1,12 @@
 #include "Funcoes.h"
 
 FILE *newCase;	//Variavel para o arquivo do caso novo
+FILE *caseFile;
 
 void CaseCreation() {
 
 	typeCase caseToCreate;
-	int flag = 0, i, modificationFlag = 0, difficulty = 1;
-	char escolha[10];
+	int flag = 0, modificationFlag = 0, difficulty = 1;
 
 	//------------------------------------------------Receber Título do Caso---------------------------------------------------//
 	do {
@@ -1988,9 +1988,10 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 }
 
 void ModificarArqCasos(char caseName[], int difficulty) {
-	FILE *caseFile;
-	char arquivoCopy[50][100];
+	char arquivoCopy[50][100], character;
 	int nCasosCadastrados, i, j;
+
+
 
 	if (difficulty == 1) {
 		caseFile = fopen("CasosFacil.txt", "r");
@@ -2003,8 +2004,36 @@ void ModificarArqCasos(char caseName[], int difficulty) {
 	arquivoCopy[0][0] = fgetc(caseFile);
 	nCasosCadastrados = arquivoCopy[0][0] - 48;
 
-	for (i = 0; i < nCasosCadastrados; i++) {
-
+	for (i = 1; i <= nCasosCadastrados; i++) {
+		j = 0;
+		do {
+			character = fgetc(caseFile);
+			if (character != '\n') {
+				arquivoCopy[i][j] = character;
+				j++;
+			}
+		} while (character != '-');
+		arquivoCopy[i][j] = '\0';
 	}
+
+	strcpy(arquivoCopy[i], caseName);
+	strcat(arquivoCopy[i], "-\0");
+	arquivoCopy[0][0] += 1;
+	fclose(caseFile);
+
+	if (difficulty == 1) {
+		caseFile = fopen("CasosFacil.txt", "w");
+	} else if (difficulty == 2) {
+		caseFile = fopen("CasosMedio.txt", "w");
+	} else if (difficulty == 3) {
+		caseFile = fopen("CasosDificil.txt", "w");
+	}
+
+	fprintf(caseFile, "%i\n", arquivoCopy[0][0]-48);
+	for (i = 1; i <= nCasosCadastrados + 1; i++) {
+		fprintf(caseFile, "%s\n", arquivoCopy[i]);
+	}
+
+	fclose(caseFile);
 }
 
