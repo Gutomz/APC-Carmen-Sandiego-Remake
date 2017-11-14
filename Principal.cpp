@@ -26,6 +26,7 @@ void main() {
 		} else if (OpcaoEntrada == 2) { //caso escolha player
 
 			do {
+				
 				system("cls");
 				printf("------------------------------------------------------------\n");
 				printf("|                        MENU JOGADOR                      |\n");
@@ -33,14 +34,15 @@ void main() {
 				printf("  1- Fazer login\n");
 				printf("  2- Fazer cadastro\n");
 				printf("  3- Logar como convidado [O progresso não será salvo]\n");
+				printf("  4- Voltar\n");
 				printf("------------------------------------------------------------\n");
 				printf(" Resposta: ");
 				scanf("%i", &opcao);
-				if (opcao < 1 || opcao > 3) {
+				if (opcao < 1 || opcao > 4) {
 					printf("\n Opção inválida!");
 					Sleep(1500);
 				}
-			} while (opcao < 1 || opcao > 3);
+			} while (opcao < 1 || opcao > 4);
 		
 			if (opcao == 1) // Fazer login
 			{
@@ -73,6 +75,9 @@ void main() {
 
 				printf("\nSeja bem-vindo(a) %s :]\n", &NomeJogador);
 
+			}
+			else if (opcao == 4) {
+				
 			}
 
 

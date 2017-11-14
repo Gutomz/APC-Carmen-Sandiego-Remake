@@ -195,10 +195,24 @@ int CriarContaJogador(char NomeJogador[])
 	
 	system("pause");
 }
+int MenuJogador() {
+	int opcao;
+	system("cls");
+	printf("------------------------------------------------------------\n");
+	printf("|                   CONTA JOGADOR                           |\n");
+	printf("------------------------------------------------------------\n");;
+	printf("  1- Deseja receber um caso?\n");
+
+	printf(" Resposta: ");
+	scanf("%i", &opcao);
+
+	return opcao;
+}
+
 
 void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 	char caracter, lixo, NomeConta[50], lixo_vetor[50];
-	int i = 0, linha = 1, NivelJogador, teste, Experiencia, Flag_checkpoint, quantidade_casos, caso_escolhido;
+	int i = 0, linha = 1, NivelJogador, teste, Experiencia, Flag_checkpoint, quantidade_casos, caso_escolhido, menuJogador;
 	time_t t;
 
 	srand(time(&t));
@@ -239,43 +253,49 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 	}
 	
 	printf("\n- Voce esta atualmente no nivel %i\n",NivelJogador);
-	fclose(arquivo);
-
-	//-------------- inicio ABRINDO ARQUIVO DO NÍVEL CORRESPONDENTE --------------
-	if (NivelJogador == 1) 
-	{
-		arquivo = fopen("CasosFacil.txt", "r");
+	menuJogador = MenuJogador();
+	if (menuJogador == 'n' || menuJogador == 'N') {
+		system("pause");
 	}
-	else if (NivelJogador == 2) {
-		arquivo = fopen("CasosMedio.txt", "r");
-	}
-	else if (NivelJogador == 3) {
-		arquivo = fopen("CasosDificil.txt", "r");
-	}
-	//-------------- fim ABRINDO ARQUIVO DO NÍVEL CORRESPONDENTE --------------
+	else {
+		fclose(arquivo);
 
-	//-------------- inicio ESCOLHENDO CASO --------------
-	linha = 0;
-	fscanf(arquivo, "%i", &quantidade_casos);
-	caso_escolhido = 1 + (rand() % quantidade_casos);
+		//-------------- inicio ABRINDO ARQUIVO DO NÍVEL CORRESPONDENTE --------------
+		if (NivelJogador == 1)
+		{
+			arquivo = fopen("CasosFacil.txt", "r");
+		}
+		else if (NivelJogador == 2) {
+			arquivo = fopen("CasosMedio.txt", "r");
+		}
+		else if (NivelJogador == 3) {
+			arquivo = fopen("CasosDificil.txt", "r");
+		}
+		//-------------- fim ABRINDO ARQUIVO DO NÍVEL CORRESPONDENTE --------------
 
-	do{
-		i = 0;
+		//-------------- inicio ESCOLHENDO CASO --------------
+		linha = 0;
+		fscanf(arquivo, "%i", &quantidade_casos);
+		caso_escolhido = 1 + (rand() % quantidade_casos);
+
 		do {
-			caracter = fgetc(arquivo);
-			if (caracter != '\n') {
-				NomeCaso[i] = caracter;
-				i++;
-			}
-		} while (caracter != '-');
-		NomeCaso[i - 1] = '\0';
+			i = 0;
+			do {
+				caracter = fgetc(arquivo);
+				if (caracter != '\n') {
+					NomeCaso[i] = caracter;
+					i++;
+				}
+			} while (caracter != '-');
+			NomeCaso[i - 1] = '\0';
 
-		lixo = fgetc(arquivo);
-		linha++;
-	} while (linha != caso_escolhido);
+			lixo = fgetc(arquivo);
+			linha++;
+		} while (linha != caso_escolhido);
 
-	printf("\n\nNOME DO CASO ESCOLHIDO: %s\n", NomeCaso);
-	system("pause");
+		printf("\n\nNOME DO CASO ESCOLHIDO: %s\n", NomeCaso);
+		system("pause");
 
-	//-------------- fim ESCOLHENDO CASO --------------
+		//-------------- fim ESCOLHENDO CASO --------------
+	}
 }
