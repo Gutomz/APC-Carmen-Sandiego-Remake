@@ -26,6 +26,7 @@ void main() {
 		} else if (OpcaoEntrada == 2) { //caso escolha player
 
 			do {
+				
 				system("cls");
 				printf("------------------------------------------------------------\n");
 				printf("|                        MENU JOGADOR                      |\n");
@@ -74,6 +75,9 @@ void main() {
 
 				printf("\nSeja bem-vindo(a) %s :]\n", &NomeJogador);
 
+			}
+			else if (opcao == 4) {
+				
 			}
 
 
