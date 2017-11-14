@@ -195,24 +195,33 @@ int CriarContaJogador(char NomeJogador[])
 	
 	system("pause");
 }
+
 int MenuJogador() {
-	int opcao;
-	system("cls");
-	printf("------------------------------------------------------------\n");
-	printf("|                   CONTA JOGADOR                           |\n");
-	printf("------------------------------------------------------------\n");;
-	printf("  1- Deseja receber um caso?\n");
+	char opcao[5];
+	int i;
+	getchar();
+	do {
+		system("cls");
+		printf("------------------------------------------------------------\n");
+		printf("|                   CONTA JOGADOR                          |\n");
+		printf("------------------------------------------------------------\n");
+		printf("  Deseja receber um caso? (Sim/Não)\n");
+		printf("  Resposta: ");
 
-	printf(" Resposta: ");
-	scanf("%i", &opcao);
+		scanf("%c", &opcao);
+		if (opcao[0] == 'n' || opcao[0] == 'N') {
+			return 0;
+		} else if (opcao[0] == 's' || opcao[0] == 'S') {
+			return 1;
+		}
 
-	return opcao;
+	} while (true);
 }
 
 
-void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
+int Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 	char caracter, lixo, NomeConta[50], lixo_vetor[50];
-	int i = 0, linha = 1, NivelJogador, Experiencia, Flag_checkpoint;	
+	int i = 0, linha = 1, NivelJogador, Experiencia, Flag_checkpoint, menuJogador;	
 
 	strcpy(NomeConta, NomeJogador);
 	strcat(NomeConta, ".txt");
@@ -251,19 +260,17 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 	}
 	
 	printf("\n- Voce esta atualmente no nivel %i\n",NivelJogador);
-  menuJogador = MenuJogador();
-	if (menuJogador == 'n' || menuJogador == 'N') {
+	fclose(arquivo);
+	menuJogador = MenuJogador();
+	if (menuJogador == 1) {
+		EscolherCaso(NomeCaso, NivelJogador);
 		system("pause");
-
+		return 1;
 	}
-	else {
-		fclose(arquivo);
-  }
-
-	EscolherCaso(NomeCaso, NivelJogador);
+	return 0;
 }
 
-void EscolherCaso(char NomeCaso[],int NivelJogador) {
+void EscolherCaso(char NomeCaso[], int NivelJogador) {
 	int i = 0, linha = 1, quantidade_casos, caso_escolhido;
 	char caracter, lixo;
 	time_t t;
@@ -276,44 +283,42 @@ void EscolherCaso(char NomeCaso[],int NivelJogador) {
 		arquivo = fopen("CasosMedio.txt", "r");
 	} else if (NivelJogador == 3) {
 		arquivo = fopen("CasosDificil.txt", "r");
+	}
 
-	
 
-		//-------------- inicio ABRINDO ARQUIVO DO NÍVEL CORRESPONDENTE --------------
-		if (NivelJogador == 1)
-		{
-			arquivo = fopen("CasosFacil.txt", "r");
-		}
-		else if (NivelJogador == 2) {
-			arquivo = fopen("CasosMedio.txt", "r");
-		}
-		else if (NivelJogador == 3) {
-			arquivo = fopen("CasosDificil.txt", "r");
-		}
-		//-------------- fim ABRINDO ARQUIVO DO NÍVEL CORRESPONDENTE --------------
 
-		//-------------- inicio ESCOLHENDO CASO --------------
-		linha = 0;
-		fscanf(arquivo, "%i", &quantidade_casos);
-		caso_escolhido = 1 + (rand() % quantidade_casos);
+	//-------------- inicio ABRINDO ARQUIVO DO NÍVEL CORRESPONDENTE --------------
+	if (NivelJogador == 1) {
+		arquivo = fopen("CasosFacil.txt", "r");
+	} else if (NivelJogador == 2) {
+		arquivo = fopen("CasosMedio.txt", "r");
+	} else if (NivelJogador == 3) {
+		arquivo = fopen("CasosDificil.txt", "r");
+	}
+	//-------------- fim ABRINDO ARQUIVO DO NÍVEL CORRESPONDENTE --------------
 
+	//-------------- inicio ESCOLHENDO CASO --------------
+	linha = 0;
+	fscanf(arquivo, "%i", &quantidade_casos);
+	caso_escolhido = 1 + (rand() % quantidade_casos);
+
+	do {
+		i = 0;
 		do {
-			i = 0;
-			do {
-				caracter = fgetc(arquivo);
-				if (caracter != '\n') {
-					NomeCaso[i] = caracter;
-					i++;
-				}
-			} while (caracter != '-');
-			NomeCaso[i - 1] = '\0';
+			caracter = fgetc(arquivo);
+			if (caracter != '\n') {
+				NomeCaso[i] = caracter;
+				i++;
+			}
+		} while (caracter != '-');
+		NomeCaso[i - 1] = '\0';
 
-			lixo = fgetc(arquivo);
-			linha++;
-		} while (linha != caso_escolhido);
+		lixo = fgetc(arquivo);
+		linha++;
+	} while (linha != caso_escolhido);
 
-		printf("\n\nNOME DO CASO ESCOLHIDO: %s\n", NomeCaso);
-		system("pause");
+	printf("\n\nNOME DO CASO ESCOLHIDO: %s\n", NomeCaso);
+	system("pause");
 	//-------------- fim ESCOLHENDO CASO --------------
 }
 

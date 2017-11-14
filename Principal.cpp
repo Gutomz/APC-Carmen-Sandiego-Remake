@@ -1,7 +1,7 @@
 #include "Funcoes.h"
 
 void main() {
-	int OpcaoEntrada, crieConta, opcao, returnFlag, FlagLogin;
+	int OpcaoEntrada, crieConta, opcao, returnFlag, FlagLogin, flagProximoCaso;
 	char NomeJogador[50], NomeCaso[50];
 	char NomeADM[50], SenhaADM[50];
 
@@ -50,8 +50,10 @@ void main() {
 
 				if (FlagLogin == 1) 
 				{
-					Verifica_Conta(NomeJogador, NomeCaso);
-					LeituraJogador(NomeCaso);
+					flagProximoCaso = Verifica_Conta(NomeJogador, NomeCaso);
+					if (flagProximoCaso == 1) {
+						LeituraJogador(NomeCaso);
+					}
 				}
 			}
 
@@ -62,7 +64,10 @@ void main() {
 
 				if (FlagLogin == 1)
 				{
-					Verifica_Conta(NomeJogador, NomeCaso);
+					flagProximoCaso = Verifica_Conta(NomeJogador, NomeCaso);
+					if (flagProximoCaso == 1) {
+						LeituraJogador(NomeCaso);
+					}
 				}
 
 			} else if (opcao == 3) // Entrar como Convidado
@@ -76,10 +81,6 @@ void main() {
 				printf("\nSeja bem-vindo(a) %s :]\n", &NomeJogador);
 
 			}
-			else if (opcao == 4) {
-				
-			}
-
 
 		}
 		else {

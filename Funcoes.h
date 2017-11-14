@@ -59,7 +59,7 @@ void criptografa(char senha[]);
 
 int FazerLogin(char NomeJogador[]);
 int CriarContaJogador(char NomeJogador[]);
-void Verifica_Conta(char NomeJogador[], char NomeCaso[]);
+int Verifica_Conta(char NomeJogador[], char NomeCaso[]);
 
 //---------------------------------Funções do Principal---------------------------//
 
