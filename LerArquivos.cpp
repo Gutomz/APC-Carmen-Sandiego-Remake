@@ -1,6 +1,6 @@
 #include "Funcoes.h"
 
-void LeituraJogador(char NomeCaso[]) {
+void LeituraJogador(char NomeCaso[], char NomeJogador[]) {
 	FILE * arquivo;
 
 	typeCase dadosCaso;
@@ -224,5 +224,5 @@ void LeituraJogador(char NomeCaso[]) {
 	system("pause");
 
 	//------------------------------------------------Início do Jogo-----------------------------------------------------//
-	MainGame(dadosCaso);
+	MainGame(dadosCaso, NomeJogador);
 }

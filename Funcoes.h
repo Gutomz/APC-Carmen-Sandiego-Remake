@@ -76,11 +76,13 @@ void ModificarArqCasos(char caseName[], int difficulty);
 //---------------------------------Funções do Principal---------------------------//
 
 //---------------------------------Funções do Game--------------------------------//
-void MainGame(typeCase myCase);
+void MainGame(typeCase myCase, char NomeJogador[]);
 //---------------------------------Funções do Game--------------------------------//
 
-void LeituraJogador(char nomeCaso[]);
+void LeituraJogador(char nomeCaso[], char NomeJogador[]);
 
 void AdmMenu(char nomeADM[], char senhaADM[]);
 
 void EscolherCaso(char NomeCaso[], int NivelJogador);
+
+int MenuJogador();

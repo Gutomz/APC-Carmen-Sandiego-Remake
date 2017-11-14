@@ -52,7 +52,7 @@ void main() {
 				{
 					flagProximoCaso = Verifica_Conta(NomeJogador, NomeCaso);
 					if (flagProximoCaso == 1) {
-						LeituraJogador(NomeCaso);
+						LeituraJogador(NomeCaso, NomeJogador);
 					}
 				}
 			}
@@ -66,20 +66,24 @@ void main() {
 				{
 					flagProximoCaso = Verifica_Conta(NomeJogador, NomeCaso);
 					if (flagProximoCaso == 1) {
-						LeituraJogador(NomeCaso);
+						LeituraJogador(NomeCaso, NomeJogador);
 					}
 				}
 
 			} else if (opcao == 3) // Entrar como Convidado
 			{
+				int nivelJogador = 1;
 				system("cls");
-
-				printf("--- CONVIDADO ---\n\n");
-				printf("Informe um apelido: ");
+				printf("------------------------------------------------------------\n");
+				printf("|                        MENU JOGADOR                      |\n");
+				printf("------------------------------------------------------------\n");
+				printf(" Informe um apelido: ");
 				scanf("%s", NomeJogador);
-
-				printf("\nSeja bem-vindo(a) %s :]\n", &NomeJogador);
-
+				flagProximoCaso = MenuJogador();
+				if (flagProximoCaso == 1) {
+					EscolherCaso(NomeCaso, nivelJogador);
+					LeituraJogador(NomeCaso, NomeJogador);
+				}
 			}
 
 		}
