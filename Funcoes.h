@@ -82,3 +82,5 @@ void MainGame(typeCase myCase);
 void LeituraJogador(char nomeCaso[]);
 
 void AdmMenu(char nomeADM[], char senhaADM[]);
+
+void EscolherCaso(char NomeCaso[], int NivelJogador);
