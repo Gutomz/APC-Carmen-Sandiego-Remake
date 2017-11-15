@@ -1,7 +1,7 @@
 #include "Funcoes.h"
 
 void main() {
-	int OpcaoEntrada, crieConta, opcao, returnFlag, FlagLogin;
+	int OpcaoEntrada, crieConta, opcao, returnFlag, FlagLogin, flagProximoCaso;
 	char NomeJogador[50], NomeCaso[50];
 	char NomeADM[50], SenhaADM[50];
 
@@ -50,8 +50,10 @@ void main() {
 
 				if (FlagLogin == 1) 
 				{
-					Verifica_Conta(NomeJogador, NomeCaso);
-					LeituraJogador(NomeCaso);
+					flagProximoCaso = Verifica_Conta(NomeJogador, NomeCaso);
+					if (flagProximoCaso == 1) {
+						LeituraJogador(NomeCaso, NomeJogador);
+					}
 				}
 			}
 
@@ -62,24 +64,27 @@ void main() {
 
 				if (FlagLogin == 1)
 				{
-					Verifica_Conta(NomeJogador, NomeCaso);
+					flagProximoCaso = Verifica_Conta(NomeJogador, NomeCaso);
+					if (flagProximoCaso == 1) {
+						LeituraJogador(NomeCaso, NomeJogador);
+					}
 				}
 
 			} else if (opcao == 3) // Entrar como Convidado
 			{
+				int nivelJogador = 1;
 				system("cls");
-
-				printf("--- CONVIDADO ---\n\n");
-				printf("Informe um apelido: ");
+				printf("------------------------------------------------------------\n");
+				printf("|                        MENU JOGADOR                      |\n");
+				printf("------------------------------------------------------------\n");
+				printf(" Informe um apelido: ");
 				scanf("%s", NomeJogador);
-
-				printf("\nSeja bem-vindo(a) %s :]\n", &NomeJogador);
-
+				flagProximoCaso = MenuJogador(NomeJogador, nivelJogador);
+				if (flagProximoCaso == 1) {
+					EscolherCaso(NomeCaso, nivelJogador);
+					LeituraJogador(NomeCaso, NomeJogador);
+				}
 			}
-			else if (opcao == 4) {
-				
-			}
-
 
 		}
 		else {

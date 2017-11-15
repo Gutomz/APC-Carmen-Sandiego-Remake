@@ -1,6 +1,6 @@
 #include "Funcoes.h"
 
-void LeituraJogador(char NomeCaso[]) {
+void LeituraJogador(char NomeCaso[], char NomeJogador[]) {
 	FILE * arquivo;
 
 	typeCase dadosCaso;
@@ -8,7 +8,7 @@ void LeituraJogador(char NomeCaso[]) {
 	char tituloCaso, historiaCaso, dicasCaso;
 	char nomeLadrao, sexoLadrao, hobbyLadrao, cabeloLadrao, caracLadrao, veiculoLadrao;
 	char caminhoLadrao;
-	int lugaresLadrao, esconderijoLadrao;
+	int lugaresLadrao, esconderijoLadrao, tempo;
 	char lixo;
 	int auxiliar_titulo = 0, flagTitulo = 0, auxiliar_historia = 0, flagHistoria = 0, i = 0, contEspacos = 0, j;
 
@@ -157,6 +157,13 @@ void LeituraJogador(char NomeCaso[]) {
 
 	} while (contEspacos == 0);
 	//-------------------------------------------------------
+	lixo = fgetc(arquivo);
+
+	fscanf(arquivo, "%i %c", &tempo, &aster);
+	dadosCaso.caseTime = tempo;
+	
+
+	//-----------------------------------------------------------------------------------------
 
 	do {
 		historiaCaso = fgetc(arquivo);
@@ -224,5 +231,5 @@ void LeituraJogador(char NomeCaso[]) {
 	system("pause");
 
 	//------------------------------------------------Início do Jogo-----------------------------------------------------//
-	MainGame(dadosCaso);
+	MainGame(dadosCaso, NomeJogador);
 }
