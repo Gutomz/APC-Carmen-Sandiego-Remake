@@ -26,6 +26,7 @@ struct typeCase {
 	char caseTitle[30]; // Titulo do caso
 	char extension[5] = { '.','t','x','t' }; //Extensão para o arquivo
 	char fileName[30]; // Titulo do caso + a extensão
+	int caseTime;
 	char history[1000]; // História inicial do caso
 	int howManyPlaces;	// Quantidade de lugares que o ladrão vai passar
 	char thiefPath[20]; //Caminho que o ladrão percorre no jogo
@@ -77,6 +78,14 @@ void ModificarArqCasos(char caseName[], int difficulty);
 
 //---------------------------------Funções do Game--------------------------------//
 void MainGame(typeCase myCase, char NomeJogador[]);
+
+void PrintText(char texto[]);
+void CaseApresentation(typeCase myCase, char NomeJogador[], int dias, int horas);
+
+int Computer();
+void SearchInto();
+int ChangeLocation();
+
 //---------------------------------Funções do Game--------------------------------//
 
 void LeituraJogador(char nomeCaso[], char NomeJogador[]);
@@ -85,4 +94,7 @@ void AdmMenu(char nomeADM[], char senhaADM[]);
 
 void EscolherCaso(char NomeCaso[], int NivelJogador);
 
-int MenuJogador();
+
+int MenuJogador(char nomeJogador[], int nivelJogador);
+
+
