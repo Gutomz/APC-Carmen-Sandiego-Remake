@@ -33,13 +33,13 @@ void main() {
 				printf("------------------------------------------------------------\n\n");
 				printf("  1- Fazer login\n");
 				printf("  2- Fazer cadastro\n");
-				printf("  3- Logar como convidado [O progresso n„o ser· salvo]\n");
+				printf("  3- Logar como convidado [O progresso n√£o ser√° salvo]\n");
 				printf("  4- Voltar\n");
 				printf("------------------------------------------------------------\n");
 				printf(" Resposta: ");
 				scanf("%i", &opcao);
 				if (opcao < 1 || opcao > 4) {
-					printf("\n OpÁ„o inv·lida!");
+					printf("\n Op√ß√£o inv√°lida!");
 					Sleep(1500);
 				}
 			} while (opcao < 1 || opcao > 4);
@@ -79,7 +79,9 @@ void main() {
 				printf("------------------------------------------------------------\n");
 				printf(" Informe um apelido: ");
 				scanf("%s", NomeJogador);
+
 				flagProximoCaso = MenuJogador(NomeJogador, nivelJogador);
+
 				if (flagProximoCaso == 1) {
 					EscolherCaso(NomeCaso, nivelJogador);
 					LeituraJogador(NomeCaso, NomeJogador);

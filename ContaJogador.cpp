@@ -71,9 +71,9 @@ int FazerLogin(char NomeJogador[]) {
 			return 1;
 
 		} else {
-			printf("\n Login e/ou senha inv·lido(s)!");
+			printf("\n Login e/ou senha inv√°lido(s)!");
 			Sleep(1500);
-			printf("\n\nDeseja tentar novamente? (Sim/N„o)\n");
+			printf("\n\nDeseja tentar novamente? (Sim/N√£o)\n");
 			printf("Resposta: ");
 
 			getchar();
@@ -119,7 +119,7 @@ int Verifica_Login_Disponivel(char login[]) {
 	}
 	fclose(contaJogador);
 	return 1;
-} //FunÁ„o local
+} //Fun√ß√£o local
 
 int CriarContaJogador(char NomeJogador[]) {
 	char login[50], senha[50], TentarNovamente;
@@ -167,7 +167,7 @@ int CriarContaJogador(char NomeJogador[]) {
 			printf("\n Login indisponivel!\n");
 			Sleep(1500);
 
-			printf("\n Deseja tentar novamente? (Sim/N„o)\n");
+			printf("\n Deseja tentar novamente? (Sim/N√£o)\n");
 			printf(" Resposta: ");
 
 			getchar();
@@ -186,8 +186,10 @@ int CriarContaJogador(char NomeJogador[]) {
 	system("pause");
 }
 
-int MenuJogador(char nomeJogador[], int nivelJogador) {
-	char opcao[5], texto[1500];
+
+int MenuJogador() {
+	char opcao[5];
+
 	int i;
 	getchar();
 	do {
@@ -196,10 +198,10 @@ int MenuJogador(char nomeJogador[], int nivelJogador) {
 		printf("|                       CONTA JOGADOR                      |\n");
 		printf("------------------------------------------------------------\n");
 
-		printf(" Ol· %s!\n", nomeJogador);
-		printf(" Seu nÌvel atual È: %i\n\n", nivelJogador);
+		printf(" Ol√° %s!\n", nomeJogador);
+		printf(" Seu n√≠vel atual √©: %i\n\n", nivelJogador);
 
-		printf(" Deseja receber um caso? (Sim/N„o)\n");
+		printf(" Deseja receber um caso? (Sim/N√£o)\n");
 		printf(" Resposta: ");
 
 		scanf("%c", &opcao);
@@ -222,7 +224,7 @@ int Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 
 	arquivo = fopen(NomeConta, "r");
 
-	while (!feof(arquivo)) { // Verificando informaÁıes da conta
+	while (!feof(arquivo)) { // Verificando informa√ß√µes da conta
 
 		if (linha == 1) // Senha(lixo)
 		{
@@ -230,7 +232,7 @@ int Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 		}
 
 
-		else if (linha == 2) // NÌvel
+		else if (linha == 2) // N√≠vel
 		{
 			fscanf(arquivo, "%i", &NivelJogador);
 		}
@@ -255,7 +257,9 @@ int Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 
 	printf("\n- Voce esta atualmente no nivel %i\n", NivelJogador);
 	fclose(arquivo);
+
 	menuJogador = MenuJogador(NomeJogador, NivelJogador);
+
 	if (menuJogador == 1) {
 		EscolherCaso(NomeCaso, NivelJogador);
 		system("pause");
@@ -270,7 +274,7 @@ void EscolherCaso(char NomeCaso[], int NivelJogador) {
 	time_t t;
 
 	srand(time(&t));
-	//-------------- inicio ABRINDO ARQUIVO DO NÕVEL CORRESPONDENTE --------------
+	//-------------- inicio ABRINDO ARQUIVO DO N√çVEL CORRESPONDENTE --------------
 	if (NivelJogador == 1) {
 		arquivo = fopen("CasosFacil.txt", "r");
 	} else if (NivelJogador == 2) {
@@ -281,7 +285,7 @@ void EscolherCaso(char NomeCaso[], int NivelJogador) {
 
 
 
-	//-------------- inicio ABRINDO ARQUIVO DO NÕVEL CORRESPONDENTE --------------
+	//-------------- inicio ABRINDO ARQUIVO DO N√çVEL CORRESPONDENTE --------------
 	if (NivelJogador == 1) {
 		arquivo = fopen("CasosFacil.txt", "r");
 	} else if (NivelJogador == 2) {
@@ -289,12 +293,13 @@ void EscolherCaso(char NomeCaso[], int NivelJogador) {
 	} else if (NivelJogador == 3) {
 		arquivo = fopen("CasosDificil.txt", "r");
 	}
-	//-------------- fim ABRINDO ARQUIVO DO NÕVEL CORRESPONDENTE --------------
+	//-------------- fim ABRINDO ARQUIVO DO N√çVEL CORRESPONDENTE --------------
 
 	//-------------- inicio ESCOLHENDO CASO --------------
 	linha = 0;
 	fscanf(arquivo, "%i", &quantidade_casos);
 	caso_escolhido = 1 + (rand() % quantidade_casos);
+
 
 	do {
 		i = 0;

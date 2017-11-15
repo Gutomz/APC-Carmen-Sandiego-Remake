@@ -30,12 +30,12 @@ void MainGame(typeCase myCase, char NomeJogador[]) {
 					break;
 				case GO:
 					printf("----------------------------------------------------------------------\n");
-					printf("|                                 GOIÁS                              |\n");
+					printf("|                                 GOIï¿½S                              |\n");
 					printf("----------------------------------------------------------------------\n");
 					break;
 				case ES:
 					printf("----------------------------------------------------------------------\n");
-					printf("|                             ESPÍRITO SANTO                         |\n");
+					printf("|                             ESPï¿½RITO SANTO                         |\n");
 					printf("----------------------------------------------------------------------\n");
 					break;
 				case MT:
@@ -55,12 +55,12 @@ void MainGame(typeCase myCase, char NomeJogador[]) {
 					break;
 				case SP:
 					printf("----------------------------------------------------------------------\n");
-					printf("|                               SÂO PAULO                            |\n");
+					printf("|                               Sï¿½O PAULO                            |\n");
 					printf("----------------------------------------------------------------------\n");
 					break;
 				case PR:
 					printf("----------------------------------------------------------------------\n");
-					printf("|                                 PARANÁ                             |\n");
+					printf("|                                 PARANï¿½                             |\n");
 					printf("----------------------------------------------------------------------\n");
 					break;
 				case RJ:
@@ -112,19 +112,19 @@ void CaseApresentation(typeCase myCase, char NomeJogador[], int dias, int horas)
 	char texto[1500];
 
 	system("cls");
-	printf("------------------------------------------------------------\n");
-	printf("|                            FLASH                         |\n");
-	printf("------------------------------------------------------------\n\n  ");
+	printf("----------------------------------------------------------------------\n");
+	printf("|                                FLASH                               |\n");
+	printf("----------------------------------------------------------------------\n\n  ");
 
 	PrintText(myCase.history);
 	printf("\n\n");
 
-	strcpy(texto, "  Seu objetivo é seguir as pistas e encontrar o suspeito em seu\n");
+	strcpy(texto, "  Seu objetivo ï¿½ seguir as pistas e encontrar o suspeito em seu\n");
 	PrintText(texto);
 	strcpy(texto, "esconderijo!\n\n");
 	PrintText(texto);
 
-	strcpy(texto, "  Você tem ");
+	strcpy(texto, "  Vocï¿½ tem ");
 	PrintText(texto);
 	printf("%i", dias);
 	strcpy(texto, " dias e ");

@@ -78,12 +78,14 @@ void ModificarArqCasos(char caseName[], int difficulty);
 
 //---------------------------------Funções do Game--------------------------------//
 void MainGame(typeCase myCase, char NomeJogador[]);
+
 void PrintText(char texto[]);
 void CaseApresentation(typeCase myCase, char NomeJogador[], int dias, int horas);
 
 int Computer();
 void SearchInto();
 int ChangeLocation();
+
 //---------------------------------Funções do Game--------------------------------//
 
 void LeituraJogador(char nomeCaso[], char NomeJogador[]);
@@ -92,5 +94,7 @@ void AdmMenu(char nomeADM[], char senhaADM[]);
 
 void EscolherCaso(char NomeCaso[], int NivelJogador);
 
+
 int MenuJogador(char nomeJogador[], int nivelJogador);
+
 
