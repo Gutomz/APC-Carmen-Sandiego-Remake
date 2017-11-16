@@ -220,6 +220,7 @@ void LeituraJogador(char NomeCaso[], char NomeJogador[]) {
 			printf("%c\n", dadosCaso.thiefPath[i]);
 		}
 	}
+	printf("Tempo do jogo: %i horas\n", dadosCaso.caseTime);
 	printf("História: \"%s\"\n", dadosCaso.history);
 	for (i = 0; i < dadosCaso.howManyPlaces - 1; i++) {
 		for (j = 0; j < 3; j++) {

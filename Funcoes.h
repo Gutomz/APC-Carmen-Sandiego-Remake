@@ -57,12 +57,20 @@ int AdmSucesso(char nomeADM[], char senhaADM[]);
 void AdmCriacao(char nomeADM[], char senhaADM[]);
 int AdmVerif();
 void criptografa(char senha[]);
+//---------------------------------Funções do Principal---------------------------//
 
+
+//-------------------------------------------------------------------------------------------------------------------------------//
+
+
+//---------------------------------Funções do Conta Jogador---------------------------//
 int FazerLogin(char NomeJogador[]);
 int CriarContaJogador(char NomeJogador[]);
 int Verifica_Conta(char NomeJogador[], char NomeCaso[]);
+void EscolherCaso(char NomeCaso[], int NivelJogador);
+int MenuJogador(char nomeJogador[], int nivelJogador);
 
-//---------------------------------Funções do Principal---------------------------//
+//---------------------------------Funções do Conta Jogador---------------------------//
 
 
 //-------------------------------------------------------------------------------------------------------------------------------//
@@ -76,6 +84,10 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate);
 void ModificarArqCasos(char caseName[], int difficulty);
 //---------------------------------Funções do Principal---------------------------//
 
+
+//-------------------------------------------------------------------------------------------------------------------------------//
+
+
 //---------------------------------Funções do Game--------------------------------//
 void MainGame(typeCase myCase, char NomeJogador[]);
 
@@ -85,16 +97,24 @@ void CaseApresentation(typeCase myCase, char NomeJogador[], int dias, int horas)
 int Computer();
 void SearchInto();
 int ChangeLocation();
-
 //---------------------------------Funções do Game--------------------------------//
 
-void LeituraJogador(char nomeCaso[], char NomeJogador[]);
 
+//-------------------------------------------------------------------------------------------------------------------------------//
+
+
+//---------------------------------Funções do Adm Menu--------------------------------------//
 void AdmMenu(char nomeADM[], char senhaADM[]);
+//---------------------------------Funções do Adm Menu--------------------------------------//
 
-void EscolherCaso(char NomeCaso[], int NivelJogador);
+
+//-------------------------------------------------------------------------------------------------------------------------------//
 
 
-int MenuJogador(char nomeJogador[], int nivelJogador);
+//---------------------------------Funções do Ler Arquivo--------------------------------------//
+void LeituraJogador(char nomeCaso[], char NomeJogador[]);
+//---------------------------------Funções do Ler Arquivo--------------------------------------//
 
+
+//-------------------------------------------------------------------------------------------------------------------------------//
 

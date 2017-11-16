@@ -187,7 +187,7 @@ int CriarContaJogador(char NomeJogador[]) {
 }
 
 
-int MenuJogador() {
+int MenuJogador(char nomeJogador[], int nivelJogador) {
 	char opcao[5];
 
 	int i;
