@@ -26,6 +26,7 @@ struct typeCase {
 	char caseTitle[30]; // Titulo do caso
 	char extension[5] = { '.','t','x','t' }; //Extensão para o arquivo
 	char fileName[30]; // Titulo do caso + a extensão
+	int caseTime;
 	char history[1000]; // História inicial do caso
 	int howManyPlaces;	// Quantidade de lugares que o ladrão vai passar
 	char thiefPath[20]; //Caminho que o ladrão percorre no jogo
@@ -56,12 +57,20 @@ int AdmSucesso(char nomeADM[], char senhaADM[]);
 void AdmCriacao(char nomeADM[], char senhaADM[]);
 int AdmVerif();
 void criptografa(char senha[]);
+//---------------------------------Funções do Principal---------------------------//
 
+
+//-------------------------------------------------------------------------------------------------------------------------------//
+
+
+//---------------------------------Funções do Conta Jogador---------------------------//
 int FazerLogin(char NomeJogador[]);
 int CriarContaJogador(char NomeJogador[]);
-void Verifica_Conta(char NomeJogador[], char NomeCaso[]);
+int Verifica_Conta(char NomeJogador[], char NomeCaso[]);
+void EscolherCaso(char NomeCaso[], int NivelJogador);
+int MenuJogador(char nomeJogador[], int nivelJogador);
 
-//---------------------------------Funções do Principal---------------------------//
+//---------------------------------Funções do Conta Jogador---------------------------//
 
 
 //-------------------------------------------------------------------------------------------------------------------------------//
@@ -75,10 +84,37 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate);
 void ModificarArqCasos(char caseName[], int difficulty);
 //---------------------------------Funções do Principal---------------------------//
 
+
+//-------------------------------------------------------------------------------------------------------------------------------//
+
+
 //---------------------------------Funções do Game--------------------------------//
-void MainGame(typeCase myCase);
+void MainGame(typeCase myCase, char NomeJogador[]);
+
+void PrintText(char texto[]);
+void CaseApresentation(typeCase myCase, char NomeJogador[], int dias, int horas);
+
+int Computer();
+void SearchInto();
+int ChangeLocation(int whereIam,int *tempo);
 //---------------------------------Funções do Game--------------------------------//
 
-void LeituraJogador(char nomeCaso[]);
 
+//-------------------------------------------------------------------------------------------------------------------------------//
+
+
+//---------------------------------Funções do Adm Menu--------------------------------------//
 void AdmMenu(char nomeADM[], char senhaADM[]);
+//---------------------------------Funções do Adm Menu--------------------------------------//
+
+
+//-------------------------------------------------------------------------------------------------------------------------------//
+
+
+//---------------------------------Funções do Ler Arquivo--------------------------------------//
+void LeituraJogador(char nomeCaso[], char NomeJogador[]);
+//---------------------------------Funções do Ler Arquivo--------------------------------------//
+
+
+//-------------------------------------------------------------------------------------------------------------------------------//
+

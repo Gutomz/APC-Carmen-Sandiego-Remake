@@ -1,11 +1,19 @@
 #include "Funcoes.h"
-
+HANDLE wHnd;    // Handle to write to the console.
+HANDLE rHnd;    // Handle to read from the console.
 void main() {
-	int OpcaoEntrada, crieConta, opcao, returnFlag, FlagLogin;
+	int OpcaoEntrada, crieConta, opcao, returnFlag, FlagLogin, flagProximoCaso;
 	char NomeJogador[50], NomeCaso[50];
 	char NomeADM[50], SenhaADM[50];
-
 	setlocale(LC_ALL, "Portuguese");
+	wHnd = GetStdHandle(STD_OUTPUT_HANDLE);
+	rHnd = GetStdHandle(STD_INPUT_HANDLE);
+	SetConsoleTitle("Onde ta a Carminha?");
+	SMALL_RECT windowSize = { 0, 0, 69, 34 };
+	SetConsoleWindowInfo(wHnd, 1, &windowSize);
+	COORD bufferSize = { 10, 10 };
+	SetConsoleScreenBufferSize(wHnd, bufferSize);
+	
 
 	returnFlag = 0;
 	do {
@@ -33,13 +41,13 @@ void main() {
 				printf("------------------------------------------------------------\n\n");
 				printf("  1- Fazer login\n");
 				printf("  2- Fazer cadastro\n");
-				printf("  3- Logar como convidado [O progresso n„o ser· salvo]\n");
+				printf("  3- Logar como convidado [O progresso n√£o ser√° salvo]\n");
 				printf("  4- Voltar\n");
 				printf("------------------------------------------------------------\n");
 				printf(" Resposta: ");
 				scanf("%i", &opcao);
 				if (opcao < 1 || opcao > 4) {
-					printf("\n OpÁ„o inv·lida!");
+					printf("\n Op√ß√£o inv√°lida!");
 					Sleep(1500);
 				}
 			} while (opcao < 1 || opcao > 4);
@@ -50,8 +58,10 @@ void main() {
 
 				if (FlagLogin == 1) 
 				{
-					Verifica_Conta(NomeJogador, NomeCaso);
-					LeituraJogador(NomeCaso);
+					flagProximoCaso = Verifica_Conta(NomeJogador, NomeCaso);
+					if (flagProximoCaso == 1) {
+						LeituraJogador(NomeCaso, NomeJogador);
+					}
 				}
 			}
 
@@ -62,24 +72,29 @@ void main() {
 
 				if (FlagLogin == 1)
 				{
-					Verifica_Conta(NomeJogador, NomeCaso);
+					flagProximoCaso = Verifica_Conta(NomeJogador, NomeCaso);
+					if (flagProximoCaso == 1) {
+						LeituraJogador(NomeCaso, NomeJogador);
+					}
 				}
 
 			} else if (opcao == 3) // Entrar como Convidado
 			{
+				int nivelJogador = 1;
 				system("cls");
-
-				printf("--- CONVIDADO ---\n\n");
-				printf("Informe um apelido: ");
+				printf("------------------------------------------------------------\n");
+				printf("|                        MENU JOGADOR                      |\n");
+				printf("------------------------------------------------------------\n");
+				printf(" Informe um apelido: ");
 				scanf("%s", NomeJogador);
 
-				printf("\nSeja bem-vindo(a) %s :]\n", &NomeJogador);
+				flagProximoCaso = MenuJogador(NomeJogador, nivelJogador);
 
+				if (flagProximoCaso == 1) {
+					EscolherCaso(NomeCaso, nivelJogador);
+					LeituraJogador(NomeCaso, NomeJogador);
+				}
 			}
-			else if (opcao == 4) {
-				
-			}
-
 
 		}
 		else {
