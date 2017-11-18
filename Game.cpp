@@ -572,6 +572,13 @@ void SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *p
 		i++;
 	} while (dadosCaso.thiefPath[i] != '\0' && (i-1) != *ponteiro_posicaoLadrao);
 
+	if (dadosCaso.thiefPath[*ponteiro_posicaoLadrao] == (estadoAtual + 48)) // Colocar um contador em viagens
+	{																		// para a msg aparecer apenas 1 vez.
+		printf("----------------------------------------------------------------------\n");
+		printf("  Um dos comparsas foi visto! Você deve estar no caminho certo.\n");
+		Sleep(2500);
+	}
+
 	system("cls");
 	printf("----------------------------------------------------------------------\n");
 	printf("|                             INVESTIGAR                             |\n");
@@ -601,6 +608,7 @@ void SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *p
 			{
 				*ponteiro_posicaoLadrao = *ponteiro_posicaoLadrao + 1;
 
+
 				if (dadosCaso.thiefPath[*ponteiro_posicaoLadrao] == '\0') // Se for o estado do esconderijo
 				{
 					//printf("  Você está próximo!!\n");
@@ -608,11 +616,11 @@ void SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *p
 
 					if (dadosCaso.hideout == 1)
 					{
-						printf("  Parabéns, você achou o ladrão :]\n");
+						printf("  Parabéns, você achou o ladrão :]\n"); // Verificar se tem o mandato
 					}
 					else
 					{
-						printf("  Você está próximo!\n");
+						printf("  %s: Tudo o que sei é que está acontecendo algo suspeito no estado\n", pessoa[frase_escolhida]);
 					}
 
 				}
@@ -655,11 +663,11 @@ void SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *p
 
 					if (dadosCaso.hideout == 2)
 					{
-						printf("  Parabéns, você achou o ladrão :]\n");
+						printf("  Parabéns, você achou o ladrão :]\n"); // Verificar se tem o mandato
 					}
 					else
 					{
-						printf("  Você está próximo!\n");
+						printf("  Gerente do hotel: Tudo o que sei é que está acontecendo algo suspeito no estado\n");
 					}
 
 				}
@@ -703,11 +711,11 @@ void SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *p
 
 					if (dadosCaso.hideout == 3)
 					{
-						printf("  Parabéns, você achou o ladrão :]\n");
+						printf("  Parabéns, você achou o ladrão :]\n"); // Verificar se tem o mandato
 					}
 					else
 					{
-						printf("  Você está próximo!\n");
+						printf("  Caixa: Tudo o que sei é que está acontecendo algo suspeito no estado\n");
 					}
 
 				}
