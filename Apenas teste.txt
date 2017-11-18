@@ -1,0 +1,13 @@
+Apenas teste*
+Maria-1-2-1-2-1*
+3*
+0-1-5*
+1*
+60*
+Maria perigosa roubou um lugar dessa cidade ai, cuidado com ela*
+Essa dica aparece na praca*
+Essa dica aparece no hotel*
+Essa dica aparece no banco*
+Segundo local, dica praca*
+Segundo local, dica hotel*
+Segundo local, dica banco*
