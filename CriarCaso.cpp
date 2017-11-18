@@ -48,13 +48,12 @@ void CaseCreation() {
 
 	//------------------------------------------------Criar o Ladrão---------------------------------------------------//
 	ThiefCreation(caseToCreate);						//Função para criar o ladrão
-	system("cls");
 	printf("\n Ladrão criado com Sucesso! Aguarde...");
 	Sleep(1500);
 	system("cls");
 
 	//------------------------------------------------Criar Caminho Percorrido---------------------------------------------------//
-	ThiefPathCreation(caseToCreate);				//Função para criar o caminho percorrido pelo ladrão
+	difficulty = ThiefPathCreation(caseToCreate);				//Função para criar o caminho percorrido pelo ladrão
 
 	//system("cls");
 	printf("\n Caso criado com sucesso! Aguarde...");
@@ -559,8 +558,8 @@ void ThiefCreation(typeCase whichCase) {
 
 }
 
-void ThiefPathCreation(typeCase whitchCase) {
-	int escolhaNum, flag = 0, count = 0, i;
+int ThiefPathCreation(typeCase whitchCase) {
+	int escolhaNum, flag = 0, count = 0, i, dificuldade;
 	int maxPlaces = 10, modificationFlag = 0;
 	char escolha[5];
 
@@ -578,6 +577,14 @@ void ThiefPathCreation(typeCase whitchCase) {
 			flag = 1;
 		}
 	} while (flag == 0);
+
+	if (whitchCase.howManyPlaces >= 2 && whitchCase.howManyPlaces <= 4) {
+		dificuldade = 1;
+	} else if (whitchCase.howManyPlaces >= 5 && whitchCase.howManyPlaces <= 7) {
+		dificuldade = 2;
+	} else if (whitchCase.howManyPlaces >= 8 && whitchCase.howManyPlaces <= 10) {
+		dificuldade = 3;
+	}
 
 	flag = 0;				//Mostrar os possíveis lugares para iniciar o caso
 	do {
@@ -1683,6 +1690,9 @@ void ThiefPathCreation(typeCase whitchCase) {
 
 	//Ir para Receber a hitória do caso e as dicas em cada lugar
 	TipsCreation(whitchCase.thiefPath, whitchCase.howManyPlaces, whitchCase);
+
+
+	return dificuldade;
 }
 
 void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
