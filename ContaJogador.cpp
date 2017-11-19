@@ -2,22 +2,44 @@
 
 FILE *arquivo, *contaJogador, *nome;	//Variavel para o arquivo do caso novo
 
-int FazerLogin(char NomeJogador[])
-{
-	char login[50], senha[50], caracter, loginCompara[50], senhaCompara[50], lixo, TentarNovamente = 'n';
+int JogadorMenu() {
+	int escolhaNum;
+
+	do{
+		system("cls");
+		printf("----------------------------------------------------------------------\n");
+		printf("|                             MENU JOGADOR                           |\n");
+		printf("----------------------------------------------------------------------\n\n");
+		printf("  1- Fazer login\n");
+		printf("  2- Fazer cadastro\n");
+		printf("  3- Logar como convidado [O progresso não será salvo]\n");
+		printf("  4- Voltar\n");
+		printf("----------------------------------------------------------------------\n");
+		printf(" Resposta: ");
+		scanf("%i", &escolhaNum);
+		if (escolhaNum < 1 || escolhaNum > 4) {
+			printf("\n Opção inválida!");
+			Sleep(1500);
+		}
+	} while (escolhaNum < 1 || escolhaNum > 4);
+
+	return escolhaNum;
+}
+
+int FazerLogin(typePlayer player[]) {
+	char login[50], senha[50], caracter, loginCompara[50], senhaCompara[50], lixo, TentarNovamente[5];
 	int i = 0, j = 0;
 	int LoginSucesso = 0;
 
 	do {
 		arquivo = fopen("Contas_jogador.txt", "r");
 
-		TentarNovamente = 'n';
 		LoginSucesso = 0;
 
 		system("cls");
-		printf("------------------------------------------------------------\n");
-		printf("|                       FAZER LOGIN                        |\n");
-		printf("------------------------------------------------------------\n");;
+		printf("----------------------------------------------------------------------\n");
+		printf("|                             FAZER LOGIN                            |\n");
+		printf("----------------------------------------------------------------------\n");
 
 		printf(" Login: ");
 		scanf("%s", &login);
@@ -25,11 +47,8 @@ int FazerLogin(char NomeJogador[])
 		printf(" Senha: ");
 		scanf("%s", &senha);
 
-		while (!feof(arquivo))//while (fgetc(arquivo) != '*')
+		while (!feof(arquivo) && LoginSucesso == 0)
 		{
-			//if ((!feof(arquivo)) && (LoginSucesso != 1))
-			//{
-			//lixo = fgetc(arquivo);
 			i = 0;
 			do {
 				caracter = fgetc(arquivo);
@@ -37,12 +56,12 @@ int FazerLogin(char NomeJogador[])
 					loginCompara[i] = caracter;
 					i++;
 				}
-			} while (caracter != '-');
+			} while (caracter != '-' && !feof(arquivo));
 
 			loginCompara[i - 1] = '\0';
 
 			if (strcmp(login, loginCompara) == 0) {
-				strcpy(NomeJogador, login);
+				strcpy(player[0].name, login);
 				strcat(login, ".txt");
 				contaJogador = fopen(login, "r");
 				j = 0;
@@ -58,11 +77,12 @@ int FazerLogin(char NomeJogador[])
 				}
 				fclose(contaJogador);
 			}
-			//}
+
 			lixo = fgetc(arquivo);
+
 		}
 		if (LoginSucesso == 1) {
-			printf("\n Seja bem-vindo(a) %s :]\n", NomeJogador);
+			printf("\n Seja bem-vindo(a) %s :]\n", player[0].name);
 			Sleep(1500);
 			fclose(arquivo);
 
@@ -75,23 +95,18 @@ int FazerLogin(char NomeJogador[])
 			printf("Resposta: ");
 
 			getchar();
-			scanf("%c", &TentarNovamente);
+			scanf("%s", &TentarNovamente);
 			fclose(arquivo);
 
-			if (TentarNovamente == 'n' || TentarNovamente == 'N') 
-			{
+			if (TentarNovamente[0] == 'n' || TentarNovamente[0] == 'N') {
 				return 0;
 			}
 
 		}
-	} while (TentarNovamente == 's' || TentarNovamente == 'S');
-
-
-
+	} while (true);
 }
 
-int Verifica_Login_Disponivel(char login[])
-{
+int Verifica_Login_Disponivel(char login[]) {
 	char caracter, loginCompara[50], lixo;
 	int i = 0, j = 0;
 
@@ -99,26 +114,21 @@ int Verifica_Login_Disponivel(char login[])
 
 	while (!feof(contaJogador))//while (fgetc(arquivo) != '*')
 	{
-		if (!feof(contaJogador))
-		{
-			i = 0;
-			do
-			{
-				caracter = fgetc(contaJogador);
-				if (caracter != '\n')
-				{
-					loginCompara[i] = caracter;
-					i++;
-				}
-			} while (caracter != '-');
-
-			loginCompara[i - 1] = '\0';
-
-			if (strcmp(login, loginCompara) == 0)
-			{
-				fclose(contaJogador);
-				return 0;
+		i = 0;
+		do {
+			caracter = fgetc(contaJogador);
+			if (caracter != '\n') {
+				loginCompara[i] = caracter;
+				i++;
 			}
+
+		} while (caracter != '-' && !feof(contaJogador));
+
+		loginCompara[i - 1] = '\0';
+
+		if (strcmp(login, loginCompara) == 0) {
+			fclose(contaJogador);
+			return 0;
 		}
 		lixo = fgetc(contaJogador);
 	}
@@ -126,35 +136,31 @@ int Verifica_Login_Disponivel(char login[])
 	return 1;
 } //Função local
 
-int CriarContaJogador(char NomeJogador[])
-{
-	char login[50], senha[50], TentarNovamente;
+void CriarContaJogador(typePlayer player[]) {
+	char login[50], senha[50], TentarNovamente[5];
 	int i = 0, j = 0;
-	int LoginSucesso = 0;
+	int LoginSucesso;
 
-	do 
-	{
-
-		TentarNovamente = 'n';
+	do {
 		LoginSucesso = 0;
 
 		arquivo = fopen("Contas_jogador.txt", "a+");
 
 		system("cls");
-		printf("------------------------------------------------------------\n");
-		printf("|                   CRIAR CONTA JOGADOR                     |\n");
-		printf("------------------------------------------------------------\n");;
+		printf("----------------------------------------------------------------------\n");
+		printf("|                        CRIAR CONTA JOGADOR                         |\n");
+		printf("----------------------------------------------------------------------\n");
 
 		printf(" Login: ");
-		scanf("%s", &login);
+		scanf("%s", &player[0].name);
 
 		printf(" Senha: ");
 		scanf("%s", &senha);
 
-		if ((Verifica_Login_Disponivel(login)) == 1) {
-			fprintf(arquivo, "\n%s-", login);
+		if ((Verifica_Login_Disponivel(player[0].name)) == 1) {
+			fprintf(arquivo, "\n%s-", player[0].name);
 
-			strcpy(NomeJogador, login);
+			strcpy(login, player[0].name);
 			strcat(login, ".txt");
 			contaJogador = fopen(login, "w");
 
@@ -168,11 +174,11 @@ int CriarContaJogador(char NomeJogador[])
 			fclose(contaJogador);
 			fclose(arquivo);
 
-			return 1;
+			printf("\n Conta criada com sucesso!");
+			Sleep(1500);
+			break;
 
-		} 
-		else 
-		{
+		} else {
 			printf("\n Login indisponivel!\n");
 			Sleep(1500);
 
@@ -180,29 +186,57 @@ int CriarContaJogador(char NomeJogador[])
 			printf(" Resposta: ");
 
 			getchar();
-			scanf("%c", &TentarNovamente);
+			scanf("%s", &TentarNovamente);
 
 			fclose(contaJogador);
 			fclose(arquivo);
 
-			if (TentarNovamente == 'n' || TentarNovamente == 'N') 
-			{
-				return 0;
+			if (TentarNovamente[0] == 'n' || TentarNovamente[0] == 'N') {
+				break;
 			}
 		}
 
-	} while (TentarNovamente == 's' || TentarNovamente == 'S');
-	
-	system("pause");
+	} while (true);
 }
 
-void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
-	char caracter, lixo, NomeConta[50], lixo_vetor[50];
-	int i = 0, linha = 1, NivelJogador, teste, Experiencia, Flag_checkpoint, quantidade_casos, caso_escolhido;
-	time_t t;
 
-	srand(time(&t));
-	strcpy(NomeConta, NomeJogador);
+int ContaJogadorMenu(typePlayer player[]) {
+	int opcao;
+
+	do {
+		system("cls");
+		printf("----------------------------------------------------------------------\n");
+		printf("|                            CONTA JOGADOR                           |\n");
+		printf("----------------------------------------------------------------------\n");
+		printf(" Nome : %s\n", player[0].name);
+		printf(" Nível: %i\n\n", player[0].level);
+		printf("  1- Jogar\n");
+		printf("  2- Deslogar\n");
+		printf("----------------------------------------------------------------------\n");
+		printf(" Resposta: ");
+		scanf("%i", &opcao);
+	} while (opcao < 1 || opcao > 2);
+
+	if (opcao == 1) {
+		printf("\n Carregando");
+		Sleep(500);
+		printf(".");
+		Sleep(750);
+		printf(".");
+		Sleep(1000);
+		printf(".");
+		Sleep(750);
+		return 1;
+	}
+	return 0;
+}
+
+
+void Verifica_Conta(typePlayer player[]) {
+	char caracter, lixo, NomeConta[50], lixo_vetor[50];
+	int i = 0, linha = 1, Flag_checkpoint, menuJogador;
+
+	strcpy(NomeConta, player[0].name);
 	strcat(NomeConta, ".txt");
 
 	arquivo = fopen(NomeConta, "r");
@@ -217,12 +251,12 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 
 		else if (linha == 2) // Nível
 		{
-			fscanf(arquivo, "%i", &NivelJogador);
+			fscanf(arquivo, "%i", &player[0].level);
 		}
 
 		else if (linha == 3) // Experiencia
 		{
-			fscanf(arquivo, "%i", &Experiencia);
+			fscanf(arquivo, "%i", &player[0].exp);
 		}
 
 		else if (linha == 6) // Checkpoint
@@ -237,19 +271,36 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 
 		linha++;
 	}
-	
-	printf("\n- Voce esta atualmente no nivel %i\n",NivelJogador);
+
 	fclose(arquivo);
+}
+
+void EscolherCaso(char NomeCaso[], typePlayer player[]) {
+	int i = 0, linha = 1, quantidade_casos, caso_escolhido, NivelJogador;
+	char caracter, lixo;
+	time_t t;
+
+
+	NivelJogador = player[0].level;
+
+	srand(time(&t));
+	//-------------- inicio ABRINDO ARQUIVO DO NÍVEL CORRESPONDENTE --------------
+	if (NivelJogador == 1) {
+		arquivo = fopen("CasosFacil.txt", "r");
+	} else if (NivelJogador == 2) {
+		arquivo = fopen("CasosMedio.txt", "r");
+	} else if (NivelJogador == 3) {
+		arquivo = fopen("CasosDificil.txt", "r");
+	}
+
+
 
 	//-------------- inicio ABRINDO ARQUIVO DO NÍVEL CORRESPONDENTE --------------
-	if (NivelJogador == 1) 
-	{
+	if (NivelJogador == 1) {
 		arquivo = fopen("CasosFacil.txt", "r");
-	}
-	else if (NivelJogador == 2) {
+	} else if (NivelJogador == 2) {
 		arquivo = fopen("CasosMedio.txt", "r");
-	}
-	else if (NivelJogador == 3) {
+	} else if (NivelJogador == 3) {
 		arquivo = fopen("CasosDificil.txt", "r");
 	}
 	//-------------- fim ABRINDO ARQUIVO DO NÍVEL CORRESPONDENTE --------------
@@ -259,7 +310,8 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 	fscanf(arquivo, "%i", &quantidade_casos);
 	caso_escolhido = 1 + (rand() % quantidade_casos);
 
-	do{
+
+	do {
 		i = 0;
 		do {
 			caracter = fgetc(arquivo);
@@ -274,8 +326,39 @@ void Verifica_Conta(char NomeJogador[], char NomeCaso[]) {
 		linha++;
 	} while (linha != caso_escolhido);
 
-	printf("\n\nNOME DO CASO ESCOLHIDO: %s\n", NomeCaso);
-	system("pause");
-
 	//-------------- fim ESCOLHENDO CASO --------------
+
+}
+
+int LoginConvidado(typePlayer player[]) {
+	FILE *nomeJogadorArq;
+	char arqName[60], resp[5];
+	int flag = 0;
+
+	do {
+		system("cls");
+		printf("----------------------------------------------------------------------\n");
+		printf("|                             MENU JOGADOR                           |\n");
+		printf("----------------------------------------------------------------------\n");
+		printf(" Informe um apelido: ");
+		scanf("%s", player[0].name);
+		strcpy(arqName, player[0].name);
+		strcat(arqName, ".txt");
+		nomeJogadorArq = fopen(arqName, "r");
+		if (nomeJogadorArq != NULL) {
+			fclose(nomeJogadorArq);
+
+			printf("\n Nome existente!");
+			Sleep(1500);
+			printf("\n\n Gostaria de tentar outro nome? (Sim/Não)\n Resposta: ");
+			scanf("%s", &resp);
+			if (resp[0] == 'n' || resp[0] == 'N') {
+				return 0;
+			}
+		} else {
+			player[0].level = 1;
+			player[0].exp = 0;
+			return 1;
+		}
+	} while (true);
 }

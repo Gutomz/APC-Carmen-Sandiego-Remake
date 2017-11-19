@@ -1,6 +1,6 @@
 #include "Funcoes.h"
 
-void LeituraJogador(char NomeCaso[], char NomeJogador[]) {
+void LerArquivoCaso(char NomeCaso[], typePlayer player[]) {
 	FILE * arquivo;
 
 	typeCase dadosCaso;
@@ -142,7 +142,6 @@ void LeituraJogador(char NomeCaso[], char NomeJogador[]) {
 		}
 	}
 	dadosCaso.thiefPath[i] = '\0';
-	
 	//-----------------------------------------------------
 	fgetc(arquivo);
 	contEspacos = 0;
@@ -184,28 +183,37 @@ void LeituraJogador(char NomeCaso[], char NomeJogador[]) {
 
 	//------------------------------------------------
 	int k = 0;
-	for (i = 0; i < (dadosCaso.howManyPlaces - 1); i++) {
-		for (j = 0; j < 3; j++) {
-			k = 0;
-			lixo = fgetc(arquivo);
-			do {
-				contEspacos = 0;
-				dicasCaso = fgetc(arquivo);
-				if (dicasCaso != '*' && dicasCaso != '\n') {
-					dadosCaso.tips[j][i][k] = dicasCaso; //dicas do caso!@!@!
+	int m = 0;
+	do {
+		for (i = 0; i < 10; i++) {
+			int l = dadosCaso.thiefPath[m] - 48;
+			if (i == l && m < dadosCaso.howManyPlaces - 1) {
+				for (j = 0; j < 3; j++) {
+					k = 0;
+					lixo = fgetc(arquivo);
+					do {
+						contEspacos = 0;
+						dicasCaso = fgetc(arquivo);
+						if (dicasCaso != '*' && dicasCaso != '\n') {
+							dadosCaso.tips[j][i][k] = dicasCaso; //dicas do caso!@!@!
 
-					k++;
-				} else if (dicasCaso != '\n') {
-					dadosCaso.tips[j][i][k] = '\0';
-					contEspacos = 1;
+							k++;
+						} else if (dicasCaso != '\n') {
+							dadosCaso.tips[j][i][k] = '\0';
+							contEspacos = 1;
+						}
+					} while (contEspacos == 0);
 				}
-			} while (contEspacos == 0);
+				m++;
+			}
 		}
-
-	}
+	} while (m < dadosCaso.howManyPlaces - 1);
 	fclose(arquivo);
+	//-------------------------------------------Verificar arquivo dos Personagens------------------------------//
+	int howManySuspects;
+	howManySuspects = LerArquivoPersonagens(dadosCaso.thief);
 
-	system("cls");
+	/*system("cls");
 	printf("Nome do Caso: %s\n", dadosCaso.caseTitle);
 	printf("O nome do Ladrão: %s\n", dadosCaso.thief.charName);
 	printf("Sexo: %c\n", dadosCaso.thief.sexo);
@@ -231,8 +239,66 @@ void LeituraJogador(char NomeCaso[], char NomeJogador[]) {
 	}
 	
 
-	system("pause");
+	system("pause");*/
 
 	//------------------------------------------------Início do Jogo-----------------------------------------------------//
-	MainGame(dadosCaso, NomeJogador);
+	MainGame(dadosCaso, player, howManySuspects);
+}
+
+int LerArquivoPersonagens(typeChar thief) {
+	FILE *personagensData;
+	FILE *personagensGame;
+	typeChar personagem;
+	char caracter;
+	int howManySuspects = 0;
+
+	personagensData = fopen("personagens.txt", "r");
+	personagensGame = fopen("personagens_Jogo.txt", "w");
+
+	fprintf(personagensGame, "%s-%c-%c-%c-%c-%c*\n", thief.charName, thief.sexo, thief.hobby, thief.cabelo,
+			thief.caracteristica, thief.veiculo);
+	howManySuspects++;
+
+	for (int i = 0; i < 20; i++) {
+		int j = 0;
+		do {
+			caracter = fgetc(personagensData);
+			if (caracter != '-') {
+				personagem.charName[j] = caracter;
+				j++;
+			}
+		} while (caracter != '-');
+		personagem.charName[j] = '\0';
+
+		personagem.sexo = fgetc(personagensData);
+		caracter = fgetc(personagensData);
+
+		personagem.hobby = fgetc(personagensData);
+		caracter = fgetc(personagensData);
+
+		personagem.cabelo = fgetc(personagensData);
+		caracter = fgetc(personagensData);
+
+		personagem.caracteristica = fgetc(personagensData);
+		caracter = fgetc(personagensData);
+
+		personagem.veiculo = fgetc(personagensData);
+		caracter = fgetc(personagensData);
+		caracter = fgetc(personagensData);
+
+		if (strcmp(thief.charName, personagem.charName) != 0) {
+			if (personagem.sexo != thief.sexo || personagem.hobby != thief.hobby ||
+				personagem.cabelo != thief.cabelo || personagem.caracteristica != thief.caracteristica ||
+				personagem.veiculo != thief.veiculo) {
+				fprintf(personagensGame, "%s-%c-%c-%c-%c-%c*\n", personagem.charName, personagem.sexo,
+						personagem.hobby, personagem.cabelo, personagem.caracteristica, personagem.veiculo);
+				howManySuspects++;
+			}
+		}
+		
+	}
+
+	fclose(personagensData);
+	fclose(personagensGame);
+	return howManySuspects;
 }

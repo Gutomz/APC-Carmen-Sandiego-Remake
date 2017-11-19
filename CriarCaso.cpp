@@ -15,6 +15,7 @@ void CaseCreation() {
 			printf("|                        CRIAR CASO - TÍTULO                         |\n");
 			printf("----------------------------------------------------------------------\n");
 			printf(" Título do Caso: ");
+			getchar();
 			scanf("%[^\n]", &caseToCreate.caseTitle);										// Receber o titulo do caso
 			if ((caseToCreate.caseTitle[0] >= 65 && caseToCreate.caseTitle[0] <= 90) ||		// Verifica de está dentro do padrões
 				(caseToCreate.caseTitle[0] >= 97 && caseToCreate.caseTitle[0] <= 122)) {	// Padrões: (Comçar com Letra)
@@ -22,7 +23,6 @@ void CaseCreation() {
 			}
 			else {
 				system("cls"); //senão limpa a tela pede denovo o título
-				getchar();
 			}
 		} while (flag == 0); //Esse loop é para caso o nome do arquivo seja invalido (Ex: 0ARQ, 'po)99,  opQ)
 
@@ -39,7 +39,7 @@ void CaseCreation() {
 		else {
 			printf("\n Caso existente! Tente outro Nome. Aguarde...");	//senão avisa que o arquivo existe e pede outro nome
 			Sleep(2000);
-			getchar();
+			fclose(newCase);
 		}
 	} while (flag == 0); //Esse loop é para caso o nome do caso ja tenha sido usado!
 
@@ -53,7 +53,7 @@ void CaseCreation() {
 	system("cls");
 
 	//------------------------------------------------Criar Caminho Percorrido---------------------------------------------------//
-	ThiefPathCreation(caseToCreate);				//Função para criar o caminho percorrido pelo ladrão
+	difficulty = ThiefPathCreation(caseToCreate);				//Função para criar o caminho percorrido pelo ladrão
 
 	//system("cls");
 	printf("\n Caso criado com sucesso! Aguarde...");
@@ -82,6 +82,7 @@ void ThiefCreation(typeCase whichCase) {
 	} while (flag == 0);	//Loop de verificação do nome
 
 	flag = 0;
+	getchar();
 	do {
 		system("cls");
 		printf("----------------------------------------------------------------------\n");
@@ -98,6 +99,7 @@ void ThiefCreation(typeCase whichCase) {
 	} while (flag == 0);	//Loop de verificação do sexo
 
 	flag = 0;
+	getchar();
 	do {
 		system("cls");
 		printf("----------------------------------------------------------------------\n");
@@ -114,6 +116,7 @@ void ThiefCreation(typeCase whichCase) {
 	} while (flag == 0);	//Loop de verificação do hobby
 
 	flag = 0;
+	getchar();
 	do {
 		system("cls");
 		printf("----------------------------------------------------------------------\n");
@@ -131,6 +134,7 @@ void ThiefCreation(typeCase whichCase) {
 
 
 	flag = 0;
+	getchar();
 	do {
 		system("cls");
 		printf("----------------------------------------------------------------------\n");
@@ -147,6 +151,7 @@ void ThiefCreation(typeCase whichCase) {
 	} while (flag == 0);	  //Loop de verificação da característica
 
 	flag = 0;
+	getchar();
 	do {
 		system("cls");
 		printf("----------------------------------------------------------------------\n");
@@ -161,102 +166,98 @@ void ThiefCreation(typeCase whichCase) {
 			whichCase.thief.veiculo -= 48;
 		}
 	} while (flag == 0);	  //Loop de verificação do veículo
-
-	system("cls");
-	printf("----------------------------------------------------------------------\n");
-	printf("|                        CRIAR CASO - LADRÃO                         |\n");
-	printf("----------------------------------------------------------------------\n");
-	printf(" Detalhes do Ladrão:\n\n");								//Mostrar as escolhas feitas para cada detalhe
-	printf(" Nome:               %s\n", whichCase.thief.charName);
-	switch (whichCase.thief.sexo) {
-	case 1:
-		printf(" Sexo:               Feminino\n");
-		break;
-	case 2:
-		printf(" Sexo:               Masculino\n");
-		break;
-	}
-	switch (whichCase.thief.hobby) {
-	case 1:
-		printf(" Hobby:              Futebol\n");
-		break;
-	case 2:
-		printf(" Hobby:              Samba\n");
-		break;
-	case 3:
-		printf(" Hobby:              Praia\n");
-		break;
-	case 4:
-		printf(" Hobby:              Natação\n");
-		break;
-	case 5:
-		printf(" Hobby:              Luta\n");
-		break;
-	}
-	switch (whichCase.thief.cabelo) {
-	case 1:
-		printf(" Cabelo:             Preto\n");
-		break;
-	case 2:
-		printf(" Cabelo:             Loiro\n");
-		break;
-	case 3:
-		printf(" Cabelo:             Ruivo\n");
-		break;
-	case 4:
-		printf(" Cabelo:             Castanho\n");
-		break;
-	case 5:
-		printf(" Cabelo:             Grisálho\n");
-		break;
-	}
-	switch (whichCase.thief.caracteristica) {
-	case 1:
-		printf(" Característica:     Anel\n");
-		break;
-	case 2:
-		printf(" Característica:     Pulseira\n");
-		break;
-	case 3:
-		printf(" Característica:     Colar\n");
-		break;
-	case 4:
-		printf(" Característica:     Boné\n");
-		break;
-	case 5:
-		printf(" Característica:     Tatuagem\n");
-		break;
-	}
-	switch (whichCase.thief.veiculo) {
-	case 1:
-		printf(" Veículo:            Carro\n");
-		break;
-	case 2:
-		printf(" Veículo:            Moto\n");
-		break;
-	case 3:
-		printf(" Veículo:            Helicóptero\n");
-		break;
-	case 4:
-		printf(" Veículo:            Bicicleta\n");
-		break;
-	case 5:
-		printf(" Veículo:            Jatinho\n");
-		break;
-	}
-
-	flag = 0;
-	printf("----------------------------------------------------------------------\n");
-	printf(" Gostaria de alterar alguma informação? (Sim/Não)\n"); 	//Modificação de algum detalhe
-	printf(" Resposta: ");
+	getchar();
 	do {
-		scanf("%s", &escolha);
-		if (escolha[0] != 'N' && escolha[0] != 'S' && escolha[0] != 'n' && escolha[0] != 's') {
-			for (i = 0; i < 110; i++) {//tela 120
-				printf("\b \b");
-			}
+		system("cls");
+		printf("----------------------------------------------------------------------\n");
+		printf("|                        CRIAR CASO - LADRÃO                         |\n");
+		printf("----------------------------------------------------------------------\n");
+		printf(" Detalhes do Ladrão:\n\n");								//Mostrar as escolhas feitas para cada detalhe
+		printf(" Nome:               %s\n", whichCase.thief.charName);
+		switch (whichCase.thief.sexo) {
+			case 1:
+				printf(" Sexo:               Feminino\n");
+				break;
+			case 2:
+				printf(" Sexo:               Masculino\n");
+				break;
 		}
-		else {
+		switch (whichCase.thief.hobby) {
+			case 1:
+				printf(" Hobby:              Futebol\n");
+				break;
+			case 2:
+				printf(" Hobby:              Samba\n");
+				break;
+			case 3:
+				printf(" Hobby:              Praia\n");
+				break;
+			case 4:
+				printf(" Hobby:              Natação\n");
+				break;
+			case 5:
+				printf(" Hobby:              Luta\n");
+				break;
+		}
+		switch (whichCase.thief.cabelo) {
+			case 1:
+				printf(" Cabelo:             Preto\n");
+				break;
+			case 2:
+				printf(" Cabelo:             Loiro\n");
+				break;
+			case 3:
+				printf(" Cabelo:             Ruivo\n");
+				break;
+			case 4:
+				printf(" Cabelo:             Castanho\n");
+				break;
+			case 5:
+				printf(" Cabelo:             Grisálho\n");
+				break;
+		}
+		switch (whichCase.thief.caracteristica) {
+			case 1:
+				printf(" Característica:     Anel\n");
+				break;
+			case 2:
+				printf(" Característica:     Pulseira\n");
+				break;
+			case 3:
+				printf(" Característica:     Colar\n");
+				break;
+			case 4:
+				printf(" Característica:     Boné\n");
+				break;
+			case 5:
+				printf(" Característica:     Tatuagem\n");
+				break;
+		}
+		switch (whichCase.thief.veiculo) {
+			case 1:
+				printf(" Veículo:            Carro\n");
+				break;
+			case 2:
+				printf(" Veículo:            Moto\n");
+				break;
+			case 3:
+				printf(" Veículo:            Helicóptero\n");
+				break;
+			case 4:
+				printf(" Veículo:            Bicicleta\n");
+				break;
+			case 5:
+				printf(" Veículo:            Jatinho\n");
+				break;
+		}
+
+		flag = 0;
+		printf("----------------------------------------------------------------------\n");
+		printf(" Gostaria de alterar alguma informação? (Sim/Não)\n"); 	//Modificação de algum detalhe
+		printf(" Resposta: ");
+
+		scanf("%s", &escolha);
+		if (escolha[0] == 'N' || escolha[0] == 'S' || escolha[0] == 'n' || escolha[0] == 's') {
 			flag = 1;
 		}
 	} while (flag == 0);	  //Loop de verificação de resposta válida
@@ -351,6 +352,7 @@ void ThiefCreation(typeCase whichCase) {
 
 			printf("----------------------------------------------------------------------\n");
 			printf(" Resposta: ");
+			getchar();
 			scanf("%c", &escolha[0]);
 			if (escolha[0] >= '1' && escolha[0] <= '7') {	//Switch da escolha do que mudar
 				switch (escolha[0]) {
@@ -556,8 +558,8 @@ void ThiefCreation(typeCase whichCase) {
 
 }
 
-void ThiefPathCreation(typeCase whitchCase) {
-	int escolhaNum, flag = 0, count = 0, i;
+int ThiefPathCreation(typeCase whitchCase) {
+	int escolhaNum, flag = 0, count = 0, i, dificuldade;
 	int maxPlaces = 10, modificationFlag = 0;
 	char escolha[5];
 
@@ -575,6 +577,14 @@ void ThiefPathCreation(typeCase whitchCase) {
 			flag = 1;
 		}
 	} while (flag == 0);
+
+	if (whitchCase.howManyPlaces >= 2 && whitchCase.howManyPlaces <= 4) {
+		dificuldade = 1;
+	} else if (whitchCase.howManyPlaces >= 5 && whitchCase.howManyPlaces <= 7) {
+		dificuldade = 2;
+	} else if (whitchCase.howManyPlaces >= 8 && whitchCase.howManyPlaces <= 10) {
+		dificuldade = 3;
+	}
 
 	flag = 0;				//Mostrar os possíveis lugares para iniciar o caso
 	do {
@@ -1009,12 +1019,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 		printf(" Gostaria de alterar alguma informação? (Sim/Não)\n");
 		printf(" Resposta: ");
 		scanf("%s", &escolha);
-		if (escolha[0] != 'n' && escolha[0] != 'N' && escolha[0] != 's' && escolha[0] != 'S') {
-			for (i = 0; i < 110; i++) { //tela 120
-				printf("\b \b");
-			}
-		}
-		else {
+		if (escolha[0] == 'n' || escolha[0] == 'N' || escolha[0] == 's' || escolha[0] == 'S') {
 			switch (escolha[0]) {
 			case 's':
 			case 'S':
@@ -1659,12 +1664,7 @@ void ThiefPathCreation(typeCase whitchCase) {
 			printf(" Gostaria de alterar a localização final? (Sim/Não)\n");
 			printf(" Resposta: ");
 			scanf("%s", &escolha);
-			if (escolha[0] != 'n' && escolha[0] != 'N' && escolha[0] != 's' && escolha[0] != 'S') {
-				for (i = 0; i < 110; i++) { //tela 120
-					printf("\b \b");
-				}
-			}
-			else {
+			if (escolha[0] == 'n' || escolha[0] == 'N' || escolha[0] == 's' || escolha[0] == 'S') {
 				switch (escolha[0]) {
 				case 'n':
 				case 'N':
@@ -1680,12 +1680,19 @@ void ThiefPathCreation(typeCase whitchCase) {
 	} while (modificationFlag == 0);	  //Loop de modificação do lugar selecionado
 	fprintf(newCase, "%i*\n", whitchCase.hideout);
 
+	//--------------------------------------------Adicionar Tempo do Jogo no Arquivo-----------------------------------------------//
+	whitchCase.caseTime = whitchCase.howManyPlaces * 20;
+	fprintf(newCase, "%i*\n", whitchCase.caseTime);
+
 	printf("\n Esconderijo criado com sucesso! Aguarde...");
 	Sleep(1500);
 	system("cls");
 
 	//Ir para Receber a hitória do caso e as dicas em cada lugar
 	TipsCreation(whitchCase.thiefPath, whitchCase.howManyPlaces, whitchCase);
+
+
+	return dificuldade;
 }
 
 void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
@@ -1707,32 +1714,25 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 			(caseToCreate.history[0] >= 97 && caseToCreate.history[0] <= 122)) {
 			flag = 1;			//Se sim continua o código
 		}
-		else {
-			system("cls");		//senão pede uma história novamente
-		}
 	} while (flag == 0);		//Loop para receber uma história inicial
 	printf("\n Aguarde...");
 	Sleep(1500);
 
 	do {
-		getchar();
-		system("cls");
-		printf("----------------------------------------------------------------------\n");
-		printf("|                      CRIAR CASO - HISTÓRIA                         |\n");
-		printf("----------------------------------------------------------------------\n");
-		printf(" História Criada:\n\n  %s\n", caseToCreate.history);
-		printf("----------------------------------------------------------------------\n");
-		printf(" Gostaria de reescrever? (Sim/Não)\n");
-		printf(" Resposta: ");
-		flag = 0;
 		do {
+			getchar();
+			system("cls");
+			printf("----------------------------------------------------------------------\n");
+			printf("|                      CRIAR CASO - HISTÓRIA                         |\n");
+			printf("----------------------------------------------------------------------\n");
+			printf(" História Criada:\n\n  %s\n", caseToCreate.history);
+			printf("----------------------------------------------------------------------\n");
+			printf(" Gostaria de reescrever? (Sim/Não)\n");
+			printf(" Resposta: ");
+			flag = 0;
+
 			scanf("%s", &escolha);	//Recebe resposta
-			if (escolha[0] != 'N' && escolha[0] != 'S' && escolha[0] != 'n' && escolha[0] != 's') {	//verifica se é sim ou nao
-				for (i = 0; i < 110; i++) {//tela 120
-					printf("\b \b");		//Se não for nenhuma das opções volta o ponteiro e pergunta novamente
-				}
-			}
-			else {
+			if (escolha[0] == 'N' || escolha[0] == 'S' || escolha[0] == 'n' || escolha[0] == 's') {
 				flag = 1;			//se for s ou n continua
 			}
 		} while (flag == 0);		//Loop de resposta válida
@@ -1752,9 +1752,6 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 				if ((caseToCreate.history[0] >= 65 && caseToCreate.history[0] <= 90) ||
 					(caseToCreate.history[0] >= 97 && caseToCreate.history[0] <= 122)) {
 					flag = 1;	//se estiver dentro dos padrões continua
-				}
-				else {
-					system("cls");	//se não pede novamente
 				}
 			} while (flag == 0);		//Loop de verificação da história
 			printf("\n Aguarde...");
@@ -1785,7 +1782,7 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 				printf("----------------------------------------------------------------------\n");
 				switch (caseToCreate.thiefPath[i]) {
 				case RS:
-					printf("\n O %i° local escolhido foi Rio Grande do Sul\n\n", i + 1);
+					printf(" O %i° local escolhido foi Rio Grande do Sul\n\n", i + 1);
 					printf("----------------------------------------------------------------------\n");
 					switch (j) {
 					case 1:
@@ -1800,7 +1797,7 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 					}
 					break;
 				case MS:
-					printf("\n O %i° local escolhido foi Mato Grosso do Sul\n\n", i + 1);
+					printf(" O %i° local escolhido foi Mato Grosso do Sul\n\n", i + 1);
 					switch (j) {
 					case 1:
 						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
@@ -1814,7 +1811,7 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 					}
 					break;
 				case GO:
-					printf("\n O %i° local escolhido foi Goiás\n\n", i + 1);
+					printf(" O %i° local escolhido foi Goiás\n\n", i + 1);
 					switch (j) {
 					case 1:
 						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
@@ -1828,7 +1825,7 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 					}
 					break;
 				case ES:
-					printf("\n O %i° local escolhido foi Espírito Santo\n\n", i + 1);
+					printf(" O %i° local escolhido foi Espírito Santo\n\n", i + 1);
 					switch (j) {
 					case 1:
 						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
@@ -1842,7 +1839,7 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 					}
 					break;
 				case MT:
-					printf("\n O %i° local escolhido foi Mato Grosso\n\n", i + 1);
+					printf(" O %i° local escolhido foi Mato Grosso\n\n", i + 1);
 					switch (j) {
 					case 1:
 						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
@@ -1856,7 +1853,7 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 					}
 					break;
 				case SC:
-					printf("\n O %i° local escolhido foi Santa Catarina\n\n", i + 1);
+					printf(" O %i° local escolhido foi Santa Catarina\n\n", i + 1);
 					switch (j) {
 					case 1:
 						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
@@ -1870,7 +1867,7 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 					}
 					break;
 				case MG:
-					printf("\n O %i° local escolhido foi Minas Gerais\n\n", i + 1);
+					printf(" O %i° local escolhido foi Minas Gerais\n\n", i + 1);
 					switch (j) {
 					case 1:
 						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
@@ -1884,7 +1881,7 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 					}
 					break;
 				case SP:
-					printf("\n O %i° local escolhido foi São Paulo\n\n", i + 1);
+					printf(" O %i° local escolhido foi São Paulo\n\n", i + 1);
 					switch (j) {
 					case 1:
 						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
@@ -1898,7 +1895,7 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 					}
 					break;
 				case PR:
-					printf("\n O %i° local escolhido foi Paraná\n", i + 1);
+					printf(" O %i° local escolhido foi Paraná\n", i + 1);
 					switch (j) {
 					case 1:
 						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
@@ -1912,7 +1909,7 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 					}
 					break;
 				case RJ:
-					printf("\n O %i° local escolhido foi Rio de Janeiro\n\n", i + 1);
+					printf(" O %i° local escolhido foi Rio de Janeiro\n\n", i + 1);
 					switch (j) {
 					case 1:
 						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
@@ -1934,58 +1931,52 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 				}
 			} while (flag == 0);
 		}
-
-		system("cls");
-		printf("----------------------------------------------------------------------\n");
-		printf("|                        CRIAR CASO - DICAS                          |\n");
-		printf("----------------------------------------------------------------------\n");
-		switch (caseToCreate.thiefPath[i]) {
-		case RS:
-			printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Rio Grande do Sul foram:\n\n");
-			break;
-		case MS:
-			printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Mato Grosso do Sul foram:\n\n");
-			break;
-		case GO:
-			printf(" As dicas para a Praça, Hotel e Banco, respectivamente, de Goiás foram:\n\n");
-			break;
-		case ES:
-			printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Espírito Santo foram:\n\n");
-			break;
-		case MT:
-			printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Mato Grosso foram:\n\n");
-			break;
-		case SC:
-			printf(" As dicas para a Praça, Hotel e Banco, respectivamente, de Santa Catarina foram:\n\n");
-			break;
-		case MG:
-			printf(" As dicas para a Praça, Hotel e Banco, respectivamente, de Minas Gerais foram:\n\n");
-			break;
-		case SP:
-			printf(" As dicas para a Praça, Hotel e Banco, respectivamente, de São Paulo foram:\n\n");
-			break;
-		case PR:
-			printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Paraná foram:\n\n");
-			break;
-		case RJ:
-			printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Rio de Janeiro foram:\n\n");
-			break;
-		}
-		for (j = 1; j <= 3; j++) {
-			printf("  %i- \"%s\"\n\n", j, caseToCreate.tips[j - 1][i]);
-		}
-		printf("------------------------------------------------------------\n");
-		printf(" Gostaria de reescrever alguma dica? (Sim/Não)\n");
-		printf(" Resposta: ");
 		flag = 0;
 		do {
-			scanf("%s", &escolha);
-			if (escolha[0] != 'N' && escolha[0] != 'S' && escolha[0] != 'n' && escolha[0] != 's') {	//verifica se é sim ou nao
-				for (k = 0; k < 110; k++) {//tela 120
-					printf("\b \b");		//Se não for nenhuma das opções volta o ponteiro e pergunta novamente
-				}
+			system("cls");
+			printf("----------------------------------------------------------------------\n");
+			printf("|                        CRIAR CASO - DICAS                          |\n");
+			printf("----------------------------------------------------------------------\n");
+			switch (caseToCreate.thiefPath[i]) {
+				case RS:
+					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Rio Grande do Sul foram:\n\n");
+					break;
+				case MS:
+					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Mato Grosso do Sul foram:\n\n");
+					break;
+				case GO:
+					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, de Goiás foram:\n\n");
+					break;
+				case ES:
+					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Espírito Santo foram:\n\n");
+					break;
+				case MT:
+					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Mato Grosso foram:\n\n");
+					break;
+				case SC:
+					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, de Santa Catarina foram:\n\n");
+					break;
+				case MG:
+					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, de Minas Gerais foram:\n\n");
+					break;
+				case SP:
+					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, de São Paulo foram:\n\n");
+					break;
+				case PR:
+					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Paraná foram:\n\n");
+					break;
+				case RJ:
+					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Rio de Janeiro foram:\n\n");
+					break;
 			}
-			else {
+			for (j = 1; j <= 3; j++) {
+				printf("  %i- \"%s\"\n\n", j, caseToCreate.tips[j - 1][i]);
+			}
+			printf("------------------------------------------------------------\n");
+			printf(" Gostaria de reescrever alguma dica? (Sim/Não)\n");
+			printf(" Resposta: ");
+			scanf("%s", &escolha);
+			if (escolha[0] == 'N' || escolha[0] == 'S' || escolha[0] == 'n' || escolha[0] == 's') {
 				flag = 1;			//se for s ou n continua
 			}
 		} while (flag == 0);
@@ -1994,24 +1985,19 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 		case'S':		//se a escolha foi sim então pede para o usuario introduzir uma dica nova
 			modificationFlag = 0;
 			do {
-				system("cls");
-				printf("----------------------------------------------------------------------\n");
-				printf("|                        CRIAR CASO - DICAS                          |\n");
-				printf("----------------------------------------------------------------------\n");
-				printf(" Escolha a dica que será modificada\n\n");
-				for (j = 1; j <= 3; j++) {
-					printf("  %i- \"%s\"\n\n", j, caseToCreate.tips[j - 1][i]);
-				}
-				printf("  4- Confirmar modificações.\n\n");
-				printf("----------------------------------------------------------------------\n");
-				printf(" Resposta: ");
 				do {
-					scanf("%i", &escolhaNum);
-					if (escolhaNum < 1 || escolhaNum > 4) {
-						for (k = 0; k < 110; k++) {//tela 120
-							printf("\b \b");		//Se não for nenhuma das opções volta o ponteiro e pergunta novamente
-						}
+					system("cls");
+					printf("----------------------------------------------------------------------\n");
+					printf("|                        CRIAR CASO - DICAS                          |\n");
+					printf("----------------------------------------------------------------------\n");
+					printf(" Escolha a dica que será modificada\n\n");
+					for (j = 1; j <= 3; j++) {
+						printf("  %i- \"%s\"\n\n", j, caseToCreate.tips[j - 1][i]);
 					}
+					printf("  4- Confirmar modificações.\n\n");
+					printf("----------------------------------------------------------------------\n");
+					printf(" Resposta: ");
+					scanf("%i", &escolhaNum);
 				} while (escolhaNum < 1 || escolhaNum > 4);
 				switch (escolhaNum) {
 				case 4:
@@ -2023,7 +2009,7 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 						system("cls");
 						printf("----------------------------------------------------------------------\n");
 						printf("|                        CRIAR CASO - DICAS                          |\n");
-						printf("----------------------------------------------------------------------\n\n");
+						printf("----------------------------------------------------------------------\n");
 						switch (caseToCreate.thiefPath[i]) {
 						case RS:
 							printf(" O %i° local escolhido foi Rio Grande do Sul\n\n", i + 1);

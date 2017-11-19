@@ -2,55 +2,29 @@
 
 FILE *AdmConta;
 
-int BemVindo() { //escolha do modo de jogo
-	int OpcaoEntrada;
-	do {
-		system("cls");
-		printf("------------------------------------------------------------\n");
-		printf("|                     ONDE TÁ A CARMINHA?                  |\n");
-		printf("------------------------------------------------------------\n");
-		printf(" Escolha uma das opções abaixo:\n\n");
-		printf("  1- Administrador\n  2- Jogador\n  3- Sair\n");
-		printf("------------------------------------------------------------\n");
-		printf(" Resposta: ");
-		scanf("%i", &OpcaoEntrada);
-		if (OpcaoEntrada < 1 || OpcaoEntrada > 3) {
-			printf("\n Opção inválida!");
-			Sleep(1500);
-		}
-	} while (OpcaoEntrada < 1 || OpcaoEntrada > 3);
-
-
-	return OpcaoEntrada;
-}
 
 void AdmCriacao(char nomeADM[], char senhaADM[]) { //criacao de login e senha
+	AdmConta = fopen("ContaAdm.txt", "w");
 
-	AdmConta = fopen("conta.txt", "w");
-	if (!AdmConta) {
-		printf("Erro na abertura do arquivo.\n");
+	system("cls");
+	printf("----------------------------------------------------------------------\n");
+	printf("|                           CRIAR CONTA ADM                          |\n");
+	printf("----------------------------------------------------------------------\n");
+	printf(" Login: ");
+	scanf("%s", nomeADM);
+
+	fprintf(AdmConta, "%s\n", nomeADM);
+	printf(" Senha: ");
+	scanf("%s", senhaADM);
+	criptografa(senhaADM);
+
+	for (int i = 0; i< strlen(senhaADM); i++) {
+		fputc(senhaADM[i], AdmConta);
 	}
-	else {
-		system("cls");
-		printf("------------------------------------------------------------\n");
-		printf("|                      CRIAR CONTA ADM                     |\n");
-		printf("------------------------------------------------------------\n");
-		printf(" Login: ");
-		scanf("%s", nomeADM);
 
-		fprintf(AdmConta, "%s\n", nomeADM);
-		printf(" Senha: ");
-		scanf("%s", senhaADM);
-		criptografa(senhaADM);
-
-		for (int i = 0; i< strlen(senhaADM); i++) {
-			fputc(senhaADM[i], AdmConta);
-		}
-
-		printf("\nConta criada com sucesso!");
-		Sleep(1500);
-		fclose(AdmConta);
-	}
+	printf("\nConta criada com sucesso! Aguarde...");
+	Sleep(1500);
+	fclose(AdmConta);
 }
 
 void criptografa(char senha[]) {
@@ -75,74 +49,173 @@ void criptografa(char senha[]) {
 
 
 }
-int AdmSucesso(char nomeADM[], char senhaADM[]) {
-	char loginReal[45], TentarNovamente;
-	char senhaReal[30];
-	int i, flagWhile = 0;
 
-	AdmConta = fopen("conta.txt", "r");
-	if (!AdmConta) {
-		printf("Erro na abertura do arquivo.\n");
-	}
+int AdmLogin(char nomeADM[], char senhaADM[]) {
+	char loginReal[45], TentarNovamente[5];
+	char senhaReal[30];
+	int i;
+
+	AdmConta = fopen("ContaAdm.txt", "r");
+
 	fscanf(AdmConta, "%s", &loginReal);
 	fscanf(AdmConta, "%s", &senhaReal);//recebendo dados do arquivo
+
 	do {
 		system("cls");
-		printf("------------------------------------------------------------\n");
-		printf("|                         LOGIN ADM                        |\n");
-		printf("------------------------------------------------------------\n");
+		printf("----------------------------------------------------------------------\n");
+		printf("|                              LOGIN ADM                             |\n");
+		printf("----------------------------------------------------------------------\n");
 		printf(" Login: ");
 		scanf("%s", nomeADM);
 		printf(" Senha: ");
 		scanf("%s", senhaADM);
 		criptografa(senhaADM);
 
-		if (strcmp(senhaADM, senhaReal) == 0) {
-			flagWhile = 1; //se der certo flag=1 n entra no while
-			printf("\n Seja bem vindo %s! :]", &loginReal);
-			Sleep(1500);
+		if (strcmp(nomeADM, loginReal) == 0) {
+			if (strcmp(senhaADM, senhaReal) == 0) {
+				printf("\n Seja bem vindo %s! :]", &loginReal);
+				Sleep(1500);
 
-			fclose(AdmConta);
-			return 1;
+				fclose(AdmConta);
+				return 1;
 
-		} else {
-			printf("\n Login e/ou senha inválido(s)!");
-			Sleep(1500);
-
-			printf("\n\n Deseja tentar novamente? (Sim/Não)\n");
-			printf(" Resposta: ");
-
-			getchar();
-			scanf("%c", &TentarNovamente);
-			fclose(AdmConta);
-
-			if (TentarNovamente == 'n' || TentarNovamente == 'N') {
-				return 0;
 			}
 		}
 
-	} while (flagWhile == 0);
+		printf("\n Login e/ou senha inválido(s)!");
+		Sleep(1500);
+
+		printf("\n\n Deseja tentar novamente? (Sim/Não)\n");
+		printf(" Resposta: ");
+
+		getchar();
+		scanf("%s", &TentarNovamente);
+
+		if (TentarNovamente[0] == 'n' || TentarNovamente[0] == 'N') {
+			fclose(AdmConta);
+			return 0;
+		}
+
+	} while (true);
 
 }
-int AdmVerif() {
 
+int AdmVerif() {
 	int  tam;
 	int crieConta;
-	AdmConta = fopen("conta.txt", "r");
-	if (!AdmConta) {
-		printf("Erro na abertura do arquivo.\n");
+	AdmConta = fopen("ContaAdm.txt", "r");
+
+	fseek(AdmConta, 0, SEEK_END); //verificacao se o arquivo esta vazio
+	tam = ftell(AdmConta);
+	if (tam == 0 || tam < 0) {
+		crieConta = 0;
 	}
 	else {
-		fseek(AdmConta, 0, SEEK_END); //verificacao se o arquivo esta vazio
-		tam = ftell(AdmConta);
-		if (tam == 0 || tam < 0) {
-			crieConta = 0;
-		}
-		else {
-			crieConta = 1;
-		}
-
+		crieConta = 1;
 	}
+
 	fclose(AdmConta);
 	return crieConta;
+}
+
+int AdmMenu(char nomeADM[], char senhaADM[]) {
+	int escolhaNum;
+
+
+	do {
+		system("cls");
+		printf("----------------------------------------------------------------------\n");
+		printf("|                       PERFIL DO ADMINISTRADOR                      |\n");
+		printf("----------------------------------------------------------------------\n\n");
+		printf("  1- Modificar dados da conta\n");
+		printf("  2- Adicionar casos no jogo\n");
+		printf("  3- Deslogar\n");
+		printf("----------------------------------------------------------------------\n");
+		printf(" Resposta: ");
+		scanf("%i", &escolhaNum);
+		if (escolhaNum < 1 || escolhaNum > 3) {
+			printf("\n Opção inválida!");
+			Sleep(1500);
+		}
+	} while (escolhaNum < 1 || escolhaNum > 3);
+
+	switch (escolhaNum) {
+		case 1:
+			AdmModif();
+			break;
+		case 2:
+			CaseCreation();
+			break;
+		case 3:
+			return 1;
+			break;
+	}
+	return 0;
+}
+
+int AdmModif() 
+{
+	char loginReal[45], senhaReal[45], nomeADM[45], senhaADM[45];
+	int escolhaNum;
+
+	AdmConta = fopen("ContaAdm.txt", "r");
+	fscanf(AdmConta, "%s", &loginReal);
+	fscanf(AdmConta, "%s", &senhaReal);//recebendo dados do arquivo
+	fclose(AdmConta);
+	system("cls");
+	printf("----------------------------------------------------------------------\n");
+	printf("|                       PERFIL DO ADMINISTRADOR                      |\n");
+	printf("----------------------------------------------------------------------\n\n");
+	printf(" Selecione os dados que deseja modificar:\n");
+	printf("  1- Modificar o login da conta\n");
+	printf("  2- Modificar a senha da conta\n");
+	printf("  3- Voltar\n");
+	printf("----------------------------------------------------------------------\n");
+	printf(" Resposta: ");
+	scanf("%i", &escolhaNum);
+	AdmConta = fopen("ContaAdm.txt", "w");
+	if (escolhaNum < 1 || escolhaNum > 3) {
+		printf("\n Opção inválida!");
+		Sleep(1500);
+	}
+	switch (escolhaNum) {
+	case 1:
+
+		system("cls");
+		printf("----------------------------------------------------------------------\n");
+		printf("|                       PERFIL DO ADMINISTRADOR                      |\n");
+		printf("----------------------------------------------------------------------\n\n");
+		printf(" Digite o novo login: ");
+		scanf("%s", nomeADM);
+		fprintf(AdmConta, "%s\n", nomeADM);
+		fprintf(AdmConta, "%s", senhaReal);
+
+		printf("\n Login modificado com sucesso! Aguarde...");
+		Sleep(1500);
+		fclose(AdmConta);
+		break;
+	case 2:
+
+
+
+		system("cls");
+		printf("----------------------------------------------------------------------\n");
+		printf("|                       PERFIL DO ADMINISTRADOR                      |\n");
+		printf("----------------------------------------------------------------------\n\n");
+		printf(" Digite a nova senha: ");
+		scanf("%s", senhaADM);
+		criptografa(senhaADM);
+		fprintf(AdmConta, "%s\n", loginReal);
+		for (int i = 0; i< strlen(senhaADM); i++) {
+			fputc(senhaADM[i], AdmConta);
+		}
+		printf("\n Senha modificada com sucesso! Aguarde...");
+		Sleep(1500);
+		fclose(AdmConta);
+		break;
+	case 3:
+		return 1;
+		break;
+	}
+
 }

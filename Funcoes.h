@@ -14,7 +14,7 @@
 //---------------------------------------Structs----------------------------------//
 struct typeChar
 {
-	char charName[20]; // nome do personagem
+	char charName[50]; // nome do personagem
 	char sexo; // 1.feminino - 2.masculino
 	char hobby; // 1.futebol - 2.samba - 3.praia - 4.natação - 5.luta
 	char cabelo; // 1.preto - 2.loiro - 3.ruivo - 4.castanho - 5.grisálio
@@ -33,6 +33,13 @@ struct typeCase {
 	int hideout;		//1. Praça - 2. Hotel - 3. Banco
 	char tips[3][15][500]; //[profundidade][linha][coluna] --> Cada profundidade é uma dica de um lugar(Hotel, Praça...) no estado
 	typeChar thief;
+};
+
+
+struct typePlayer{
+	char name[50];
+	int level;
+	int exp;
 };
 //---------------------------------------Structs----------------------------------//
 
@@ -53,23 +60,34 @@ enum States_enum
 
 //---------------------------------Funções do Principal---------------------------//
 int BemVindo();
-int AdmSucesso(char nomeADM[], char senhaADM[]);
-void AdmCriacao(char nomeADM[], char senhaADM[]);
-int AdmVerif();
-void criptografa(char senha[]);
+void SetVideo();
 //---------------------------------Funções do Principal---------------------------//
 
 
 //-------------------------------------------------------------------------------------------------------------------------------//
 
 
-//---------------------------------Funções do Conta Jogador---------------------------//
-int FazerLogin(char NomeJogador[]);
-int CriarContaJogador(char NomeJogador[]);
-int Verifica_Conta(char NomeJogador[], char NomeCaso[]);
-void EscolherCaso(char NomeCaso[], int NivelJogador);
-int MenuJogador(char nomeJogador[], int nivelJogador);
+//---------------------------------Funções ADM---------------------------//
+int AdmLogin(char nomeADM[], char senhaADM[]);
+void AdmCriacao(char nomeADM[], char senhaADM[]);
+int AdmVerif();
+int AdmMenu(char nomeADM[], char senhaADM[]);
+void criptografa(char senha[]);
+int AdmModif();
+//---------------------------------Funções ADM---------------------------//
 
+
+//-------------------------------------------------------------------------------------------------------------------------------//
+
+
+//---------------------------------Funções do Conta Jogador---------------------------//
+int FazerLogin(typePlayer player[]);
+void CriarContaJogador(typePlayer player[]);
+void Verifica_Conta(typePlayer player[]);
+void EscolherCaso(char NomeCaso[], typePlayer player[]);
+int ContaJogadorMenu(typePlayer player[]);
+int JogadorMenu();
+int LoginConvidado(typePlayer player[]);
 //---------------------------------Funções do Conta Jogador---------------------------//
 
 
@@ -79,42 +97,39 @@ int MenuJogador(char nomeJogador[], int nivelJogador);
 //---------------------------------Funções do CriarCaso---------------------------//
 void CaseCreation();
 void ThiefCreation(typeCase whichCase);
-void ThiefPathCreation(typeCase whitchCase);
+int ThiefPathCreation(typeCase whitchCase);
 void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate);
 void ModificarArqCasos(char caseName[], int difficulty);
-//---------------------------------Funções do Principal---------------------------//
+//---------------------------------Funções do CriarCaso---------------------------//
 
 
 //-------------------------------------------------------------------------------------------------------------------------------//
 
 
 //---------------------------------Funções do Game--------------------------------//
-void MainGame(typeCase myCase, char NomeJogador[]);
+void MainGame(typeCase myCase, typePlayer player[], int howManySuspects);
 
 void PrintText(char texto[]);
 void CaseApresentation(typeCase myCase, char NomeJogador[], int dias, int horas);
 
-int Computer();
-void SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *ponteiro_posicaoLadrao);
+int Computer(char suspectsStatus[],int *tempo, int howManySuspects, typeChar suspects[], char suspeitoName[], int warrant);
+int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *ponteiro_posicaoLadrao, int warrantFlag, int *viagemFlag);
 int ChangeLocation(int whereIam, int *tempo);
+void ObterSuspeitos(typeChar suspeitos[], int howManySuspects);
 //---------------------------------Funções do Game--------------------------------//
 
 
 //-------------------------------------------------------------------------------------------------------------------------------//
 
 
-//---------------------------------Funções do Adm Menu--------------------------------------//
-void AdmMenu(char nomeADM[], char senhaADM[]);
-//---------------------------------Funções do Adm Menu--------------------------------------//
-
-
-//-------------------------------------------------------------------------------------------------------------------------------//
-
-
 //---------------------------------Funções do Ler Arquivo--------------------------------------//
-void LeituraJogador(char nomeCaso[], char NomeJogador[]);
+void LerArquivoCaso(char nomeCaso[], typePlayer player[]);
+int LerArquivoPersonagens(typeChar thief);
 //---------------------------------Funções do Ler Arquivo--------------------------------------//
 
+//---------------------------------Função para Mostrar o Ranking--------------------------------------//
+void MostrarRanking();
+//---------------------------------Função para Mostrar o Ranking--------------------------------------//
 
 //-------------------------------------------------------------------------------------------------------------------------------//
 
