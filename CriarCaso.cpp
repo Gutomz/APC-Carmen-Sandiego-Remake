@@ -582,7 +582,7 @@ int ThiefPathCreation(typeCase whitchCase) {
 		dificuldade = 1;
 	} else if (whitchCase.howManyPlaces >= 7 && whitchCase.howManyPlaces <= 8) {
 		dificuldade = 2;
-	} else if (whitchCase.howManyPlaces >= 9 && whitchCase.howManyPlaces <= 10) {
+	} else if (whitchCase.howManyPlaces >= 9 && whitchCase.howManyPlaces <= 10) {	
 		dificuldade = 3;
 	}
 
@@ -1862,11 +1862,11 @@ int ThiefPathCreation(typeCase whitchCase) {
 
 	//--------------------------------------------Adicionar Tempo do Jogo no Arquivo-----------------------------------------------//
 	if (dificuldade == 1) {
-		whitchCase.caseTime = whitchCase.howManyPlaces * 17;
+		whitchCase.caseTime = whitchCase.howManyPlaces * 9;
 	} else if (dificuldade == 2) {
-		whitchCase.caseTime = whitchCase.howManyPlaces * 15;
+		whitchCase.caseTime = whitchCase.howManyPlaces * 8;
 	}if (dificuldade == 3) {
-		whitchCase.caseTime = whitchCase.howManyPlaces * 12;
+		whitchCase.caseTime = whitchCase.howManyPlaces * 7;
 	}
 	
 	fprintf(newCase, "%i*\n", whitchCase.caseTime);
@@ -1971,7 +1971,7 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 	Sleep(1500);																		//Esperar resposta do usuario
 
 
-																						//-----------------------------------------------Receber Dicas ----------------------------------------------------//
+//-----------------------------------------------Receber Dicas ----------------------------------------------------//
 	for (i = 0; i < howManyPlaces - 1; i++) {
 		for (j = 1; j <= 3; j++) {
 			flag = 0;
@@ -2584,7 +2584,7 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 						} while (caracter != '\0');
 						printf("\"\n");
 					}
-					printf("  4- Confirmar modificações.\n\n");
+					printf("\n  4- Confirmar modificações.\n");
 					printf("----------------------------------------------------------------------\n");
 					printf(" Resposta: ");
 					scanf("%i", &escolhaNum);
@@ -2602,142 +2602,482 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 						printf("----------------------------------------------------------------------\n");
 						switch (caseToCreate.thiefPath[i]) {
 						case RS:
-							printf(" O %i° local escolhido foi Rio Grande do Sul\n\n", i + 1);
+							printf(" O %i° local escolhido foi Rio Grande do Sul\n", i + 1);
+							printf(" O próximo local será: ");
+							switch (caseToCreate.thiefPath[i + 1]) {
+								case RS:
+									printf("Rio Grande do Sul\n");
+									break;
+								case MS:
+									printf("Mato Grosso do Sul\n");
+									break;
+								case GO:
+									printf("Goiás\n");
+									break;
+								case ES:
+									printf("Espírito Santo\n");
+									break;
+								case MT:
+									printf("Mato Grosso\n");
+									break;
+								case SC:
+									printf("Santa Catarina\n");
+									break;
+								case MG:
+									printf("Minas Gerais\n");
+									break;
+								case SP:
+									printf("São Paulo\n");
+									break;
+								case PR:
+									printf("Paraná\n");
+									break;
+								case RJ:
+									printf("Rio de Janeiro\n");
+									break;
+							}
+							printf("----------------------------------------------------------------------\n\n");
 							switch (escolhaNum) {
 							case 1:
-								printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+								printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 2:
-								printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 3:
-								printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							}
 							break;
 						case MS:
-							printf(" O %i° local escolhido foi Mato Grosso do Sul\n\n", i + 1);
+							printf(" O %i° local escolhido foi Mato Grosso do Sul\n", i + 1);
+							printf(" O próximo local será: ");
+							switch (caseToCreate.thiefPath[i + 1]) {
+								case RS:
+									printf("Rio Grande do Sul\n");
+									break;
+								case MS:
+									printf("Mato Grosso do Sul\n");
+									break;
+								case GO:
+									printf("Goiás\n");
+									break;
+								case ES:
+									printf("Espírito Santo\n");
+									break;
+								case MT:
+									printf("Mato Grosso\n");
+									break;
+								case SC:
+									printf("Santa Catarina\n");
+									break;
+								case MG:
+									printf("Minas Gerais\n");
+									break;
+								case SP:
+									printf("São Paulo\n");
+									break;
+								case PR:
+									printf("Paraná\n");
+									break;
+								case RJ:
+									printf("Rio de Janeiro\n");
+									break;
+							}
+							printf("----------------------------------------------------------------------\n\n");
 							switch (escolhaNum) {
 							case 1:
-								printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+								printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 2:
-								printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 3:
-								printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							}
 							break;
 						case GO:
-							printf(" O %i° local escolhido foi Goiás\n\n", i + 1);
+							printf(" O %i° local escolhido foi Goiás\n", i + 1);
+							printf(" O próximo local será: ");
+							switch (caseToCreate.thiefPath[i + 1]) {
+								case RS:
+									printf("Rio Grande do Sul\n");
+									break;
+								case MS:
+									printf("Mato Grosso do Sul\n");
+									break;
+								case GO:
+									printf("Goiás\n");
+									break;
+								case ES:
+									printf("Espírito Santo\n");
+									break;
+								case MT:
+									printf("Mato Grosso\n");
+									break;
+								case SC:
+									printf("Santa Catarina\n");
+									break;
+								case MG:
+									printf("Minas Gerais\n");
+									break;
+								case SP:
+									printf("São Paulo\n");
+									break;
+								case PR:
+									printf("Paraná\n");
+									break;
+								case RJ:
+									printf("Rio de Janeiro\n");
+									break;
+							}
+							printf("----------------------------------------------------------------------\n\n");
 							switch (escolhaNum) {
 							case 1:
-								printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+								printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 2:
-								printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 3:
-								printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							}
 							break;
 						case ES:
-							printf(" O %i° local escolhido foi Espírito Santo\n\n", i + 1);
+							printf(" O %i° local escolhido foi Espírito Santo\n", i + 1);
+							printf(" O próximo local será: ");
+							switch (caseToCreate.thiefPath[i + 1]) {
+								case RS:
+									printf("Rio Grande do Sul\n");
+									break;
+								case MS:
+									printf("Mato Grosso do Sul\n");
+									break;
+								case GO:
+									printf("Goiás\n");
+									break;
+								case ES:
+									printf("Espírito Santo\n");
+									break;
+								case MT:
+									printf("Mato Grosso\n");
+									break;
+								case SC:
+									printf("Santa Catarina\n");
+									break;
+								case MG:
+									printf("Minas Gerais\n");
+									break;
+								case SP:
+									printf("São Paulo\n");
+									break;
+								case PR:
+									printf("Paraná\n");
+									break;
+								case RJ:
+									printf("Rio de Janeiro\n");
+									break;
+							}
+							printf("----------------------------------------------------------------------\n\n");
 							switch (escolhaNum) {
 							case 1:
-								printf("Insira uma dica para ser descoberta na Praça:\n\n  ");
+								printf("Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 2:
-								printf("Insira uma dica para ser descoberta no Hotel:\n\n  ");
+								printf("Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 3:
-								printf("Insira uma dica para ser descoberta no Banco:\n\n  ");
+								printf("Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							}
 							break;
 						case MT:
-							printf(" O %i° local escolhido foi Mato Grosso\n\n", i + 1);
+							printf(" O %i° local escolhido foi Mato Grosso\n", i + 1);
+							printf(" O próximo local será: ");
+							switch (caseToCreate.thiefPath[i + 1]) {
+								case RS:
+									printf("Rio Grande do Sul\n");
+									break;
+								case MS:
+									printf("Mato Grosso do Sul\n");
+									break;
+								case GO:
+									printf("Goiás\n");
+									break;
+								case ES:
+									printf("Espírito Santo\n");
+									break;
+								case MT:
+									printf("Mato Grosso\n");
+									break;
+								case SC:
+									printf("Santa Catarina\n");
+									break;
+								case MG:
+									printf("Minas Gerais\n");
+									break;
+								case SP:
+									printf("São Paulo\n");
+									break;
+								case PR:
+									printf("Paraná\n");
+									break;
+								case RJ:
+									printf("Rio de Janeiro\n");
+									break;
+							}
+							printf("----------------------------------------------------------------------\n\n");
 							switch (escolhaNum) {
 							case 1:
-								printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+								printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 2:
-								printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 3:
-								printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							}
 							break;
 						case SC:
-							printf(" O %i° local escolhido foi Santa Catarina\n\n", i + 1);
+							printf(" O %i° local escolhido foi Santa Catarina\n", i + 1);
+							printf(" O próximo local será: ");
+							switch (caseToCreate.thiefPath[i + 1]) {
+								case RS:
+									printf("Rio Grande do Sul\n");
+									break;
+								case MS:
+									printf("Mato Grosso do Sul\n");
+									break;
+								case GO:
+									printf("Goiás\n");
+									break;
+								case ES:
+									printf("Espírito Santo\n");
+									break;
+								case MT:
+									printf("Mato Grosso\n");
+									break;
+								case SC:
+									printf("Santa Catarina\n");
+									break;
+								case MG:
+									printf("Minas Gerais\n");
+									break;
+								case SP:
+									printf("São Paulo\n");
+									break;
+								case PR:
+									printf("Paraná\n");
+									break;
+								case RJ:
+									printf("Rio de Janeiro\n");
+									break;
+							}
+							printf("----------------------------------------------------------------------\n\n");
 							switch (escolhaNum) {
 							case 1:
-								printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+								printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 2:
-								printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 3:
-								printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							}
 							break;
 						case MG:
-							printf(" O %i° local escolhido foi Minas Gerais\n\n", i + 1);
+							printf(" O %i° local escolhido foi Minas Gerais\n", i + 1);
+							printf(" O próximo local será: ");
+							switch (caseToCreate.thiefPath[i + 1]) {
+								case RS:
+									printf("Rio Grande do Sul\n");
+									break;
+								case MS:
+									printf("Mato Grosso do Sul\n");
+									break;
+								case GO:
+									printf("Goiás\n");
+									break;
+								case ES:
+									printf("Espírito Santo\n");
+									break;
+								case MT:
+									printf("Mato Grosso\n");
+									break;
+								case SC:
+									printf("Santa Catarina\n");
+									break;
+								case MG:
+									printf("Minas Gerais\n");
+									break;
+								case SP:
+									printf("São Paulo\n");
+									break;
+								case PR:
+									printf("Paraná\n");
+									break;
+								case RJ:
+									printf("Rio de Janeiro\n");
+									break;
+							}
+							printf("----------------------------------------------------------------------\n\n");
 							switch (escolhaNum) {
 							case 1:
-								printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+								printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 2:
-								printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 3:
-								printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							}
 							break;
 						case SP:
-							printf(" O %i° local escolhido foi São Paulo\n\n", i + 1);
+							printf(" O %i° local escolhido foi São Paulo\n", i + 1);
+							printf(" O próximo local será: ");
+							switch (caseToCreate.thiefPath[i + 1]) {
+								case RS:
+									printf("Rio Grande do Sul\n");
+									break;
+								case MS:
+									printf("Mato Grosso do Sul\n");
+									break;
+								case GO:
+									printf("Goiás\n");
+									break;
+								case ES:
+									printf("Espírito Santo\n");
+									break;
+								case MT:
+									printf("Mato Grosso\n");
+									break;
+								case SC:
+									printf("Santa Catarina\n");
+									break;
+								case MG:
+									printf("Minas Gerais\n");
+									break;
+								case SP:
+									printf("São Paulo\n");
+									break;
+								case PR:
+									printf("Paraná\n");
+									break;
+								case RJ:
+									printf("Rio de Janeiro\n");
+									break;
+							}
+							printf("----------------------------------------------------------------------\n\n");
 							switch (escolhaNum) {
 							case 1:
-								printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+								printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 2:
-								printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 3:
-								printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							}
 							break;
 						case PR:
-							printf(" O %i° local escolhido foi Paraná\n\n", i + 1);
+							printf(" O %i° local escolhido foi Paraná\n", i + 1);
+							printf(" O próximo local será: ");
+							switch (caseToCreate.thiefPath[i + 1]) {
+								case RS:
+									printf("Rio Grande do Sul\n");
+									break;
+								case MS:
+									printf("Mato Grosso do Sul\n");
+									break;
+								case GO:
+									printf("Goiás\n");
+									break;
+								case ES:
+									printf("Espírito Santo\n");
+									break;
+								case MT:
+									printf("Mato Grosso\n");
+									break;
+								case SC:
+									printf("Santa Catarina\n");
+									break;
+								case MG:
+									printf("Minas Gerais\n");
+									break;
+								case SP:
+									printf("São Paulo\n");
+									break;
+								case PR:
+									printf("Paraná\n");
+									break;
+								case RJ:
+									printf("Rio de Janeiro\n");
+									break;
+							}
+							printf("----------------------------------------------------------------------\n\n");
 							switch (escolhaNum) {
 							case 1:
-								printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+								printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 2:
-								printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 3:
-								printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							}
 							break;
 						case RJ:
-							printf(" O %i° local escolhido foi Rio de Janeiro\n\n", i + 1);
+							printf(" O %i° local escolhido foi Rio de Janeiro\n", i + 1);
+							printf(" O próximo local será: ");
+							switch (caseToCreate.thiefPath[i + 1]) {
+								case RS:
+									printf("Rio Grande do Sul\n");
+									break;
+								case MS:
+									printf("Mato Grosso do Sul\n");
+									break;
+								case GO:
+									printf("Goiás\n");
+									break;
+								case ES:
+									printf("Espírito Santo\n");
+									break;
+								case MT:
+									printf("Mato Grosso\n");
+									break;
+								case SC:
+									printf("Santa Catarina\n");
+									break;
+								case MG:
+									printf("Minas Gerais\n");
+									break;
+								case SP:
+									printf("São Paulo\n");
+									break;
+								case PR:
+									printf("Paraná\n");
+									break;
+								case RJ:
+									printf("Rio de Janeiro\n");
+									break;
+							}
+							printf("----------------------------------------------------------------------\n\n");
 							switch (escolhaNum) {
 							case 1:
-								printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+								printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 2:
-								printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							case 3:
-								printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+								printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 								break;
 							}
 							break;

@@ -713,27 +713,27 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 								return 2;
 							}
 						} else {
-							printf("  %s: ", pessoa[frase_escolhida]);
-							strcpy(texto, "Algo suspeito está acontecendo no estado.");
+							printf("  %s:\n", pessoa[frase_escolhida]);
+							strcpy(texto, "  Algo suspeito está acontecendo no estado.");
 							PrintText(texto);
 						}
 
 					} else // Ele passa por aqui, porém não é o esconderijo
 					{
 						strcpy(texto, dadosCaso.tips[0][estadoAtual]);
-						printf("  %s: ", pessoa[frase_escolhida]);
+						printf("  %s:\n  ", pessoa[frase_escolhida]);
 						PrintText(texto);
 					}
 				} else {
 					strcpy(texto, dadosCaso.tips[0][estadoAtual]);
 
-					printf("  %s: ", pessoa[frase_escolhida]);
+					printf("  %s:\n  ", pessoa[frase_escolhida]);
 					PrintText(texto);
 				}
 
 
 			} else {
-				printf("  %s: ", pessoa[frase_escolhida]);
+				printf("  %s:\n  ", pessoa[frase_escolhida]);
 				strcpy(texto, frasesProntas[frase_escolhida]);
 				PrintText(texto);
 			}
@@ -762,8 +762,8 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 								return 2;
 							}
 						} else {
-							printf("  Gerente do hotel: ");
-							strcpy(texto, "Algo suspeito está acontecendo no estado.");
+							printf("  Gerente do hotel:\n");
+							strcpy(texto, "  Algo suspeito está acontecendo no estado.");
 							PrintText(texto);
 						}
 
@@ -771,19 +771,19 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 					{
 						strcpy(texto, dadosCaso.tips[1][estadoAtual]);
 
-						printf("  Gerente do hotel: ");
+						printf("  Gerente do hotel:\n  ");
 						PrintText(texto);
 					}
 				} else {
 					strcpy(texto, dadosCaso.tips[1][estadoAtual]);
 
-					printf("  Gerente do hotel: ");
+					printf("  Gerente do hotel:\n  ");
 					PrintText(texto);
 				}
 
 
 			} else {
-				printf("  Gerente do hotel: ");
+				printf("  Gerente do hotel:\n  ");
 				strcpy(texto, frasesProntas[frase_escolhida]);
 				PrintText(texto);
 
@@ -814,8 +814,8 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 								return 2;
 							}
 						} else {
-							printf("  Caixa: ");
-							strcpy(texto, "Algo suspeito está acontecendo no estado.");
+							printf("  Caixa:\n");
+							strcpy(texto, "  Algo suspeito está acontecendo no estado.");
 							PrintText(texto);
 						}
 
@@ -823,20 +823,20 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 					{
 						strcpy(texto, dadosCaso.tips[2][estadoAtual]);
 
-						printf("  Caixa: ");
+						printf("  Caixa:\n  ");
 						PrintText(texto);
 
 					}
 				} else {
 					strcpy(texto, dadosCaso.tips[2][estadoAtual]);
 
-					printf("  Caixa: ");
+					printf("  Caixa:\n  ");
 					PrintText(texto);
 				}
 
 
 			} else {
-				printf("  Caixa: ");
+				printf("  Caixa:\n  ");
 				strcpy(texto, frasesProntas[frase_escolhida]);
 				PrintText(texto);
 			}
