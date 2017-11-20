@@ -40,12 +40,12 @@ void MainGame(typeCase myCase, typePlayer player[], int howManySuspects) {
 					break;
 				case GO:
 					printf("----------------------------------------------------------------------\n");
-					printf("|                                 GOI¡S                              |\n");
+					printf("|                                 GOI√ÅS                              |\n");
 					printf("----------------------------------------------------------------------\n");
 					break;
 				case ES:
 					printf("----------------------------------------------------------------------\n");
-					printf("|                             ESPÕRITO SANTO                         |\n");
+					printf("|                             ESP√çRITO SANTO                         |\n");
 					printf("----------------------------------------------------------------------\n");
 					break;
 				case MT:
@@ -65,12 +65,12 @@ void MainGame(typeCase myCase, typePlayer player[], int howManySuspects) {
 					break;
 				case SP:
 					printf("----------------------------------------------------------------------\n");
-					printf("|                               S√O PAULO                            |\n");
+					printf("|                               S√ÉO PAULO                            |\n");
 					printf("----------------------------------------------------------------------\n");
 					break;
 				case PR:
 					printf("----------------------------------------------------------------------\n");
-					printf("|                                 PARAN¡                             |\n");
+					printf("|                                 PARAN√Å                             |\n");
 					printf("----------------------------------------------------------------------\n");
 					break;
 				case RJ:
@@ -98,16 +98,16 @@ void MainGame(typeCase myCase, typePlayer player[], int howManySuspects) {
 			case 2:
 				winFlag = SearchInto(myCase, whereIam, &tempo, &posicaoLadrao, warrantFlag, &viagemFlag);
 				viagemFlag = 0;
-				//Retorno = 0 --> Continua o jogo normalmente, pois ainda n„o È o esconderijo
-				//Retorno = 1 --> Tem mandato, achou o esconderijo, e precisa conferir se È o suspeito certo
-				//Retorno = 2 --> N„o tem o mandato e achou o esconderijo
+				//Retorno = 0 --> Continua o jogo normalmente, pois ainda n√£o √© o esconderijo
+				//Retorno = 1 --> Tem mandato, achou o esconderijo, e precisa conferir se √© o suspeito certo
+				//Retorno = 2 --> N√£o tem o mandato e achou o esconderijo
 				break;
 			case 3:
 				warrantFlag = Computer(suspectsStatus, &tempo, howManySuspects, suspeitos, suspeitoName, warrantFlag);
 				break;
 			case 4:
 
-				printf("\n Tem certeza que gostaria de sair? (Sim/N„o)\n Resposta: ");
+				printf("\n Tem certeza que gostaria de sair? (Sim/N√£o)\n Resposta: ");
 				scanf("%s", &quit);
 
 				if (quit[0] == 's' || quit[0] == 'S') {
@@ -117,7 +117,8 @@ void MainGame(typeCase myCase, typePlayer player[], int howManySuspects) {
 				break;
 		}
 	} while (winFlag == 0 && tempo > 0);
-
+	
+	Sleep(500);
 	if (winFlag != 3) {//Se winFlag for 3 --> Sair
 		
 		if (tempo < 0 || (tempo == 0 && winFlag != 1)){
@@ -131,21 +132,21 @@ void MainGame(typeCase myCase, typePlayer player[], int howManySuspects) {
 			printf("----------------------------------------------------------------------\n");
 			printf("  Mensagem dos Superiores: ");
 			Sleep(750);
-			strcpy(texto, "M·s notÌcias... NÛs acabamos de receber a \n");
+			strcpy(texto, "M√°s not√≠cias... N√≥s acabamos de receber a \n");
 			PrintText(texto);
 
-			strcpy(texto, "informaÁ„o de que o suspeito escapou pelos seus dedos, pois sua \n");
+			strcpy(texto, "informa√ß√£o de que o suspeito escapou pelos seus dedos, pois sua \n");
 			PrintText(texto);
 
-			strcpy(texto, "investigaÁ„o demorou demais!");
+			strcpy(texto, "investiga√ß√£o demorou demais!");
 			PrintText(texto);
 
 			system("pause>nul");
 		}
 
-		if (winFlag == 1) {//Verificar se o suspeito do mandato È o mesmo suspeito do caso
+		if (winFlag == 1) {//Verificar se o suspeito do mandato √© o mesmo suspeito do caso
 			//se for o mesmo suspito aparece mensagem de vitoria
-			//Se n„o for perdeu
+			//Se n√£o for perdeu
 			system("cls");
 			printf("----------------------------------------------------------------------\n");
 			printf("|                              FIM DE JOGO                           |\n");
@@ -160,22 +161,22 @@ void MainGame(typeCase myCase, typePlayer player[], int howManySuspects) {
 			printf(".");
 			Sleep(750);
 			if (strcmp(suspeitoName, myCase.thief.charName) == 0) {
-				//VitÛria
+				//Vit√≥ria
 				printf("\n\n Mensagem dos Superiores: ");
 				Sleep(750);
-				strcpy(texto, "Muito bem! VocÍ conseguiu deter o ladr„o e\nmand·-lo para a pris„o.\n\n Esteja pronto para seu prÛximo caso!");
+				strcpy(texto, "Muito bem! Voc√™ conseguiu deter o ladr√£o e\nmand√°-lo para a pris√£o.\n\n Esteja pronto para seu pr√≥ximo caso!");
 				PrintText(texto);
 				ModificarDadosJogador(player);
 			} else {
 				//Derrota
 				printf("\n\n Mensagem dos Superiores: ");
 				Sleep(750);
-				strcpy(texto, "Ops! Acho que vocÍ tentou prender a pessoa\nerrada.\n Agora o ladr„o sabe que est· sendo procurado e conseguiu fugiu!");
+				strcpy(texto, "Ops! Acho que voc√™ tentou prender a pessoa\nerrada.\n Agora o ladr√£o sabe que est√° sendo procurado e conseguiu fugiu!");
 				PrintText(texto);
 			}
 			system("pause>nul");
 		} else if (winFlag == 2) {
-			//Perdeu pois n„o tinha o mandado de pris„o
+			//Perdeu pois n√£o tinha o mandado de pris√£o
 			system("cls");
 			printf("----------------------------------------------------------------------\n");
 			printf("|                              FIM DE JOGO                           |\n");
@@ -191,13 +192,13 @@ void MainGame(typeCase myCase, typePlayer player[], int howManySuspects) {
 			Sleep(750);
 			printf("\n\n Mensagem dos Superiores: ");
 			Sleep(750);
-			strcpy(texto, "VocÍ capturou o suspeito. Contudo, sem um\n");
+			strcpy(texto, "Voc√™ capturou o suspeito. Contudo, sem um\n");
 			PrintText(texto);
 
-			strcpy(texto, "mandado, nÛs n„o podemos efetuar a pris„o!\n");
+			strcpy(texto, "mandado, n√≥s n√£o podemos efetuar a pris√£o!\n");
 			PrintText(texto);
 
-			strcpy(texto, " Parece que a guangue da Carminha ficar· impune de mais um crime!");
+			strcpy(texto, " Parece que a guangue da Carminha ficar√° impune de mais um crime!");
 			PrintText(texto);
 
 			system("pause>nul");
@@ -210,16 +211,16 @@ void CaseApresentation(typeCase myCase, char NomeJogador[], int dias, int horas)
 
 	system("cls");
 	printf("----------------------------------------------------------------------\n");
-	printf("|                        APRESENTA«¬O DO CASO                        |\n");
+	printf("|                        APRESENTA√á√ÇO DO CASO                        |\n");
 	printf("----------------------------------------------------------------------\n\n  ");
 
 	PrintText(myCase.history);
 	printf("\n\n");
 
-	strcpy(texto, "  Seu objetivo È seguir as pistas e deter o ladr„o em seu esconderijo!\n\n");
+	strcpy(texto, "  Seu objetivo √© seguir as pistas e deter o ladr√£o em seu esconderijo!\n\n");
 	PrintText(texto);
 
-	strcpy(texto, "  VocÍ tem ");
+	strcpy(texto, "  Voc√™ tem ");
 	PrintText(texto);
 	printf("%i", dias);
 	strcpy(texto, " dias e ");
@@ -265,9 +266,9 @@ int ChangeLocation(int whereIam, int *tempo) {
 				printf(" Tempo atual: %i dia[s] e %i hora[s]\n", dias, horas);
 				printf(" Estado atual: Rio Grande do Sul\n");
 				printf(" Escolha um estado para viajar:\n\n");
-				printf("  1- Goi·s\n");
+				printf("  1- Goi√°s\n");
 				printf("  2- Mato Grosso do Sul\n");
-				printf("  3- EspÌrito Santo\n");
+				printf("  3- Esp√≠rito Santo\n");
 				printf("  4- Voltar\n");
 				printf("----------------------------------------------------------------------\n");
 				printf(" Resposta: ");
@@ -337,11 +338,11 @@ int ChangeLocation(int whereIam, int *tempo) {
 				printf("|                              VIAJAR                                |\n");
 				printf("----------------------------------------------------------------------\n");
 				printf(" Tempo atual: %i dia[s] e %i hora[s]\n", dias, horas);
-				printf(" Estado atual: Goi·s\n");
+				printf(" Estado atual: Goi√°s\n");
 				printf(" Escolha um estado para viajar:\n\n");
 				printf("  1- Rio Grande do Sul\n");
 				printf("  2- Minas Gerais\n");
-				printf("  3- S„o Paulo\n");
+				printf("  3- S√£o Paulo\n");
 				printf("  4- Voltar\n");
 				printf("----------------------------------------------------------------------\n");
 				printf(" Resposta: ");
@@ -373,10 +374,10 @@ int ChangeLocation(int whereIam, int *tempo) {
 				printf("|                              VIAJAR                                |\n");
 				printf("----------------------------------------------------------------------\n");
 				printf(" Tempo atual: %i dia[s] e %i hora[s]\n", dias, horas);
-				printf(" Estado atual: EspÌrito Santo\n");
+				printf(" Estado atual: Esp√≠rito Santo\n");
 				printf(" Escolha um estado para viajar:\n\n");
 				printf("  1- Rio Grande do Sul\n");
-				printf("  2- Paran·\n");
+				printf("  2- Paran√°\n");
 				printf("  3- Rio de Janeiro\n");
 				printf("  4- Voltar\n");
 				printf("----------------------------------------------------------------------\n");
@@ -410,7 +411,7 @@ int ChangeLocation(int whereIam, int *tempo) {
 				printf(" Estado atual: Mato Grosso\n");
 				printf(" Escolha um estado para viajar:\n\n");
 				printf("  1- Mato Grosso do Sul\n");
-				printf("  2- S„o Paulo\n");
+				printf("  2- S√£o Paulo\n");
 				printf("  3- Minas Gerais\n");
 				printf("  4- Voltar\n");
 				printf("----------------------------------------------------------------------\n");
@@ -447,7 +448,7 @@ int ChangeLocation(int whereIam, int *tempo) {
 				printf(" Estado atual: Santa Catarina\n");
 				printf(" Escolha um estado para viajar:\n\n");
 				printf("  1- Mato Grosso do Sul\n");
-				printf("  2- Paran·\n");
+				printf("  2- Paran√°\n");
 				printf("  3- Minas Gerais\n");
 				printf("  4- Voltar\n");
 				printf("----------------------------------------------------------------------\n");
@@ -483,7 +484,7 @@ int ChangeLocation(int whereIam, int *tempo) {
 				printf(" Tempo atual: %i dia[s] e %i hora[s]\n", dias, horas);
 				printf(" Estado atual: Minas Gerais\n");
 				printf(" Escolha um estado para viajar:\n\n");
-				printf("  1- Goi·s\n");
+				printf("  1- Goi√°s\n");
 				printf("  2- Mato Grosso\n");
 				printf("  3- Santa Catarina\n");
 				printf("  4- Voltar\n");
@@ -517,9 +518,9 @@ int ChangeLocation(int whereIam, int *tempo) {
 				printf("|                              VIAJAR                                |\n");
 				printf("----------------------------------------------------------------------\n");
 				printf(" Tempo atual: %i dia[s] e %i hora[s]\n", dias, horas);
-				printf(" Estado atual: S„o Paulo\n");
+				printf(" Estado atual: S√£o Paulo\n");
 				printf(" Escolha um estado para viajar:\n\n");
-				printf("  1- Goi·s\n");
+				printf("  1- Goi√°s\n");
 				printf("  2- Mato Grosso\n");
 				printf("  3- Rio de Janeiro\n");
 				printf("  4- Voltar\n");
@@ -553,9 +554,9 @@ int ChangeLocation(int whereIam, int *tempo) {
 				printf("|                              VIAJAR                                |\n");
 				printf("----------------------------------------------------------------------\n");
 				printf(" Tempo atual: %i dia[s] e %i hora[s]\n", dias, horas);
-				printf(" Estado atual: Paran·\n");
+				printf(" Estado atual: Paran√°\n");
 				printf(" Escolha um estado para viajar:\n\n");
-				printf("  1- EspÌrito Santo\n");
+				printf("  1- Esp√≠rito Santo\n");
 				printf("  2- Santa Catarina\n");
 				printf("  3- Rio de Janeiro\n");
 				printf("  4- Voltar\n");
@@ -592,9 +593,9 @@ int ChangeLocation(int whereIam, int *tempo) {
 				printf(" Tempo atual: %i dia[s] e %i hora[s]\n", dias, horas);
 				printf(" Estado atual: Rio de Janeiro\n");
 				printf(" Escolha um estado para viajar:\n\n");
-				printf("  1- EspÌrito Santo\n");
-				printf("  2- S„o Paulo\n");
-				printf("  3- Paran·\n");
+				printf("  1- Esp√≠rito Santo\n");
+				printf("  2- S√£o Paulo\n");
+				printf("  3- Paran√°\n");
 				printf("  4- Voltar\n");
 				printf("----------------------------------------------------------------------\n");
 				printf(" Resposta: ");
@@ -637,9 +638,9 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 	time_t t;
 
 	srand(time(&t));
-	strcpy(frasesProntas[0], "Me desculpe, eu n„o vi ninguÈm assim por aqui.");
-	strcpy(frasesProntas[1], "Me desculpe, eu nunca vi a pessoa que vocÍ est· procurando.");
-	strcpy(frasesProntas[2], "NinguÈm assim passou por aqui.");
+	strcpy(frasesProntas[0], "Me desculpe, eu n√£o vi ningu√©m assim por aqui.");
+	strcpy(frasesProntas[1], "Me desculpe, eu nunca vi a pessoa que voc√™ est√° procurando.");
+	strcpy(frasesProntas[2], "Ningu√©m assim passou por aqui.");
 
 	strcpy(pessoa[0], "Maria");
 	strcpy(pessoa[1], "Pedro");
@@ -660,7 +661,7 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 	if ((dadosCaso.thiefPath[*ponteiro_posicaoLadrao] == (estadoAtual + 48)) && (*viagemFlag == 1)) // Colocar um contador em viagens
 	{																		// para a msg aparecer apenas 1 vez.
 		printf("----------------------------------------------------------------------\n");
-		printf("  Um dos comparsas foi visto! VocÍ deve estar no caminho certo.");
+		printf("  Um dos comparsas foi visto! Voc√™ deve estar no caminho certo.");
 		Sleep(2500);
 	}
 
@@ -671,10 +672,10 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 		printf("----------------------------------------------------------------------\n");
 
 		printf(" Tempo restante: %i dias e %i horas\n", dias, horas);
-		printf(" Tempo de investigaÁ„o: 1 hora\n\n");
+		printf(" Tempo de investiga√ß√£o: 1 hora\n\n");
 
 		printf(" Escolha um local para investigar:\n\n");
-		printf("  1- PraÁa\n");
+		printf("  1- Pra√ßa\n");
 		printf("  2- Hotel\n");
 		printf("  3- Banco\n");
 		printf("----------------------------------------------------------------------\n Resposta: ");
@@ -694,16 +695,16 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 	switch (escolhaLocal) {
 		case 1:
 
-			if (flagCaminho == 1) //Caminho do ladr„o
+			if (flagCaminho == 1) //Caminho do ladr√£o
 			{
 
-				if (dadosCaso.thiefPath[*ponteiro_posicaoLadrao] == (estadoAtual + 48)) //Se encontrar o atual estado do ladr„o
+				if (dadosCaso.thiefPath[*ponteiro_posicaoLadrao] == (estadoAtual + 48)) //Se encontrar o atual estado do ladr√£o
 				{
 					*ponteiro_posicaoLadrao = *ponteiro_posicaoLadrao + 1;
 
 					if (dadosCaso.thiefPath[*ponteiro_posicaoLadrao] == '\0') // Se for o estado do esconderijo
 					{
-						//printf("  VocÍ est· prÛximo!!\n");
+						//printf("  Voc√™ est√° pr√≥ximo!!\n");
 						*ponteiro_posicaoLadrao = *ponteiro_posicaoLadrao - 1;
 
 						if (dadosCaso.hideout == 1) {
@@ -714,11 +715,11 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 							}
 						} else {
 							printf("  %s:\n", pessoa[frase_escolhida]);
-							strcpy(texto, "  Algo suspeito est· acontecendo no estado.");
+							strcpy(texto, "  Algo suspeito est√° acontecendo no estado.");
 							PrintText(texto);
 						}
 
-					} else // Ele passa por aqui, porÈm n„o È o esconderijo
+					} else // Ele passa por aqui, por√©m n√£o √© o esconderijo
 					{
 						strcpy(texto, dadosCaso.tips[0][estadoAtual]);
 						printf("  %s:\n  ", pessoa[frase_escolhida]);
@@ -742,32 +743,32 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 			break;
 		case 2:
 
-			if (flagCaminho == 1) //Caminho do ladr„o
+			if (flagCaminho == 1) //Caminho do ladr√£o
 			{
 
-				if (dadosCaso.thiefPath[*ponteiro_posicaoLadrao] == (estadoAtual + 48)) //Se encontrar o atual estado do ladr„o
+				if (dadosCaso.thiefPath[*ponteiro_posicaoLadrao] == (estadoAtual + 48)) //Se encontrar o atual estado do ladr√£o
 				{
 					*ponteiro_posicaoLadrao = *ponteiro_posicaoLadrao + 1;
 
 					if (dadosCaso.thiefPath[*ponteiro_posicaoLadrao] == '\0') // Se for o estado do esconderijo
 					{
-						//printf("  VocÍ est· prÛximo!!\n");
+						//printf("  Voc√™ est√° pr√≥ximo!!\n");
 						*ponteiro_posicaoLadrao = *ponteiro_posicaoLadrao - 1;
 
 						if (dadosCaso.hideout == 2) {
 							if (warrantFlag == 1) {
-								//printf("  ParabÈns, vocÍ achou o ladr„o :]\n"); // Verificar se tem o mandato
+								//printf("  Parab√©ns, voc√™ achou o ladr√£o :]\n"); // Verificar se tem o mandato
 								return 1;
 							} else {
 								return 2;
 							}
 						} else {
 							printf("  Gerente do hotel:\n");
-							strcpy(texto, "  Algo suspeito est· acontecendo no estado.");
+							strcpy(texto, "  Algo suspeito est√° acontecendo no estado.");
 							PrintText(texto);
 						}
 
-					} else // Ele passa por aqui, porÈm n„o È o esconderijo
+					} else // Ele passa por aqui, por√©m n√£o √© o esconderijo
 					{
 						strcpy(texto, dadosCaso.tips[1][estadoAtual]);
 
@@ -794,32 +795,32 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 
 		case 3:
 
-			if (flagCaminho == 1) //Caminho do ladr„o
+			if (flagCaminho == 1) //Caminho do ladr√£o
 			{
 
-				if (dadosCaso.thiefPath[*ponteiro_posicaoLadrao] == (estadoAtual + 48)) //Se encontrar o atual estado do ladr„o
+				if (dadosCaso.thiefPath[*ponteiro_posicaoLadrao] == (estadoAtual + 48)) //Se encontrar o atual estado do ladr√£o
 				{
 					*ponteiro_posicaoLadrao = *ponteiro_posicaoLadrao + 1;
 
 					if (dadosCaso.thiefPath[*ponteiro_posicaoLadrao] == '\0') // Se for o estado do esconderijo
 					{
-						//printf("  VocÍ est· prÛximo!!\n");
+						//printf("  Voc√™ est√° pr√≥ximo!!\n");
 						*ponteiro_posicaoLadrao = *ponteiro_posicaoLadrao - 1;
 
 						if (dadosCaso.hideout == 3) {
 							if (warrantFlag == 1) {
-								//printf("  ParabÈns, vocÍ achou o ladr„o :]\n"); // Verificar se tem o mandato
+								//printf("  Parab√©ns, voc√™ achou o ladr√£o :]\n"); // Verificar se tem o mandato
 								return 1;
 							} else {
 								return 2;
 							}
 						} else {
 							printf("  Caixa:\n");
-							strcpy(texto, "  Algo suspeito est· acontecendo no estado.");
+							strcpy(texto, "  Algo suspeito est√° acontecendo no estado.");
 							PrintText(texto);
 						}
 
-					} else // Ele passa por aqui, porÈm n„o È o esconderijo
+					} else // Ele passa por aqui, por√©m n√£o √© o esconderijo
 					{
 						strcpy(texto, dadosCaso.tips[2][estadoAtual]);
 
@@ -887,7 +888,7 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 					printf("                  Praia\n");
 					break;
 				case 4:
-					printf("                  NataÁ„o\n");
+					printf("                  Nata√ß√£o\n");
 					break;
 				case 5:
 					printf("                  Luta\n");
@@ -911,10 +912,10 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 					printf("                 Castanho\n");
 					break;
 				case 5:
-					printf("                 Gris·lio\n");
+					printf("                 Gris√°lio\n");
 					break;
 			}
-			printf("  4- CaracterÌstica: ");
+			printf("  4- Caracter√≠stica: ");
 			switch (suspectsStatus[3]) {
 				case 0:
 					printf("\n");
@@ -929,13 +930,13 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 					printf("         Colar\n");
 					break;
 				case 4:
-					printf("         BonÈ\n");
+					printf("         Bon√©\n");
 					break;
 				case 5:
 					printf("         Tatuagem\n");
 					break;
 			}
-			printf("  5- VeÌculo: ");
+			printf("  5- Ve√≠culo: ");
 		switch (suspectsStatus[4]) {
 			case 0:
 				printf("\n");
@@ -947,7 +948,7 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 				printf("                Moto\n");
 				break;
 			case 3:
-				printf("                HelicÛptero\n");
+				printf("                Helic√≥ptero\n");
 				break;
 			case 4:
 				printf("                Bicicleta\n");
@@ -979,7 +980,7 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 					else if (suspectsStatus[0] == '3') {
 						suspectsStatus[0] = 0;
 					}
-				} while (suspectsStatus[0] < 0 || suspectsStatus[0] > 5);	//Loop de verificaÁ„o do sexo
+				} while (suspectsStatus[0] < 0 || suspectsStatus[0] > 5);	//Loop de verifica√ß√£o do sexo
 				break;
 			case 2:
 				do {
@@ -987,7 +988,7 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 					printf("----------------------------------------------------------------------\n");
 					printf("|                                HOBBY                               |\n");
 					printf("----------------------------------------------------------------------\n\n");
-					printf("  1- Futebol\n  2- Samba\n  3- Praia\n  4- NataÁ„o\n  5- Luta\n\n  6- Nenhum\n");
+					printf("  1- Futebol\n  2- Samba\n  3- Praia\n  4- Nata√ß√£o\n  5- Luta\n\n  6- Nenhum\n");
 					printf("----------------------------------------------------------------------\n");
 					printf(" Resposta: ");
 					scanf("%c", &suspectsStatus[1]);
@@ -997,7 +998,7 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 					else if (suspectsStatus[1] == '6') {
 						suspectsStatus[1] = 0;
 					}
-				} while (suspectsStatus[1] < 0 || suspectsStatus[1] > 5);	//Loop de verificaÁ„o do sexo
+				} while (suspectsStatus[1] < 0 || suspectsStatus[1] > 5);	//Loop de verifica√ß√£o do sexo
 				break;
 			case 3:
 				do {
@@ -1005,7 +1006,7 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 					printf("----------------------------------------------------------------------\n");
 					printf("|                                CABELO                              |\n");
 					printf("----------------------------------------------------------------------\n\n");
-					printf("  1- Preto\n  2- Loiro\n  3- Ruivo\n  4- Castanho\n  5- Gris·lio\n\n  6- Nenhum\n");
+					printf("  1- Preto\n  2- Loiro\n  3- Ruivo\n  4- Castanho\n  5- Gris√°lio\n\n  6- Nenhum\n");
 					printf("----------------------------------------------------------------------\n");
 					printf(" Resposta: ");
 					scanf("%c", &suspectsStatus[2]);
@@ -1015,15 +1016,15 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 					else if (suspectsStatus[2] == '6') {
 						suspectsStatus[2] = 0;
 					}
-				} while (suspectsStatus[2] < 0 || suspectsStatus[2] > 5);	//Loop de verificaÁ„o do sexo
+				} while (suspectsStatus[2] < 0 || suspectsStatus[2] > 5);	//Loop de verifica√ß√£o do sexo
 				break;
 			case 4:
 				do {
 					system("cls");
 					printf("----------------------------------------------------------------------\n");
-					printf("|                            CARACTERÕSTICA                          |\n");
+					printf("|                            CARACTER√çSTICA                          |\n");
 					printf("----------------------------------------------------------------------\n\n");
-					printf("  1- Anel\n  2- Pulseira\n  3- Colar\n  4- BonÈ\n  5- Tatuagem\n\n  6- Nenhum\n");
+					printf("  1- Anel\n  2- Pulseira\n  3- Colar\n  4- Bon√©\n  5- Tatuagem\n\n  6- Nenhum\n");
 					printf("----------------------------------------------------------------------\n");
 					printf(" Resposta: ");
 					scanf("%c", &suspectsStatus[3]);
@@ -1033,15 +1034,15 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 					else if (suspectsStatus[3] == '6') {
 						suspectsStatus[3] = 0;
 					}
-				} while (suspectsStatus[3] < 0 || suspectsStatus[3] > 5);	//Loop de verificaÁ„o do sexo
+				} while (suspectsStatus[3] < 0 || suspectsStatus[3] > 5);	//Loop de verifica√ß√£o do sexo
 				break;
 			case 5:
 				do {
 					system("cls");
 					printf("----------------------------------------------------------------------\n");
-					printf("|                                 VEÕCULO                            |\n");
+					printf("|                                 VE√çCULO                            |\n");
 					printf("----------------------------------------------------------------------\n\n");
-					printf("  1- Carro\n  2- Moto\n  3- HelicÛptero\n  4- Bicicleta\n  5- Jatinho\n\n  6- Nenhum\n");
+					printf("  1- Carro\n  2- Moto\n  3- Helic√≥ptero\n  4- Bicicleta\n  5- Jatinho\n\n  6- Nenhum\n");
 					printf("----------------------------------------------------------------------\n");
 					printf(" Resposta: ");
 					scanf("%c", &suspectsStatus[4]);
@@ -1051,7 +1052,7 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 					else if (suspectsStatus[4] == '6') {
 						suspectsStatus[4] = 0;
 					}
-				} while (suspectsStatus[4] < 0 || suspectsStatus[4] > 5);	//Loop de verificaÁ„o do sexo
+				} while (suspectsStatus[4] < 0 || suspectsStatus[4] > 5);	//Loop de verifica√ß√£o do sexo
 				break;
 			case 6:
 				nSuspeitos = 0;
@@ -1066,36 +1067,36 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 								if (suspects[i].hobby - 48 == suspectsStatus[1]) {
 									if (suspectsStatus[2] != 0) {//cabelo
 										if (suspects[i].cabelo - 48 == suspectsStatus[2]) {
-											if (suspectsStatus[3] != 0) {//caracterÌstica
+											if (suspectsStatus[3] != 0) {//caracter√≠stica
 												if (suspects[i].caracteristica - 48 == suspectsStatus[3]) {
-													if (suspectsStatus[4] != 0) {//veÌculo
+													if (suspectsStatus[4] != 0) {//ve√≠culo
 														if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 															//Printa o nome dele
-															//Acrescenta 1 no numero de possÌveis suspeitos
+															//Acrescenta 1 no numero de poss√≠veis suspeitos
 															printf(" %s\n", suspects[i].charName);
 															nSuspeitos++;
 															strcpy(suspectNameAux, suspects[i].charName);
 														}
-													} else {//veÌculo = all
+													} else {//ve√≠culo = all
 														//Printa o nome dele
-														//Acrescenta 1 no numero de possÌveis suspeitos
+														//Acrescenta 1 no numero de poss√≠veis suspeitos
 														printf(" %s\n", suspects[i].charName);
 														nSuspeitos++;
 														strcpy(suspectNameAux, suspects[i].charName);
 													}
 												}
-											} else {//caracterÌstica = all
-												if (suspectsStatus[4] != 0) {//veÌculo
+											} else {//caracter√≠stica = all
+												if (suspectsStatus[4] != 0) {//ve√≠culo
 													if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 														//Printa o nome dele
-														//Acrescenta 1 no numero de possÌveis suspeitos
+														//Acrescenta 1 no numero de poss√≠veis suspeitos
 														printf(" %s\n", suspects[i].charName);
 														nSuspeitos++;
 														strcpy(suspectNameAux, suspects[i].charName);
 													}
-												} else {//veÌculo = all
+												} else {//ve√≠culo = all
 													//Printa o nome dele
-													//Acrescenta 1 no numero de possÌveis suspeitos
+													//Acrescenta 1 no numero de poss√≠veis suspeitos
 													printf(" %s\n", suspects[i].charName);
 													nSuspeitos++;
 													strcpy(suspectNameAux, suspects[i].charName);
@@ -1103,36 +1104,36 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 											}
 										}
 									} else {//cabelo = all
-										if (suspectsStatus[3] != 0) {//caracterÌstica
+										if (suspectsStatus[3] != 0) {//caracter√≠stica
 											if (suspects[i].caracteristica - 48 == suspectsStatus[3]) {
-												if (suspectsStatus[4] != 0) {//veÌculo
+												if (suspectsStatus[4] != 0) {//ve√≠culo
 													if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 														//Printa o nome dele
-														//Acrescenta 1 no numero de possÌveis suspeitos
+														//Acrescenta 1 no numero de poss√≠veis suspeitos
 														printf(" %s\n", suspects[i].charName);
 														nSuspeitos++;
 														strcpy(suspectNameAux, suspects[i].charName);
 													}
-												} else {//veÌculo = all
+												} else {//ve√≠culo = all
 													//Printa o nome dele
-													//Acrescenta 1 no numero de possÌveis suspeitos
+													//Acrescenta 1 no numero de poss√≠veis suspeitos
 													printf(" %s\n", suspects[i].charName);
 													nSuspeitos++;
 													strcpy(suspectNameAux, suspects[i].charName);
 												}
 											}
-										} else {//caracterÌstica = all
-											if (suspectsStatus[4] != 0) {//veÌculo
+										} else {//caracter√≠stica = all
+											if (suspectsStatus[4] != 0) {//ve√≠culo
 												if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 													//Printa o nome dele
-													//Acrescenta 1 no numero de possÌveis suspeitos
+													//Acrescenta 1 no numero de poss√≠veis suspeitos
 													printf(" %s\n", suspects[i].charName);
 													nSuspeitos++;
 													strcpy(suspectNameAux, suspects[i].charName);
 												}
-											} else {//veÌculo = all
+											} else {//ve√≠culo = all
 												//Printa o nome dele
-												//Acrescenta 1 no numero de possÌveis suspeitos
+												//Acrescenta 1 no numero de poss√≠veis suspeitos
 												printf(" %s\n", suspects[i].charName);
 												nSuspeitos++;
 												strcpy(suspectNameAux, suspects[i].charName);
@@ -1143,36 +1144,36 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 							} else {//hobby = all
 								if (suspectsStatus[2] != 0) {//cabelo
 									if (suspects[i].cabelo - 48 == suspectsStatus[2]) {
-										if (suspectsStatus[3] != 0) {//caracterÌstica
+										if (suspectsStatus[3] != 0) {//caracter√≠stica
 											if (suspects[i].caracteristica - 48 == suspectsStatus[3]) {
-												if (suspectsStatus[4] != 0) {//veÌculo
+												if (suspectsStatus[4] != 0) {//ve√≠culo
 													if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 														//Printa o nome dele
-														//Acrescenta 1 no numero de possÌveis suspeitos
+														//Acrescenta 1 no numero de poss√≠veis suspeitos
 														printf(" %s\n", suspects[i].charName);
 														nSuspeitos++;
 														strcpy(suspectNameAux, suspects[i].charName);
 													}
-												} else {//veÌculo = all
+												} else {//ve√≠culo = all
 													//Printa o nome dele
-													//Acrescenta 1 no numero de possÌveis suspeitos
+													//Acrescenta 1 no numero de poss√≠veis suspeitos
 													printf(" %s\n", suspects[i].charName);
 													nSuspeitos++;
 													strcpy(suspectNameAux, suspects[i].charName);
 												}
 											}
-										} else {//caracterÌstica = all
-											if (suspectsStatus[4] != 0) {//veÌculo
+										} else {//caracter√≠stica = all
+											if (suspectsStatus[4] != 0) {//ve√≠culo
 												if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 													//Printa o nome dele
-													//Acrescenta 1 no numero de possÌveis suspeitos
+													//Acrescenta 1 no numero de poss√≠veis suspeitos
 													printf(" %s\n", suspects[i].charName);
 													nSuspeitos++;
 													strcpy(suspectNameAux, suspects[i].charName);
 												}
-											} else {//veÌculo = all
+											} else {//ve√≠culo = all
 												//Printa o nome dele
-												//Acrescenta 1 no numero de possÌveis suspeitos
+												//Acrescenta 1 no numero de poss√≠veis suspeitos
 												printf(" %s\n", suspects[i].charName);
 												nSuspeitos++;
 												strcpy(suspectNameAux, suspects[i].charName);
@@ -1180,36 +1181,36 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 										}
 									}
 								} else {//cabelo = all
-									if (suspectsStatus[3] != 0) {//caracterÌstica
+									if (suspectsStatus[3] != 0) {//caracter√≠stica
 										if (suspects[i].caracteristica - 48 == suspectsStatus[3]) {
-											if (suspectsStatus[4] != 0) {//veÌculo
+											if (suspectsStatus[4] != 0) {//ve√≠culo
 												if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 													//Printa o nome dele
-													//Acrescenta 1 no numero de possÌveis suspeitos
+													//Acrescenta 1 no numero de poss√≠veis suspeitos
 													printf(" %s\n", suspects[i].charName);
 													nSuspeitos++;
 													strcpy(suspectNameAux, suspects[i].charName);
 												}
-											} else {//veÌculo = all
+											} else {//ve√≠culo = all
 												//Printa o nome dele
-												//Acrescenta 1 no numero de possÌveis suspeitos
+												//Acrescenta 1 no numero de poss√≠veis suspeitos
 												printf(" %s\n", suspects[i].charName);
 												nSuspeitos++;
 												strcpy(suspectNameAux, suspects[i].charName);
 											}
 										}
-									} else {//caracterÌstica = all
-										if (suspectsStatus[4] != 0) {//veÌculo
+									} else {//caracter√≠stica = all
+										if (suspectsStatus[4] != 0) {//ve√≠culo
 											if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 												//Printa o nome dele
-												//Acrescenta 1 no numero de possÌveis suspeitos
+												//Acrescenta 1 no numero de poss√≠veis suspeitos
 												printf(" %s\n", suspects[i].charName);
 												nSuspeitos++;
 												strcpy(suspectNameAux, suspects[i].charName);
 											}
-										} else {//veÌculo = all
+										} else {//ve√≠culo = all
 											//Printa o nome dele
-											//Acrescenta 1 no numero de possÌveis suspeitos
+											//Acrescenta 1 no numero de poss√≠veis suspeitos
 											printf(" %s\n", suspects[i].charName);
 											nSuspeitos++;
 											strcpy(suspectNameAux, suspects[i].charName);
@@ -1224,36 +1225,36 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 							if (suspects[i].hobby - 48 == suspectsStatus[1]) {
 								if (suspectsStatus[2] != 0) {//cabelo
 									if (suspects[i].cabelo - 48 == suspectsStatus[2]) {
-										if (suspectsStatus[3] != 0) {//caracterÌstica
+										if (suspectsStatus[3] != 0) {//caracter√≠stica
 											if (suspects[i].caracteristica - 48 == suspectsStatus[3]) {
-												if (suspectsStatus[4] != 0) {//veÌculo
+												if (suspectsStatus[4] != 0) {//ve√≠culo
 													if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 														//Printa o nome dele
-														//Acrescenta 1 no numero de possÌveis suspeitos
+														//Acrescenta 1 no numero de poss√≠veis suspeitos
 														printf(" %s\n", suspects[i].charName);
 														nSuspeitos++;
 														strcpy(suspectNameAux, suspects[i].charName);
 													}
-												} else {//veÌculo = all
+												} else {//ve√≠culo = all
 													//Printa o nome dele
-													//Acrescenta 1 no numero de possÌveis suspeitos
+													//Acrescenta 1 no numero de poss√≠veis suspeitos
 													printf(" %s\n", suspects[i].charName);
 													nSuspeitos++;
 													strcpy(suspectNameAux, suspects[i].charName);
 												}
 											}
-										} else {//caracterÌstica = all
-											if (suspectsStatus[4] != 0) {//veÌculo
+										} else {//caracter√≠stica = all
+											if (suspectsStatus[4] != 0) {//ve√≠culo
 												if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 													//Printa o nome dele
-													//Acrescenta 1 no numero de possÌveis suspeitos
+													//Acrescenta 1 no numero de poss√≠veis suspeitos
 													printf(" %s\n", suspects[i].charName);
 													nSuspeitos++;
 													strcpy(suspectNameAux, suspects[i].charName);
 												}
-											} else {//veÌculo = all
+											} else {//ve√≠culo = all
 												//Printa o nome dele
-												//Acrescenta 1 no numero de possÌveis suspeitos
+												//Acrescenta 1 no numero de poss√≠veis suspeitos
 												printf(" %s\n", suspects[i].charName);
 												nSuspeitos++;
 												strcpy(suspectNameAux, suspects[i].charName);
@@ -1261,36 +1262,36 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 										}
 									}
 								} else {//cabelo = all
-									if (suspectsStatus[3] != 0) {//caracterÌstica
+									if (suspectsStatus[3] != 0) {//caracter√≠stica
 										if (suspects[i].caracteristica - 48 == suspectsStatus[3]) {
-											if (suspectsStatus[4] != 0) {//veÌculo
+											if (suspectsStatus[4] != 0) {//ve√≠culo
 												if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 													//Printa o nome dele
-													//Acrescenta 1 no numero de possÌveis suspeitos
+													//Acrescenta 1 no numero de poss√≠veis suspeitos
 													printf(" %s\n", suspects[i].charName);
 													nSuspeitos++;
 													strcpy(suspectNameAux, suspects[i].charName);
 												}
-											} else {//veÌculo = all
+											} else {//ve√≠culo = all
 												//Printa o nome dele
-												//Acrescenta 1 no numero de possÌveis suspeitos
+												//Acrescenta 1 no numero de poss√≠veis suspeitos
 												printf(" %s\n", suspects[i].charName);
 												nSuspeitos++;
 												strcpy(suspectNameAux, suspects[i].charName);
 											}
 										}
-									} else {//caracterÌstica = all
-										if (suspectsStatus[4] != 0) {//veÌculo
+									} else {//caracter√≠stica = all
+										if (suspectsStatus[4] != 0) {//ve√≠culo
 											if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 												//Printa o nome dele
-												//Acrescenta 1 no numero de possÌveis suspeitos
+												//Acrescenta 1 no numero de poss√≠veis suspeitos
 												printf(" %s\n", suspects[i].charName);
 												nSuspeitos++;
 												strcpy(suspectNameAux, suspects[i].charName);
 											}
-										} else {//veÌculo = all
+										} else {//ve√≠culo = all
 											//Printa o nome dele
-											//Acrescenta 1 no numero de possÌveis suspeitos
+											//Acrescenta 1 no numero de poss√≠veis suspeitos
 											printf(" %s\n", suspects[i].charName);
 											nSuspeitos++;
 											strcpy(suspectNameAux, suspects[i].charName);
@@ -1301,36 +1302,36 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 						} else {//hobby = all
 							if (suspectsStatus[2] != 0) {//cabelo
 								if (suspects[i].cabelo - 48 == suspectsStatus[2]) {
-									if (suspectsStatus[3] != 0) {//caracterÌstica
+									if (suspectsStatus[3] != 0) {//caracter√≠stica
 										if (suspects[i].caracteristica - 48 == suspectsStatus[3]) {
-											if (suspectsStatus[4] != 0) {//veÌculo
+											if (suspectsStatus[4] != 0) {//ve√≠culo
 												if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 													//Printa o nome dele
-													//Acrescenta 1 no numero de possÌveis suspeitos
+													//Acrescenta 1 no numero de poss√≠veis suspeitos
 													printf(" %s\n", suspects[i].charName);
 													nSuspeitos++;
 													strcpy(suspectNameAux, suspects[i].charName);
 												}
-											} else {//veÌculo = all
+											} else {//ve√≠culo = all
 												//Printa o nome dele
-												//Acrescenta 1 no numero de possÌveis suspeitos
+												//Acrescenta 1 no numero de poss√≠veis suspeitos
 												printf(" %s\n", suspects[i].charName);
 												nSuspeitos++;
 												strcpy(suspectNameAux, suspects[i].charName);
 											}
 										}
-									} else {//caracterÌstica = all
-										if (suspectsStatus[4] != 0) {//veÌculo
+									} else {//caracter√≠stica = all
+										if (suspectsStatus[4] != 0) {//ve√≠culo
 											if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 												//Printa o nome dele
-												//Acrescenta 1 no numero de possÌveis suspeitos
+												//Acrescenta 1 no numero de poss√≠veis suspeitos
 												printf(" %s\n", suspects[i].charName);
 												nSuspeitos++;
 												strcpy(suspectNameAux, suspects[i].charName);
 											}
-										} else {//veÌculo = all
+										} else {//ve√≠culo = all
 											//Printa o nome dele
-											//Acrescenta 1 no numero de possÌveis suspeitos
+											//Acrescenta 1 no numero de poss√≠veis suspeitos
 											printf(" %s\n", suspects[i].charName);
 											nSuspeitos++;
 											strcpy(suspectNameAux, suspects[i].charName);
@@ -1338,36 +1339,36 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 									}
 								}
 							} else {//cabelo = all
-								if (suspectsStatus[3] != 0) {//caracterÌstica
+								if (suspectsStatus[3] != 0) {//caracter√≠stica
 									if (suspects[i].caracteristica - 48 == suspectsStatus[3]) {
-										if (suspectsStatus[4] != 0) {//veÌculo
+										if (suspectsStatus[4] != 0) {//ve√≠culo
 											if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 												//Printa o nome dele
-												//Acrescenta 1 no numero de possÌveis suspeitos
+												//Acrescenta 1 no numero de poss√≠veis suspeitos
 												printf(" %s\n", suspects[i].charName);
 												nSuspeitos++;
 												strcpy(suspectNameAux, suspects[i].charName);
 											}
-										} else {//veÌculo = all
+										} else {//ve√≠culo = all
 											//Printa o nome dele
-											//Acrescenta 1 no numero de possÌveis suspeitos
+											//Acrescenta 1 no numero de poss√≠veis suspeitos
 											printf(" %s\n", suspects[i].charName);
 											nSuspeitos++;
 											strcpy(suspectNameAux, suspects[i].charName);
 										}
 									}
-								} else {//caracterÌstica = all
-									if (suspectsStatus[4] != 0) {//veÌculo
+								} else {//caracter√≠stica = all
+									if (suspectsStatus[4] != 0) {//ve√≠culo
 										if (suspects[i].veiculo - 48 == suspectsStatus[4]) {
 											//Printa o nome dele
-											//Acrescenta 1 no numero de possÌveis suspeitos
+											//Acrescenta 1 no numero de poss√≠veis suspeitos
 											printf(" %s\n", suspects[i].charName);
 											nSuspeitos++;
 											strcpy(suspectNameAux, suspects[i].charName);
 										}
-									} else {//veÌculo = all
+									} else {//ve√≠culo = all
 										//Printa o nome dele
-										//Acrescenta 1 no numero de possÌveis suspeitos
+										//Acrescenta 1 no numero de poss√≠veis suspeitos
 										printf(" %s\n", suspects[i].charName);
 										nSuspeitos++;
 										strcpy(suspectNameAux, suspects[i].charName);
@@ -1385,7 +1386,7 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 				else if (nSuspeitos == 1) {
 					printf("----------------------------------------------------------------------\n");
 					strcpy(suspeitoName, suspectNameAux);
-					printf(" Mandado de pris„o para %s adquirido!", suspeitoName);
+					printf(" Mandado de pris√£o para %s adquirido!", suspeitoName);
 					warrant = 1;
 				} else {
 					warrant = 0;
