@@ -4,7 +4,7 @@
 void MainGame(typeCase myCase, typePlayer player[], int howManySuspects) {
 	char texto[1500], suspectsStatus[] = { 0, 0, 0, 0, 0 }, suspeitoName[50];
 	int tempo, dias, horas, whereIam, posicaoLadrao = 0;
-	int ansFlag, winFlag = 0, warrantFlag = 0;
+	int ansFlag, winFlag = 0, warrantFlag = 0, viagemFlag = 1;
 	int escolhaNum;
 	char quit[5];
 
@@ -19,6 +19,9 @@ void MainGame(typeCase myCase, typePlayer player[], int howManySuspects) {
 	ObterSuspeitos(suspeitos, howManySuspects);
 
 	do {
+		if (tempo <= 0) {
+			break;
+		}
 		dias = tempo / 24;
 		horas = tempo % 24;
 		ansFlag = 0;
@@ -90,9 +93,11 @@ void MainGame(typeCase myCase, typePlayer player[], int howManySuspects) {
 		switch (escolhaNum) {
 			case 1:
 				whereIam = ChangeLocation(whereIam, &tempo); //escolhe um lugar pra ir e salva o numero desse lugar (SP - 7)
+				viagemFlag = 1;
 				break;
 			case 2:
-				winFlag = SearchInto(myCase, whereIam, &tempo, &posicaoLadrao, warrantFlag);
+				winFlag = SearchInto(myCase, whereIam, &tempo, &posicaoLadrao, warrantFlag, &viagemFlag);
+				viagemFlag = 0;
 				//Retorno = 0 --> Continua o jogo normalmente, pois ainda não é o esconderijo
 				//Retorno = 1 --> Tem mandato, achou o esconderijo, e precisa conferir se é o suspeito certo
 				//Retorno = 2 --> Não tem o mandato e achou o esconderijo
@@ -114,16 +119,88 @@ void MainGame(typeCase myCase, typePlayer player[], int howManySuspects) {
 	} while (winFlag == 0 && tempo > 0);
 
 	if (winFlag != 3) {//Se winFlag for 3 --> Sair
-		if (tempo < 0) {
-			winFlag = 0;
+		
+		if (tempo < 0 || (tempo == 0 && winFlag != 1)){
+			if (tempo < 0) {
+				winFlag = 0;
+			}
 			//aparecer que perdeu pois acabou o tempo
+			system("cls");
+			printf("----------------------------------------------------------------------\n");
+			printf("|                              FIM DE JOGO                           |\n");
+			printf("----------------------------------------------------------------------\n");
+			printf("  Mensagem dos Superiores: ");
+			Sleep(750);
+			strcpy(texto, "Más notícias... Nós acabamos de receber a \n");
+			PrintText(texto);
+
+			strcpy(texto, "informação de que o suspeito escapou pelos seus dedos, pois sua \n");
+			PrintText(texto);
+
+			strcpy(texto, "investigação demorou demais!");
+			PrintText(texto);
+
+			system("pause>nul");
 		}
 
 		if (winFlag == 1) {//Verificar se o suspeito do mandato é o mesmo suspeito do caso
 			//se for o mesmo suspito aparece mensagem de vitoria
 			//Se não for perdeu
+			system("cls");
+			printf("----------------------------------------------------------------------\n");
+			printf("|                              FIM DE JOGO                           |\n");
+			printf("----------------------------------------------------------------------\n");
+			strcpy(texto, " Prendendo o suspeito");
+			PrintText(texto);
+			Sleep(500);
+			printf(".");
+			Sleep(750);
+			printf(".");
+			Sleep(1000);
+			printf(".");
+			Sleep(750);
+			if (strcmp(suspeitoName, myCase.thief.charName) == 0) {
+				//Vitória
+				printf("\n\n Mensagem dos Superiores: ");
+				Sleep(750);
+				strcpy(texto, "Muito bem! Você conseguiu deter o ladrão e\nmandá-lo para a prisão.\n\n Esteja pronto para seu próximo caso!");
+				PrintText(texto);
+				ModificarDadosJogador(player);
+			} else {
+				//Derrota
+				printf("\n\n Mensagem dos Superiores: ");
+				Sleep(750);
+				strcpy(texto, "Ops! Acho que você tentou prender a pessoa\nerrada.\n Agora o ladrão sabe que está sendo procurado e conseguiu fugiu!");
+				PrintText(texto);
+			}
+			system("pause>nul");
 		} else if (winFlag == 2) {
-			//Perdeu pois não tinha o mandato de prisão
+			//Perdeu pois não tinha o mandado de prisão
+			system("cls");
+			printf("----------------------------------------------------------------------\n");
+			printf("|                              FIM DE JOGO                           |\n");
+			printf("----------------------------------------------------------------------\n");
+			strcpy(texto, " Prendendo o suspeito");
+			PrintText(texto);
+			Sleep(500);
+			printf(".");
+			Sleep(750);
+			printf(".");
+			Sleep(1000);
+			printf(".");
+			Sleep(750);
+			printf("\n\n Mensagem dos Superiores: ");
+			Sleep(750);
+			strcpy(texto, "Você capturou o suspeito. Contudo, sem um\n");
+			PrintText(texto);
+
+			strcpy(texto, "mandado, nós não podemos efetuar a prisão!\n");
+			PrintText(texto);
+
+			strcpy(texto, " Parece que a guangue da Carminha ficará impune de mais um crime!");
+			PrintText(texto);
+
+			system("pause>nul");
 		}
 	}
 }
@@ -158,10 +235,14 @@ void PrintText(char texto[]) {
 	int i = 0;
 
 	do {
-		printf("%c", texto[i]);
-		if (texto[i] != ' ') {
-			Sleep(40);
+		
+		if (texto[i] != '|') {
+			printf("%c", texto[i]);
+			
+		} else {
+			printf("\n");
 		}
+		Sleep(45);
 		i++;
 	} while (texto[i] != '\0');
 }
@@ -550,8 +631,7 @@ int ChangeLocation(int whereIam, int *tempo) {
 	return whereIam;
 }
 
-
-int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *ponteiro_posicaoLadrao, int warrantFlag) {
+int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *ponteiro_posicaoLadrao, int warrantFlag, int *viagemFlag) {
 	int escolhaLocal, dias, horas, i, flagCaminho, frase_escolhida;
 	char texto[500], frasesProntas[3][100], pessoa[3][10];
 	time_t t;
@@ -569,14 +649,6 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 	dias = *ponteiro_tempo / 24;
 	horas = *ponteiro_tempo % 24;
 
-	/*for (i = 0; dadosCaso.thiefPath[i] != '\0'; i++)
-	{
-	if (dadosCaso.thiefPath[i] == (estadoAtual+48))
-	{
-	flagCaminho = 1;
-	}
-	}*/
-
 	i = 0;
 	do {
 		if (dadosCaso.thiefPath[i] == (estadoAtual + 48)) {
@@ -585,28 +657,37 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 		i++;
 	} while (dadosCaso.thiefPath[i] != '\0' && (i - 1) != *ponteiro_posicaoLadrao);
 
-	if (dadosCaso.thiefPath[*ponteiro_posicaoLadrao] == (estadoAtual + 48)) // Colocar um contador em viagens
+	if ((dadosCaso.thiefPath[*ponteiro_posicaoLadrao] == (estadoAtual + 48)) && (*viagemFlag == 1)) // Colocar um contador em viagens
 	{																		// para a msg aparecer apenas 1 vez.
 		printf("----------------------------------------------------------------------\n");
-		printf("  Um dos comparsas foi visto! Você deve estar no caminho certo.\n");
+		printf("  Um dos comparsas foi visto! Você deve estar no caminho certo.");
 		Sleep(2500);
 	}
 
-	system("cls");
-	printf("----------------------------------------------------------------------\n");
-	printf("|                             INVESTIGAR                             |\n");
-	printf("----------------------------------------------------------------------\n");
+	do {
+		system("cls");
+		printf("----------------------------------------------------------------------\n");
+		printf("|                             INVESTIGAR                             |\n");
+		printf("----------------------------------------------------------------------\n");
 
-	printf(" Tempo restante: %i dias e %i horas\n", dias, horas);
-	printf(" Tempo de investigação: 1 hora\n\n");
+		printf(" Tempo restante: %i dias e %i horas\n", dias, horas);
+		printf(" Tempo de investigação: 1 hora\n\n");
 
-	printf(" Escolha um local para investigar:\n\n");
-	printf("  1 - Praça\n");
-	printf("  2 - Hotel\n");
-	printf("  3 - Banco\n");
-	printf("----------------------------------------------------------------------\n Resposta: ");
-	scanf("%i", &escolhaLocal);
-
+		printf(" Escolha um local para investigar:\n\n");
+		printf("  1- Praça\n");
+		printf("  2- Hotel\n");
+		printf("  3- Banco\n");
+		printf("----------------------------------------------------------------------\n Resposta: ");
+		scanf("%i", &escolhaLocal);
+	} while (escolhaLocal < 1 || escolhaLocal > 3);
+	printf("\n Investigando");
+	Sleep(500);
+	printf(".");
+	Sleep(750);
+	printf(".");
+	Sleep(1000);
+	printf(".");
+	Sleep(750);
 	printf("\n----------------------------------------------------------------------\n");
 
 	frase_escolhida = (rand() % 3);
@@ -632,27 +713,32 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 								return 2;
 							}
 						} else {
-							printf("  %s: Tudo o que sei é que está acontecendo algo suspeito no estado\n", pessoa[frase_escolhida]);
+							printf("  %s: ", pessoa[frase_escolhida]);
+							strcpy(texto, "Algo suspeito está acontecendo no estado.");
+							PrintText(texto);
 						}
 
 					} else // Ele passa por aqui, porém não é o esconderijo
 					{
 						strcpy(texto, dadosCaso.tips[0][estadoAtual]);
-
-						printf("  %s: %s\n", pessoa[frase_escolhida], texto);
+						printf("  %s: ", pessoa[frase_escolhida]);
+						PrintText(texto);
 					}
 				} else {
 					strcpy(texto, dadosCaso.tips[0][estadoAtual]);
 
-					printf("  %s: %s\n", pessoa[frase_escolhida], texto);
+					printf("  %s: ", pessoa[frase_escolhida]);
+					PrintText(texto);
 				}
 
 
 			} else {
-				printf("  %s: %s\n", pessoa[frase_escolhida], frasesProntas[frase_escolhida]);
+				printf("  %s: ", pessoa[frase_escolhida]);
+				strcpy(texto, frasesProntas[frase_escolhida]);
+				PrintText(texto);
 			}
 
-			system("pause");
+			system("pause>nul");
 			break;
 		case 2:
 
@@ -676,27 +762,34 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 								return 2;
 							}
 						} else {
-							printf("  Gerente do hotel: Tudo o que sei é que está acontecendo algo suspeito no estado\n");
+							printf("  Gerente do hotel: ");
+							strcpy(texto, "Algo suspeito está acontecendo no estado.");
+							PrintText(texto);
 						}
 
 					} else // Ele passa por aqui, porém não é o esconderijo
 					{
 						strcpy(texto, dadosCaso.tips[1][estadoAtual]);
 
-						printf("  Gerente do hotel: %s\n", texto);
+						printf("  Gerente do hotel: ");
+						PrintText(texto);
 					}
 				} else {
 					strcpy(texto, dadosCaso.tips[1][estadoAtual]);
 
-					printf("  Gerente do hotel: %s\n", texto);
+					printf("  Gerente do hotel: ");
+					PrintText(texto);
 				}
 
 
 			} else {
-				printf("  Gerente do hotel: %s\n", frasesProntas[frase_escolhida]);
+				printf("  Gerente do hotel: ");
+				strcpy(texto, frasesProntas[frase_escolhida]);
+				PrintText(texto);
+
 			}
 
-			system("pause");
+			system("pause>nul");
 			break;
 
 		case 3:
@@ -721,29 +814,35 @@ int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *po
 								return 2;
 							}
 						} else {
-							printf("  Caixa: Tudo o que sei é que está acontecendo algo suspeito no estado\n");
+							printf("  Caixa: ");
+							strcpy(texto, "Algo suspeito está acontecendo no estado.");
+							PrintText(texto);
 						}
 
 					} else // Ele passa por aqui, porém não é o esconderijo
 					{
 						strcpy(texto, dadosCaso.tips[2][estadoAtual]);
 
-						printf("  Caixa: %s\n", texto);
+						printf("  Caixa: ");
+						PrintText(texto);
+
 					}
 				} else {
 					strcpy(texto, dadosCaso.tips[2][estadoAtual]);
 
-					printf("  Caixa: %s\n", texto);
+					printf("  Caixa: ");
+					PrintText(texto);
 				}
 
 
 			} else {
-				printf("  Caixa: %s\n", frasesProntas[frase_escolhida]);
+				printf("  Caixa: ");
+				strcpy(texto, frasesProntas[frase_escolhida]);
+				PrintText(texto);
 			}
 
-			system("pause");
+			system("pause>nul");
 			break;
-
 	}
 
 	*ponteiro_tempo = *ponteiro_tempo - 1;
@@ -1286,7 +1385,7 @@ int Computer(char suspectsStatus[], int *tempo, int howManySuspects, typeChar su
 				else if (nSuspeitos == 1) {
 					printf("----------------------------------------------------------------------\n");
 					strcpy(suspeitoName, suspectNameAux);
-					printf("\n Mandato de prisão para %s adquirido!\n", suspeitoName);
+					printf(" Mandado de prisão para %s adquirido!", suspeitoName);
 					warrant = 1;
 				} else {
 					warrant = 0;
@@ -1332,4 +1431,40 @@ void ObterSuspeitos(typeChar suspeitos[], int howManySuspects) {
 		caracter = fgetc(suspeitosFile);
 	}
 	fclose(suspeitosFile);
+}
+
+void ModificarDadosJogador(typePlayer player[]) {
+	FILE *arq;
+	char arqName[60], senhaJogador[50];
+
+	player[0].exp += 1;
+	if (player[0].level == 1) {
+		if (player[0].exp >= 2/*max nivel 1 exp*/) {
+			player[0].level++;
+			int aux = player[0].exp - 1;
+			player[0].exp = 0 + aux;
+		}
+	} else if (player[0].level == 2) {
+		if (player[0].exp >= 4/*max nivel 2 exp*/) {
+			player[0].level++;
+			int aux = player[0].exp - 1;
+			player[0].exp = 0 + aux;
+		}
+	}
+
+	strcpy(arqName, player[0].name);
+	strcat(arqName, ".txt");
+
+	arq = fopen(arqName, "r");
+	if (arq != NULL) {
+		fscanf(arq, "%s", senhaJogador);
+		fclose(arq);
+
+		arq = fopen(arqName, "w");
+		fprintf(arq, "%s\n\n", senhaJogador);
+		fprintf(arq, "%i\n", player[0].level);
+		fprintf(arq, "%i\n\n", player[0].exp);
+		fprintf(arq, "0");
+		fclose(arq);
+	}
 }

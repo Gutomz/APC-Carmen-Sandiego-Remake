@@ -61,8 +61,11 @@ void main() {
 					}
 				} while (opcaoMenuJogador != 4);
 				break;
+			case 3://Ranking
+				MostrarRanking();
+				break;
 		}
-	} while (opcaoMenu != 3);
+	} while (opcaoMenu != 4);
 
 
 
@@ -87,15 +90,15 @@ int BemVindo() { //escolha do modo de jogo
 		printf("|                          ONDE TÁ A CARMINHA?                       |\n");
 		printf("----------------------------------------------------------------------\n");
 		printf(" Escolha uma das opções abaixo:\n\n");
-		printf("  1- Administrador\n  2- Jogador\n  3- Sair\n");
+		printf("  1- Administrador\n  2- Jogador\n  3- Ranking\n  4- Sair\n");
 		printf("----------------------------------------------------------------------\n");
 		printf(" Resposta: ");
 		scanf("%i", &OpcaoEntrada);
-		if (OpcaoEntrada < 1 || OpcaoEntrada > 3) {
+		if (OpcaoEntrada < 1 || OpcaoEntrada > 4) {
 			printf("\n Opção inválida!");
 			Sleep(1500);
 		}
-	} while (OpcaoEntrada < 1 || OpcaoEntrada > 3);
+	} while (OpcaoEntrada < 1 || OpcaoEntrada > 4);
 
 
 	return OpcaoEntrada;

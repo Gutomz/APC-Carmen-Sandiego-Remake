@@ -569,20 +569,20 @@ int ThiefPathCreation(typeCase whitchCase) {
 		printf("----------------------------------------------------------------------\n");
 		printf("|                       CRIAR CASO - CAMINHO                         |\n");
 		printf("----------------------------------------------------------------------\n");
-		printf(" Escolha quantos lugares o ladrão irá passar (2 - %i)\n", maxPlaces);
+		printf(" Escolha quantos lugares o ladrão irá passar (4 - %i)\n", maxPlaces);
 		printf("----------------------------------------------------------------------\n");
 		printf(" Resposta: ");
 		scanf("%i", &whitchCase.howManyPlaces);
-		if (whitchCase.howManyPlaces >= 2 && whitchCase.howManyPlaces <= maxPlaces) {
+		if (whitchCase.howManyPlaces >= 4 && whitchCase.howManyPlaces <= maxPlaces) {
 			flag = 1;
 		}
 	} while (flag == 0);
 
-	if (whitchCase.howManyPlaces >= 2 && whitchCase.howManyPlaces <= 4) {
+	if (whitchCase.howManyPlaces >= 4 && whitchCase.howManyPlaces <= 6) {
 		dificuldade = 1;
-	} else if (whitchCase.howManyPlaces >= 5 && whitchCase.howManyPlaces <= 7) {
+	} else if (whitchCase.howManyPlaces >= 7 && whitchCase.howManyPlaces <= 8) {
 		dificuldade = 2;
-	} else if (whitchCase.howManyPlaces >= 8 && whitchCase.howManyPlaces <= 10) {
+	} else if (whitchCase.howManyPlaces >= 9 && whitchCase.howManyPlaces <= 10) {
 		dificuldade = 3;
 	}
 
@@ -633,7 +633,7 @@ int ThiefPathCreation(typeCase whitchCase) {
 				scanf("%i", &escolhaNum);
 				if (escolhaNum >= 1 && escolhaNum <= 3) {
 					switch (escolhaNum) {
-					case 1:
+					case 1:	
 						whitchCase.thiefPath[count] = 2;
 						break;
 					case 2:
@@ -643,8 +643,17 @@ int ThiefPathCreation(typeCase whitchCase) {
 						whitchCase.thiefPath[count] = 3;
 						break;
 					}
-					flag = 1;
-					count++;
+					for (i = 0; i < count; i++) {
+						if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+							printf("\n Esse lugar já foi adicionado!");
+							Sleep(750);
+							i = 500;
+						}
+					}
+					if (i != 501) {
+						flag = 1;
+						count++;
+					}
 				}
 			} while (flag == 0);
 			break;
@@ -675,8 +684,17 @@ int ThiefPathCreation(typeCase whitchCase) {
 						whitchCase.thiefPath[count] = 5;
 						break;
 					}
-					flag = 1;
-					count++;
+					for (i = 0; i < count; i++) {
+						if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+							printf("\n Esse lugar já foi adicionado!");
+							Sleep(750);
+							i = 500;
+						}
+					}
+					if (i != 501) {
+						flag = 1;
+						count++;
+					}
 				}
 			} while (flag == 0);
 			break;
@@ -707,8 +725,17 @@ int ThiefPathCreation(typeCase whitchCase) {
 						whitchCase.thiefPath[count] = 7;
 						break;
 					}
-					flag = 1;
-					count++;
+					for (i = 0; i < count; i++) {
+						if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+							printf("\n Esse lugar já foi adicionado!");
+							Sleep(750);
+							i = 500;
+						}
+					}
+					if (i != 501) {
+						flag = 1;
+						count++;
+					}
 				}
 			} while (flag == 0);
 			break;
@@ -739,8 +766,17 @@ int ThiefPathCreation(typeCase whitchCase) {
 						whitchCase.thiefPath[count] = 9;
 						break;
 					}
-					flag = 1;
-					count++;
+					for (i = 0; i < count; i++) {
+						if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+							printf("\n Esse lugar já foi adicionado!");
+							Sleep(750);
+							i = 500;
+						}
+					}
+					if (i != 501) {
+						flag = 1;
+						count++;
+					}
 				}
 			} while (flag == 0);
 			break;
@@ -771,8 +807,17 @@ int ThiefPathCreation(typeCase whitchCase) {
 						whitchCase.thiefPath[count] = 6;
 						break;
 					}
-					flag = 1;
-					count++;
+					for (i = 0; i < count; i++) {
+						if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+							printf("\n Esse lugar já foi adicionado!");
+							Sleep(750);
+							i = 500;
+						}
+					}
+					if (i != 501) {
+						flag = 1;
+						count++;
+					}
 				}
 			} while (flag == 0);
 			break;
@@ -803,8 +848,17 @@ int ThiefPathCreation(typeCase whitchCase) {
 						whitchCase.thiefPath[count] = 6;
 						break;
 					}
-					flag = 1;
-					count++;
+					for (i = 0; i < count; i++) {
+						if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+							printf("\n Esse lugar já foi adicionado!");
+							Sleep(750);
+							i = 500;
+						}
+					}
+					if (i != 501) {
+						flag = 1;
+						count++;
+					}
 				}
 			} while (flag == 0);
 			break;
@@ -835,8 +889,17 @@ int ThiefPathCreation(typeCase whitchCase) {
 						whitchCase.thiefPath[count] = 5;
 						break;
 					}
-					flag = 1;
-					count++;
+					for (i = 0; i < count; i++) {
+						if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+							printf("\n Esse lugar já foi adicionado!");
+							Sleep(750);
+							i = 500;
+						}
+					}
+					if (i != 501) {
+						flag = 1;
+						count++;
+					}
 				}
 			} while (flag == 0);
 			break;
@@ -867,8 +930,17 @@ int ThiefPathCreation(typeCase whitchCase) {
 						whitchCase.thiefPath[count] = 9;
 						break;
 					}
-					flag = 1;
-					count++;
+					for (i = 0; i < count; i++) {
+						if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+							printf("\n Esse lugar já foi adicionado!");
+							Sleep(750);
+							i = 500;
+						}
+					}
+					if (i != 501) {
+						flag = 1;
+						count++;
+					}
 				}
 			} while (flag == 0);
 			break;
@@ -899,8 +971,17 @@ int ThiefPathCreation(typeCase whitchCase) {
 						whitchCase.thiefPath[count] = 9;
 						break;
 					}
-					flag = 1;
-					count++;
+					for (i = 0; i < count; i++) {
+						if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+							printf("\n Esse lugar já foi adicionado!");
+							Sleep(750);
+							i = 500;
+						}
+					}
+					if (i != 501) {
+						flag = 1;
+						count++;
+					}
 				}
 			} while (flag == 0);
 			break;
@@ -931,8 +1012,17 @@ int ThiefPathCreation(typeCase whitchCase) {
 						whitchCase.thiefPath[count] = 8;
 						break;
 					}
-					flag = 1;
-					count++;
+					for (i = 0; i < count; i++) {
+						if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+							printf("\n Esse lugar já foi adicionado!");
+							Sleep(750);
+							i = 500;
+						}
+					}
+					if (i != 501) {
+						flag = 1;
+						count++;
+					}
 				}
 			} while (flag == 0);
 			break;
@@ -1160,7 +1250,16 @@ int ThiefPathCreation(typeCase whitchCase) {
 											whitchCase.thiefPath[count] = 3;
 											break;
 										}
-										flag = 1;
+										for (i = 0; i < count; i++) {
+											if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+												printf("\n Esse lugar já foi adicionado!");
+												Sleep(750);
+												i = 500;
+											}
+										}
+										if (i != 501) {
+											flag = 1;
+										}
 									}
 								} while (flag == 0);
 								break;
@@ -1191,7 +1290,16 @@ int ThiefPathCreation(typeCase whitchCase) {
 											whitchCase.thiefPath[count] = 5;
 											break;
 										}
-										flag = 1;
+										for (i = 0; i < count; i++) {
+											if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+												printf("\n Esse lugar já foi adicionado!");
+												Sleep(750);
+												i = 500;
+											}
+										}
+										if (i != 501) {
+											flag = 1;
+										}
 									}
 								} while (flag == 0);
 								break;
@@ -1222,7 +1330,16 @@ int ThiefPathCreation(typeCase whitchCase) {
 											whitchCase.thiefPath[count] = 7;
 											break;
 										}
-										flag = 1;
+										for (i = 0; i < count; i++) {
+											if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+												printf("\n Esse lugar já foi adicionado!");
+												Sleep(750);
+												i = 500;
+											}
+										}
+										if (i != 501) {
+											flag = 1;
+										}
 									}
 								} while (flag == 0);
 								break;
@@ -1253,7 +1370,16 @@ int ThiefPathCreation(typeCase whitchCase) {
 											whitchCase.thiefPath[count] = 9;
 											break;
 										}
-										flag = 1;
+										for (i = 0; i < count; i++) {
+											if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+												printf("\n Esse lugar já foi adicionado!");
+												Sleep(750);
+												i = 500;
+											}
+										}
+										if (i != 501) {
+											flag = 1;
+										}
 									}
 								} while (flag == 0);
 								break;
@@ -1284,7 +1410,16 @@ int ThiefPathCreation(typeCase whitchCase) {
 											whitchCase.thiefPath[count] = 6;
 											break;
 										}
-										flag = 1;
+										for (i = 0; i < count; i++) {
+											if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+												printf("\n Esse lugar já foi adicionado!");
+												Sleep(750);
+												i = 500;
+											}
+										}
+										if (i != 501) {
+											flag = 1;
+										}
 									}
 								} while (flag == 0);
 								break;
@@ -1315,7 +1450,16 @@ int ThiefPathCreation(typeCase whitchCase) {
 											whitchCase.thiefPath[count] = 6;
 											break;
 										}
-										flag = 1;
+										for (i = 0; i < count; i++) {
+											if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+												printf("\n Esse lugar já foi adicionado!");
+												Sleep(750);
+												i = 500;
+											}
+										}
+										if (i != 501) {
+											flag = 1;
+										}
 									}
 								} while (flag == 0);
 								break;
@@ -1346,7 +1490,16 @@ int ThiefPathCreation(typeCase whitchCase) {
 											whitchCase.thiefPath[count] = 5;
 											break;
 										}
-										flag = 1;
+										for (i = 0; i < count; i++) {
+											if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+												printf("\n Esse lugar já foi adicionado!");
+												Sleep(750);
+												i = 500;
+											}
+										}
+										if (i != 501) {
+											flag = 1;
+										}
 									}
 								} while (flag == 0);
 								break;
@@ -1377,7 +1530,16 @@ int ThiefPathCreation(typeCase whitchCase) {
 											whitchCase.thiefPath[count] = 9;
 											break;
 										}
-										flag = 1;
+										for (i = 0; i < count; i++) {
+											if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+												printf("\n Esse lugar já foi adicionado!");
+												Sleep(750);
+												i = 500;
+											}
+										}
+										if (i != 501) {
+											flag = 1;
+										}
 									}
 								} while (flag == 0);
 								break;
@@ -1408,7 +1570,16 @@ int ThiefPathCreation(typeCase whitchCase) {
 											whitchCase.thiefPath[count] = 9;
 											break;
 										}
-										flag = 1;
+										for (i = 0; i < count; i++) {
+											if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+												printf("\n Esse lugar já foi adicionado!");
+												Sleep(750);
+												i = 500;
+											}
+										}
+										if (i != 501) {
+											flag = 1;
+										}
 									}
 								} while (flag == 0);
 								break;
@@ -1439,7 +1610,16 @@ int ThiefPathCreation(typeCase whitchCase) {
 											whitchCase.thiefPath[count] = 8;
 											break;
 										}
-										flag = 1;
+										for (i = 0; i < count; i++) {
+											if (whitchCase.thiefPath[i] == whitchCase.thiefPath[count]) {
+												printf("\n Esse lugar já foi adicionado!");
+												Sleep(750);
+												i = 500;
+											}
+										}
+										if (i != 501) {
+											flag = 1;
+										}
 									}
 								} while (flag == 0);
 								break;
@@ -1475,7 +1655,7 @@ int ThiefPathCreation(typeCase whitchCase) {
 		do {
 			system("cls");
 			printf("----------------------------------------------------------------------\n");
-			printf("|                   CRIAR CASO - ESCONDERIJO                         |\n");
+			printf("|                    CRIAR CASO - ESCONDERIJO                        |\n");
 			printf("----------------------------------------------------------------------\n");
 			switch (whitchCase.thiefPath[whitchCase.howManyPlaces - 1]) {
 			case RS:
@@ -1681,7 +1861,14 @@ int ThiefPathCreation(typeCase whitchCase) {
 	fprintf(newCase, "%i*\n", whitchCase.hideout);
 
 	//--------------------------------------------Adicionar Tempo do Jogo no Arquivo-----------------------------------------------//
-	whitchCase.caseTime = whitchCase.howManyPlaces * 20;
+	if (dificuldade == 1) {
+		whitchCase.caseTime = whitchCase.howManyPlaces * 17;
+	} else if (dificuldade == 2) {
+		whitchCase.caseTime = whitchCase.howManyPlaces * 15;
+	}if (dificuldade == 3) {
+		whitchCase.caseTime = whitchCase.howManyPlaces * 12;
+	}
+	
 	fprintf(newCase, "%i*\n", whitchCase.caseTime);
 
 	printf("\n Esconderijo criado com sucesso! Aguarde...");
@@ -1707,7 +1894,7 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 		printf("----------------------------------------------------------------------\n");
 		printf("|                      CRIAR CASO - HISTÓRIA                         |\n");
 		printf("----------------------------------------------------------------------\n");
-		printf(" Introduza uma história inicial que será apresentada ao jogador:\n\n  ");
+		printf(" Introduza uma história inicial que será apresentada ao jogador:\n (Utilize '|' para pular linha)\n\n  ");
 		getchar();
 		scanf("%[^\n]", &caseToCreate.history);		//Recebe a história
 		if ((caseToCreate.history[0] >= 65 && caseToCreate.history[0] <= 90) ||			//verifica se começa com uma letra
@@ -1725,8 +1912,21 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 			printf("----------------------------------------------------------------------\n");
 			printf("|                      CRIAR CASO - HISTÓRIA                         |\n");
 			printf("----------------------------------------------------------------------\n");
-			printf(" História Criada:\n\n  %s\n", caseToCreate.history);
-			printf("----------------------------------------------------------------------\n");
+			printf(" História Criada:\n\n  ");
+			char caracter;
+			int i = 0;
+			do {
+				caracter = caseToCreate.history[i];
+				if (caracter != '\0') {
+					if (caracter != '|') {
+						printf("%c", caracter);
+					} else {
+						printf("\n");
+					}
+					i++;
+				}
+			} while (caracter != '\0');
+			printf("\n----------------------------------------------------------------------\n");
 			printf(" Gostaria de reescrever? (Sim/Não)\n");
 			printf(" Resposta: ");
 			flag = 0;
@@ -1746,7 +1946,7 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 				printf("----------------------------------------------------------------------\n");
 				printf("|                      CRIAR CASO - HISTÓRIA                         |\n");
 				printf("----------------------------------------------------------------------\n");
-				printf(" Introduza uma história inicial que será apresentada ao jogador:\n\n  ");		//Receber uma historia inicial
+				printf(" Introduza uma história inicial que será apresentada ao jogador:\n (Utilize '|' para pular linha)\n\n  ");		//Receber uma historia inicial
 				getchar();
 				scanf("%[^\n]", &caseToCreate.history); //Recebe a história
 				if ((caseToCreate.history[0] >= 65 && caseToCreate.history[0] <= 90) ||
@@ -1782,143 +1982,482 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 				printf("----------------------------------------------------------------------\n");
 				switch (caseToCreate.thiefPath[i]) {
 				case RS:
-					printf(" O %i° local escolhido foi Rio Grande do Sul\n\n", i + 1);
-					printf("----------------------------------------------------------------------\n");
+					printf(" O %i° local escolhido foi Rio Grande do Sul\n", i + 1);
+					printf(" O próximo local será: ");
+					switch (caseToCreate.thiefPath[i+1]) {
+						case RS:
+							printf("Rio Grande do Sul\n");
+							break;
+						case MS:
+							printf("Mato Grosso do Sul\n");
+							break;
+						case GO:
+							printf("Goiás\n");
+							break;
+						case ES:
+							printf("Espírito Santo\n");
+							break;
+						case MT:
+							printf("Mato Grosso\n");
+							break;
+						case SC:
+							printf("Santa Catarina\n");
+							break;
+						case MG:
+							printf("Minas Gerais\n");
+							break;
+						case SP:
+							printf("São Paulo\n");
+							break;
+						case PR:
+							printf("Paraná\n");
+							break;
+						case RJ:
+							printf("Rio de Janeiro\n");
+							break;
+					}
+					printf("----------------------------------------------------------------------\n\n");
 					switch (j) {
 					case 1:
-						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+						printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 2:
-						printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 3:
-						printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					}
 					break;
 				case MS:
-					printf(" O %i° local escolhido foi Mato Grosso do Sul\n\n", i + 1);
+					printf(" O %i° local escolhido foi Mato Grosso do Sul\n", i + 1);
+					printf(" O próximo local será: ");
+					switch (caseToCreate.thiefPath[i + 1]) {
+						case RS:
+							printf("Rio Grande do Sul\n");
+							break;
+						case MS:
+							printf("Mato Grosso do Sul\n");
+							break;
+						case GO:
+							printf("Goiás\n");
+							break;
+						case ES:
+							printf("Espírito Santo\n");
+							break;
+						case MT:
+							printf("Mato Grosso\n");
+							break;
+						case SC:
+							printf("Santa Catarina\n");
+							break;
+						case MG:
+							printf("Minas Gerais\n");
+							break;
+						case SP:
+							printf("São Paulo\n");
+							break;
+						case PR:
+							printf("Paraná\n");
+							break;
+						case RJ:
+							printf("Rio de Janeiro\n");
+							break;
+					}
+					printf("----------------------------------------------------------------------\n\n");
 					switch (j) {
 					case 1:
-						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+						printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 2:
-						printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 3:
-						printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					}
 					break;
 				case GO:
-					printf(" O %i° local escolhido foi Goiás\n\n", i + 1);
+					printf(" O %i° local escolhido foi Goiás\n", i + 1);
+					printf(" O próximo local será: ");
+					switch (caseToCreate.thiefPath[i + 1]) {
+						case RS:
+							printf("Rio Grande do Sul\n");
+							break;
+						case MS:
+							printf("Mato Grosso do Sul\n");
+							break;
+						case GO:
+							printf("Goiás\n");
+							break;
+						case ES:
+							printf("Espírito Santo\n");
+							break;
+						case MT:
+							printf("Mato Grosso\n");
+							break;
+						case SC:
+							printf("Santa Catarina\n");
+							break;
+						case MG:
+							printf("Minas Gerais\n");
+							break;
+						case SP:
+							printf("São Paulo\n");
+							break;
+						case PR:
+							printf("Paraná\n");
+							break;
+						case RJ:
+							printf("Rio de Janeiro\n");
+							break;
+					}
+					printf("----------------------------------------------------------------------\n\n");
 					switch (j) {
 					case 1:
-						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+						printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 2:
-						printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 3:
-						printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					}
 					break;
 				case ES:
-					printf(" O %i° local escolhido foi Espírito Santo\n\n", i + 1);
+					printf(" O %i° local escolhido foi Espírito Santo\n", i + 1);
+					printf(" O próximo local será: ");
+					switch (caseToCreate.thiefPath[i + 1]) {
+						case RS:
+							printf("Rio Grande do Sul\n");
+							break;
+						case MS:
+							printf("Mato Grosso do Sul\n");
+							break;
+						case GO:
+							printf("Goiás\n");
+							break;
+						case ES:
+							printf("Espírito Santo\n");
+							break;
+						case MT:
+							printf("Mato Grosso\n");
+							break;
+						case SC:
+							printf("Santa Catarina\n");
+							break;
+						case MG:
+							printf("Minas Gerais\n");
+							break;
+						case SP:
+							printf("São Paulo\n");
+							break;
+						case PR:
+							printf("Paraná\n");
+							break;
+						case RJ:
+							printf("Rio de Janeiro\n");
+							break;
+					}
+					printf("----------------------------------------------------------------------\n\n");
 					switch (j) {
 					case 1:
-						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+						printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 2:
-						printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 3:
-						printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					}
 					break;
 				case MT:
-					printf(" O %i° local escolhido foi Mato Grosso\n\n", i + 1);
+					printf(" O %i° local escolhido foi Mato Grosso\n", i + 1);
+					printf(" O próximo local será: ");
+					switch (caseToCreate.thiefPath[i + 1]) {
+						case RS:
+							printf("Rio Grande do Sul\n");
+							break;
+						case MS:
+							printf("Mato Grosso do Sul\n");
+							break;
+						case GO:
+							printf("Goiás\n");
+							break;
+						case ES:
+							printf("Espírito Santo\n");
+							break;
+						case MT:
+							printf("Mato Grosso\n");
+							break;
+						case SC:
+							printf("Santa Catarina\n");
+							break;
+						case MG:
+							printf("Minas Gerais\n");
+							break;
+						case SP:
+							printf("São Paulo\n");
+							break;
+						case PR:
+							printf("Paraná\n");
+							break;
+						case RJ:
+							printf("Rio de Janeiro\n");
+							break;
+					}
+					printf("----------------------------------------------------------------------\n\n");
 					switch (j) {
 					case 1:
-						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+						printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 2:
-						printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 3:
-						printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					}
 					break;
 				case SC:
-					printf(" O %i° local escolhido foi Santa Catarina\n\n", i + 1);
+					printf(" O %i° local escolhido foi Santa Catarina\n", i + 1);
+					printf(" O próximo local será: ");
+					switch (caseToCreate.thiefPath[i + 1]) {
+						case RS:
+							printf("Rio Grande do Sul\n");
+							break;
+						case MS:
+							printf("Mato Grosso do Sul\n");
+							break;
+						case GO:
+							printf("Goiás\n");
+							break;
+						case ES:
+							printf("Espírito Santo\n");
+							break;
+						case MT:
+							printf("Mato Grosso\n");
+							break;
+						case SC:
+							printf("Santa Catarina\n");
+							break;
+						case MG:
+							printf("Minas Gerais\n");
+							break;
+						case SP:
+							printf("São Paulo\n");
+							break;
+						case PR:
+							printf("Paraná\n");
+							break;
+						case RJ:
+							printf("Rio de Janeiro\n");
+							break;
+					}
+					printf("----------------------------------------------------------------------\n\n");
 					switch (j) {
 					case 1:
-						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+						printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 2:
-						printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 3:
-						printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					}
 					break;
 				case MG:
-					printf(" O %i° local escolhido foi Minas Gerais\n\n", i + 1);
+					printf(" O %i° local escolhido foi Minas Gerais\n", i + 1);
+					printf(" O próximo local será: ");
+					switch (caseToCreate.thiefPath[i + 1]) {
+						case RS:
+							printf("Rio Grande do Sul\n");
+							break;
+						case MS:
+							printf("Mato Grosso do Sul\n");
+							break;
+						case GO:
+							printf("Goiás\n");
+							break;
+						case ES:
+							printf("Espírito Santo\n");
+							break;
+						case MT:
+							printf("Mato Grosso\n");
+							break;
+						case SC:
+							printf("Santa Catarina\n");
+							break;
+						case MG:
+							printf("Minas Gerais\n");
+							break;
+						case SP:
+							printf("São Paulo\n");
+							break;
+						case PR:
+							printf("Paraná\n");
+							break;
+						case RJ:
+							printf("Rio de Janeiro\n");
+							break;
+					}
+					printf("----------------------------------------------------------------------\n\n");
 					switch (j) {
 					case 1:
-						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+						printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 2:
-						printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 3:
-						printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					}
 					break;
 				case SP:
-					printf(" O %i° local escolhido foi São Paulo\n\n", i + 1);
+					printf(" O %i° local escolhido foi São Paulo\n", i + 1);
+					printf(" O próximo local será: ");
+					switch (caseToCreate.thiefPath[i + 1]) {
+						case RS:
+							printf("Rio Grande do Sul\n");
+							break;
+						case MS:
+							printf("Mato Grosso do Sul\n");
+							break;
+						case GO:
+							printf("Goiás\n");
+							break;
+						case ES:
+							printf("Espírito Santo\n");
+							break;
+						case MT:
+							printf("Mato Grosso\n");
+							break;
+						case SC:
+							printf("Santa Catarina\n");
+							break;
+						case MG:
+							printf("Minas Gerais\n");
+							break;
+						case SP:
+							printf("São Paulo\n");
+							break;
+						case PR:
+							printf("Paraná\n");
+							break;
+						case RJ:
+							printf("Rio de Janeiro\n");
+							break;
+					}
+					printf("----------------------------------------------------------------------\n\n");
 					switch (j) {
 					case 1:
-						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+						printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 2:
-						printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 3:
-						printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					}
 					break;
 				case PR:
 					printf(" O %i° local escolhido foi Paraná\n", i + 1);
+					printf(" O próximo local será: ");
+					switch (caseToCreate.thiefPath[i + 1]) {
+						case RS:
+							printf("Rio Grande do Sul\n");
+							break;
+						case MS:
+							printf("Mato Grosso do Sul\n");
+							break;
+						case GO:
+							printf("Goiás\n");
+							break;
+						case ES:
+							printf("Espírito Santo\n");
+							break;
+						case MT:
+							printf("Mato Grosso\n");
+							break;
+						case SC:
+							printf("Santa Catarina\n");
+							break;
+						case MG:
+							printf("Minas Gerais\n");
+							break;
+						case SP:
+							printf("São Paulo\n");
+							break;
+						case PR:
+							printf("Paraná\n");
+							break;
+						case RJ:
+							printf("Rio de Janeiro\n");
+							break;
+					}
+					printf("----------------------------------------------------------------------\n\n");
 					switch (j) {
 					case 1:
-						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+						printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 2:
-						printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 3:
-						printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					}
 					break;
 				case RJ:
-					printf(" O %i° local escolhido foi Rio de Janeiro\n\n", i + 1);
+					printf(" O %i° local escolhido foi Rio de Janeiro\n", i + 1);
+					printf(" O próximo local será: ");
+					switch (caseToCreate.thiefPath[i + 1]) {
+						case RS:
+							printf("Rio Grande do Sul\n");
+							break;
+						case MS:
+							printf("Mato Grosso do Sul\n");
+							break;
+						case GO:
+							printf("Goiás\n");
+							break;
+						case ES:
+							printf("Espírito Santo\n");
+							break;
+						case MT:
+							printf("Mato Grosso\n");
+							break;
+						case SC:
+							printf("Santa Catarina\n");
+							break;
+						case MG:
+							printf("Minas Gerais\n");
+							break;
+						case SP:
+							printf("São Paulo\n");
+							break;
+						case PR:
+							printf("Paraná\n");
+							break;
+						case RJ:
+							printf("Rio de Janeiro\n");
+							break;
+					}
+					printf("----------------------------------------------------------------------\n\n");
 					switch (j) {
 					case 1:
-						printf(" Insira uma dica para ser descoberta na Praça:\n\n  ");
+						printf(" Insira uma dica para ser descoberta na Praça:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 2:
-						printf(" Insira uma dica para ser descoberta no Hotel:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Hotel:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					case 3:
-						printf(" Insira uma dica para ser descoberta no Banco:\n\n  ");
+						printf(" Insira uma dica para ser descoberta no Banco:\n (Utilize '|' para pular linha)\n\n  ");
 						break;
 					}
 					break;
@@ -1939,38 +2478,63 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 			printf("----------------------------------------------------------------------\n");
 			switch (caseToCreate.thiefPath[i]) {
 				case RS:
-					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Rio Grande do Sul foram:\n\n");
+					printf(" As dicas do Rio Grande do Sul foram:\n\n");
 					break;
 				case MS:
-					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Mato Grosso do Sul foram:\n\n");
+					printf(" As dicas do Mato Grosso do Sul foram:\n\n");
 					break;
 				case GO:
-					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, de Goiás foram:\n\n");
+					printf(" As dicas de Goiás foram:\n\n");
 					break;
 				case ES:
-					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Espírito Santo foram:\n\n");
+					printf(" As dicas do Espírito Santo foram:\n\n");
 					break;
 				case MT:
-					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Mato Grosso foram:\n\n");
+					printf(" As dicas do Mato Grosso foram:\n\n");
 					break;
 				case SC:
-					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, de Santa Catarina foram:\n\n");
+					printf(" As dicas de Santa Catarina foram:\n\n");
 					break;
 				case MG:
-					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, de Minas Gerais foram:\n\n");
+					printf(" As dicas de Minas Gerais foram:\n\n");
 					break;
 				case SP:
-					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, de São Paulo foram:\n\n");
+					printf(" As dicas de São Paulo foram:\n\n");
 					break;
 				case PR:
-					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Paraná foram:\n\n");
+					printf(" As dicas do Paraná foram:\n\n");
 					break;
 				case RJ:
-					printf(" As dicas para a Praça, Hotel e Banco, respectivamente, do Rio de Janeiro foram:\n\n");
+					printf(" As dicas do Rio de Janeiro foram:\n\n");
 					break;
 			}
 			for (j = 1; j <= 3; j++) {
-				printf("  %i- \"%s\"\n\n", j, caseToCreate.tips[j - 1][i]);
+				switch (j) {
+					case 1:
+						printf(" Praça:\n");
+						break;
+					case 2:
+						printf("\n Hotel:\n");
+						break;
+					case 3:
+						printf("\n Banco:\n");
+						break;
+				}
+				char caracter;
+				int k = 0;
+				printf(" \"");
+				do {
+					caracter = caseToCreate.tips[j - 1][i][k];
+					if (caracter != '\0') {
+						if (caracter != '|') {
+							printf("%c", caracter);
+						} else {
+							printf("\n");
+						}
+						k++;
+					}
+				} while (caracter != '\0');
+				printf("\"\n");
 			}
 			printf("------------------------------------------------------------\n");
 			printf(" Gostaria de reescrever alguma dica? (Sim/Não)\n");
@@ -1990,9 +2554,35 @@ void TipsCreation(char path[], int howManyPlaces, typeCase caseToCreate) {
 					printf("----------------------------------------------------------------------\n");
 					printf("|                        CRIAR CASO - DICAS                          |\n");
 					printf("----------------------------------------------------------------------\n");
-					printf(" Escolha a dica que será modificada\n\n");
+					printf(" Escolha a dica que será modificada\n");
 					for (j = 1; j <= 3; j++) {
-						printf("  %i- \"%s\"\n\n", j, caseToCreate.tips[j - 1][i]);
+						
+						switch (j) {
+							case 1:
+								printf("\n  %i- Praça\n", j);
+								break;
+							case 2:
+								printf("\n  %i- Hotel\n", j);
+								break;
+							case 3:
+								printf("\n  %i- Banco\n", j);
+								break;
+						}
+						char caracter;
+						int k = 0;
+						printf(" \"");
+						do {
+							caracter = caseToCreate.tips[j - 1][i][k];
+							if (caracter != '\0') {
+								if (caracter != '|') {
+									printf("%c", caracter);
+								} else {
+									printf("\n");
+								}
+								k++;
+							}
+						} while (caracter != '\0');
+						printf("\"\n");
 					}
 					printf("  4- Confirmar modificações.\n\n");
 					printf("----------------------------------------------------------------------\n");

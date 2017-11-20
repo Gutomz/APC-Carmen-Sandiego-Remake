@@ -141,10 +141,95 @@ int AdmMenu(char nomeADM[], char senhaADM[]) {
 
 	switch (escolhaNum) {
 		case 1:
-			//Mais tarde
+			while(AdmModif(nomeADM, senhaADM) == 0);
 			break;
 		case 2:
 			CaseCreation();
+			break;
+		case 3:
+			return 1;
+			break;
+	}
+	return 0;
+}
+
+int AdmModif(char nomeADM[], char senhaADM[]) {
+	char loginReal[45], senhaReal[45];
+	int escolhaNum;
+
+	AdmConta = fopen("ContaAdm.txt", "r");
+	fscanf(AdmConta, "%s", &loginReal);
+	fscanf(AdmConta, "%s", &senhaReal);//recebendo dados do arquivo
+	fclose(AdmConta);
+	do {
+		system("cls");
+		printf("----------------------------------------------------------------------\n");
+		printf("|                       PERFIL DO ADMINISTRADOR                      |\n");
+		printf("----------------------------------------------------------------------\n\n");
+		printf(" Selecione os dados que deseja modificar:\n");
+		printf("  1- Modificar o login da conta\n");
+		printf("  2- Modificar a senha da conta\n");
+		printf("  3- Voltar\n");
+		printf("----------------------------------------------------------------------\n");
+		printf(" Resposta: ");
+		scanf("%i", &escolhaNum);
+		if (escolhaNum < 1 || escolhaNum > 3) {
+			printf("\n Opção inválida!");
+			Sleep(1500);
+		}
+	} while (escolhaNum < 1 || escolhaNum > 3);
+	
+	switch (escolhaNum) {
+		case 1:
+
+			do {
+				system("cls");
+				printf("----------------------------------------------------------------------\n");
+				printf("|                       PERFIL DO ADMINISTRADOR                      |\n");
+				printf("----------------------------------------------------------------------\n");
+				printf(" Digite o login atual: ");
+				scanf("%s", nomeADM);
+				if (strcmp(nomeADM, loginReal) != 0) {
+					printf("\n Login incorreto!");
+					Sleep(1500);
+				}
+			} while (strcmp(nomeADM, loginReal) != 0);
+			AdmConta = fopen("ContaAdm.txt", "w");
+			printf(" Digite o novo login: ");
+			scanf("%s", nomeADM);
+			fprintf(AdmConta, "%s\n", nomeADM);
+			fprintf(AdmConta, "%s", senhaReal);
+
+			printf("\n Login modificado com sucesso! Aguarde...");
+			Sleep(1500);
+			fclose(AdmConta);
+			break;
+		case 2:
+
+			do {
+				system("cls");
+				printf("----------------------------------------------------------------------\n");
+				printf("|                       PERFIL DO ADMINISTRADOR                      |\n");
+				printf("----------------------------------------------------------------------\n");
+				printf(" Digite a senha atual: ");
+				scanf("%s", senhaADM);
+				criptografa(senhaADM);
+				if (strcmp(senhaADM, senhaReal) != 0) {
+					printf("\n Senha incorreta!");
+					Sleep(1500);
+				}
+			} while (strcmp(senhaADM, senhaReal) != 0);
+			AdmConta = fopen("ContaAdm.txt", "w");
+			printf(" Digite a nova senha: ");
+			scanf("%s", senhaADM);
+			criptografa(senhaADM);
+			fprintf(AdmConta, "%s\n", loginReal);
+			for (int i = 0; i< strlen(senhaADM); i++) {
+				fputc(senhaADM[i], AdmConta);
+			}
+			printf("\n Senha modificada com sucesso! Aguarde...");
+			Sleep(1500);
+			fclose(AdmConta);
 			break;
 		case 3:
 			return 1;

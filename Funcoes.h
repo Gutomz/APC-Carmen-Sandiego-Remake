@@ -73,6 +73,7 @@ void AdmCriacao(char nomeADM[], char senhaADM[]);
 int AdmVerif();
 int AdmMenu(char nomeADM[], char senhaADM[]);
 void criptografa(char senha[]);
+int AdmModif(char nomeADM[], char senhaADM[]);
 //---------------------------------Funções ADM---------------------------//
 
 
@@ -112,9 +113,10 @@ void PrintText(char texto[]);
 void CaseApresentation(typeCase myCase, char NomeJogador[], int dias, int horas);
 
 int Computer(char suspectsStatus[],int *tempo, int howManySuspects, typeChar suspects[], char suspeitoName[], int warrant);
-int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *ponteiro_posicaoLadrao, int warrantFlag);
+int SearchInto(typeCase dadosCaso, int estadoAtual, int *ponteiro_tempo, int *ponteiro_posicaoLadrao, int warrantFlag, int *viagemFlag);
 int ChangeLocation(int whereIam, int *tempo);
 void ObterSuspeitos(typeChar suspeitos[], int howManySuspects);
+void ModificarDadosJogador(typePlayer player[]);
 //---------------------------------Funções do Game--------------------------------//
 
 
@@ -129,3 +131,7 @@ int LerArquivoPersonagens(typeChar thief);
 
 //-------------------------------------------------------------------------------------------------------------------------------//
 
+
+//---------------------------------Função para Mostrar o Ranking--------------------------------------//
+void MostrarRanking();
+//---------------------------------Função para Mostrar o Ranking--------------------------------------//
